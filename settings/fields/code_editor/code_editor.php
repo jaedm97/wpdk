@@ -43,13 +43,13 @@ if ( ! class_exists( 'WPDK_Settings_Field_code_editor' ) ) {
       // Do not loads CodeMirror in revslider page.
       if ( in_array( $page, array( 'revslider' ) ) ) { return; }
 
-      if ( ! wp_script_is( 'pbsettings-codemirror' ) ) {
-        wp_enqueue_script( 'pbsettings-codemirror', esc_url( $this->cdn_url . $this->version .'/lib/codemirror.min.js' ), array( 'pb_settings' ), $this->version, true );
-        wp_enqueue_script( 'pbsettings-codemirror-loadmode', esc_url( $this->cdn_url . $this->version .'/addon/mode/loadmode.min.js' ), array( 'pbsettings-codemirror' ), $this->version, true );
+      if ( ! wp_script_is( 'wpdk_settings-codemirror' ) ) {
+        wp_enqueue_script( 'wpdk_settings-codemirror', esc_url( $this->cdn_url . $this->version .'/lib/codemirror.min.js' ), array( 'pb_settings' ), $this->version, true );
+        wp_enqueue_script( 'wpdk_settings-codemirror-loadmode', esc_url( $this->cdn_url . $this->version .'/addon/mode/loadmode.min.js' ), array( 'wpdk_settings-codemirror' ), $this->version, true );
       }
 
-      if ( ! wp_style_is( 'pbsettings-codemirror' ) ) {
-        wp_enqueue_style( 'pbsettings-codemirror', esc_url( $this->cdn_url . $this->version .'/lib/codemirror.min.css' ), array(), $this->version );
+      if ( ! wp_style_is( 'wpdk_settings-codemirror' ) ) {
+        wp_enqueue_style( 'wpdk_settings-codemirror', esc_url( $this->cdn_url . $this->version .'/lib/codemirror.min.css' ), array(), $this->version );
       }
 
     }

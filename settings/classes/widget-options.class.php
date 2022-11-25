@@ -89,7 +89,7 @@ if ( ! class_exists( 'WPDK_Settings_Widget' ) ) {
 
         $class = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
-        echo '<div class="pb_settings pbsettings-widgets pbsettings-fields'. esc_attr( $class ) .'">';
+        echo '<div class="pb_settings wpdk_settings-widgets wpdk_settings-fields'. esc_attr( $class ) .'">';
 
         foreach ( $this->args['fields'] as $field ) {
 

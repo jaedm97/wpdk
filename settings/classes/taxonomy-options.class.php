@@ -133,17 +133,17 @@ if ( ! class_exists( 'WPDK_Settings_Taxonomy_Options' ) ) {
 
 			wp_nonce_field( 'pb_settings_taxonomy_nonce', 'pb_settings_taxonomy_nonce' . $this->unique );
 
-			echo '<div class="pb_settings pbsettings-taxonomy pbsettings-show-all pbsettings-onload pbsettings-taxonomy-' . esc_attr( $classname ) . '-fields ' . esc_attr( $class ) . '">';
+			echo '<div class="pb_settings wpdk_settings-taxonomy wpdk_settings-show-all wpdk_settings-onload wpdk_settings-taxonomy-' . esc_attr( $classname ) . '-fields ' . esc_attr( $class ) . '">';
 
 			foreach ( $this->sections as $section ) {
 
 				if ( $taxonomy === $this->taxonomy ) {
 
-					$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+					$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 					$section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
-					echo ( $section_title || $section_icon ) ? '<div class="pbsettings-section-title"><h3>' . esc_html($section_icon .  $section_title ) . '</h3></div>' : '';
-					echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+					echo ( $section_title || $section_icon ) ? '<div class="wpdk_settings-section-title"><h3>' . esc_html($section_icon .  $section_title ) . '</h3></div>' : '';
+					echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 					if ( ! empty( $section['fields'] ) ) {
 						foreach ( $section['fields'] as $field ) {

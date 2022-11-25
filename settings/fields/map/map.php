@@ -49,30 +49,30 @@ if ( ! class_exists( 'WPDK_Settings_Field_map' ) ) {
       echo $this->field_before();
 
       if ( empty( $args['address_field'] ) ) {
-        echo '<div class="pbsettings--map-search">';
+        echo '<div class="wpdk_settings--map-search">';
         echo '<input type="text" name="'. esc_attr( $this->field_name( '[address]' ) ) .'" value="'. esc_attr( $value['address'] ) .'"'. $this->field_attributes( $placeholder ) .' />';
         echo '</div>';
       } else {
-        echo '<div class="pbsettings--address-field" data-address-field="'. esc_attr( $args['address_field'] ) .'"></div>';
+        echo '<div class="wpdk_settings--address-field" data-address-field="'. esc_attr( $args['address_field'] ) .'"></div>';
       }
 
-      echo '<div class="pbsettings--map-osm-wrap"><div class="pbsettings--map-osm" data-map="'. esc_attr( json_encode( $settings ) ) .'"'. $style_attr .'></div></div>';
+      echo '<div class="wpdk_settings--map-osm-wrap"><div class="wpdk_settings--map-osm" data-map="'. esc_attr( json_encode( $settings ) ) .'"'. $style_attr .'></div></div>';
 
-      echo '<div class="pbsettings--map-inputs">';
+      echo '<div class="wpdk_settings--map-inputs">';
 
-        echo '<div class="pbsettings--map-input">';
+        echo '<div class="wpdk_settings--map-input">';
         echo '<label>'. esc_attr( $args['latitude_text'] ) .'</label>';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[latitude]' ) ) .'" value="'. esc_attr( $value['latitude'] ) .'" class="pbsettings--latitude" />';
+        echo '<input type="text" name="'. esc_attr( $this->field_name( '[latitude]' ) ) .'" value="'. esc_attr( $value['latitude'] ) .'" class="wpdk_settings--latitude" />';
         echo '</div>';
 
-        echo '<div class="pbsettings--map-input">';
+        echo '<div class="wpdk_settings--map-input">';
         echo '<label>'. esc_attr( $args['longitude_text'] ) .'</label>';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[longitude]' ) ) .'" value="'. esc_attr( $value['longitude'] ) .'" class="pbsettings--longitude" />';
+        echo '<input type="text" name="'. esc_attr( $this->field_name( '[longitude]' ) ) .'" value="'. esc_attr( $value['longitude'] ) .'" class="wpdk_settings--longitude" />';
         echo '</div>';
 
       echo '</div>';
 
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[zoom]' ) ) .'" value="'. esc_attr( $value['zoom'] ) .'" class="pbsettings--zoom" />';
+      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[zoom]' ) ) .'" value="'. esc_attr( $value['zoom'] ) .'" class="wpdk_settings--zoom" />';
 
       echo $this->field_after();
 
@@ -80,12 +80,12 @@ if ( ! class_exists( 'WPDK_Settings_Field_map' ) ) {
 
     public function enqueue() {
 
-      if ( ! wp_script_is( 'pbsettings-leaflet' ) ) {
-        wp_enqueue_script( 'pbsettings-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.js' ), array( 'pb_settings' ), $this->version, true );
+      if ( ! wp_script_is( 'wpdk_settings-leaflet' ) ) {
+        wp_enqueue_script( 'wpdk_settings-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.js' ), array( 'pb_settings' ), $this->version, true );
       }
 
-      if ( ! wp_style_is( 'pbsettings-leaflet' ) ) {
-        wp_enqueue_style( 'pbsettings-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.css' ), array(), $this->version );
+      if ( ! wp_style_is( 'wpdk_settings-leaflet' ) ) {
+        wp_enqueue_style( 'wpdk_settings-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.css' ), array(), $this->version );
       }
 
       if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {

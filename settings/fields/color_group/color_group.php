@@ -26,9 +26,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_color_group' ) ) {
           $color_value  = ( ! empty( $this->value[$key] ) ) ? $this->value[$key] : '';
           $default_attr = ( ! empty( $this->field['default'][$key] ) ) ? ' data-default-color="'. esc_attr( $this->field['default'][$key] ) .'"' : '';
 
-          echo '<div class="pbsettings--left pbsettings-field-color">';
-          echo '<div class="pbsettings--title">'. $option .'</div>';
-          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $key .']' ) ) .'" value="'. esc_attr( $color_value ) .'" class="pbsettings-color"'. $default_attr . $this->field_attributes() .'/>';
+          echo '<div class="wpdk_settings--left wpdk_settings-field-color">';
+          echo '<div class="wpdk_settings--title">'. $option .'</div>';
+          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $key .']' ) ) .'" value="'. esc_attr( $color_value ) .'" class="wpdk_settings-color"'. $default_attr . $this->field_attributes() .'/>';
           echo '</div>';
 
         }

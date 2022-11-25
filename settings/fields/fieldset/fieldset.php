@@ -18,7 +18,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_fieldset' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings-fieldset-content" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings-fieldset-content" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
 
       foreach ( $this->field['fields'] as $field ) {
 

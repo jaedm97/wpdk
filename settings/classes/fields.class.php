@@ -64,15 +64,15 @@ if ( ! class_exists( 'WPDK_Settings_Fields' ) ) {
 		}
 
 		public function field_before() {
-			return ( ! empty( $this->field['before'] ) ) ? '<div class="pbsettings-before-text">' . $this->field['before'] . '</div>' : '';
+			return ( ! empty( $this->field['before'] ) ) ? '<div class="wpdk_settings-before-text">' . $this->field['before'] . '</div>' : '';
 		}
 
 		public function field_after() {
 
-			$output = ( ! empty( $this->field['after'] ) ) ? '<div class="pbsettings-after-text">' . $this->field['after'] . '</div>' : '';
-			$output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="pbsettings-desc-text">' . $this->field['desc'] . '</div>' : '';
-			$output .= ( ! empty( $this->field['help'] ) ) ? '<div class="pbsettings-help"><span class="pbsettings-help-text">' . $this->field['help'] . '</span><i class="fas fa-question-circle"></i></div>' : '';
-			$output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="pbsettings-error-text">' . $this->field['_error'] . '</div>' : '';
+			$output = ( ! empty( $this->field['after'] ) ) ? '<div class="wpdk_settings-after-text">' . $this->field['after'] . '</div>' : '';
+			$output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="wpdk_settings-desc-text">' . $this->field['desc'] . '</div>' : '';
+			$output .= ( ! empty( $this->field['help'] ) ) ? '<div class="wpdk_settings-help"><span class="wpdk_settings-help-text">' . $this->field['help'] . '</span><i class="fas fa-question-circle"></i></div>' : '';
+			$output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="wpdk_settings-error-text">' . $this->field['_error'] . '</div>' : '';
 
 			return $output;
 

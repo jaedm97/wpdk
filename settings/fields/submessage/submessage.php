@@ -18,7 +18,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_submessage' ) ) {
 
       $style = ( ! empty( $this->field['style'] ) ) ? $this->field['style'] : 'normal';
 
-      echo '<div class="pbsettings-submessage pbsettings-submessage-'. esc_attr( $style ) .'">'. $this->field['content'] .'</div>';
+      echo '<div class="wpdk_settings-submessage wpdk_settings-submessage-'. esc_attr( $style ) .'">'. $this->field['content'] .'</div>';
 
     }
 

@@ -121,10 +121,10 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 		public function add_comment_meta_box_content( $comment, $callback ) {
 
 			$has_nav  = ( count( $this->sections ) > 1 ) ? true : false;
-			$show_all = ( ! $has_nav ) ? ' pbsettings-show-all' : '';
+			$show_all = ( ! $has_nav ) ? ' wpdk_settings-show-all' : '';
 			$errors   = ( is_object( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_pb_settings_errors_' . $this->unique, true ) : array();
 			$errors   = ( ! empty( $errors ) ) ? $errors : array();
-			$theme    = ( $this->args['theme'] ) ? ' pbsettings-theme-' . $this->args['theme'] : '';
+			$theme    = ( $this->args['theme'] ) ? ' wpdk_settings-theme-' . $this->args['theme'] : '';
 			$nav_type = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
 			if ( is_object( $comment ) && ! empty( $errors ) ) {
@@ -133,13 +133,13 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 			wp_nonce_field( 'pb_settings_comment_metabox_nonce', 'pb_settings_comment_metabox_nonce' . $this->unique );
 
-			echo '<div class="pb_settings pbsettings-comment-metabox' . esc_attr( $theme ) . '">';
+			echo '<div class="pb_settings wpdk_settings-comment-metabox' . esc_attr( $theme ) . '">';
 
-			echo '<div class="pbsettings-wrapper' . esc_attr( $show_all ) . '">';
+			echo '<div class="wpdk_settings-wrapper' . esc_attr( $show_all ) . '">';
 
 			if ( $has_nav ) {
 
-				echo '<div class="pbsettings-nav pbsettings-nav-' . esc_attr( $nav_type ) . ' pbsettings-nav-metabox">';
+				echo '<div class="wpdk_settings-nav wpdk_settings-nav-' . esc_attr( $nav_type ) . ' wpdk_settings-nav-metabox">';
 
 				echo '<ul>';
 
@@ -147,8 +147,8 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 				foreach ( $this->sections as $section ) {
 
-					$tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
-					$tab_error = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="pbsettings-label-error pbsettings-error">!</i>' : '';
+					$tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+					$tab_error = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="wpdk_settings-label-error wpdk_settings-error">!</i>' : '';
 
 					echo '<li><a href="#">' . esc_html( $tab_icon . $section['title'] . $tab_error ) . '</a></li>';
 
@@ -162,23 +162,23 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 			}
 
-			echo '<div class="pbsettings-content">';
+			echo '<div class="wpdk_settings-content">';
 
-			echo '<div class="pbsettings-sections">';
+			echo '<div class="wpdk_settings-sections">';
 
 			$section_key = 1;
 
 			foreach ( $this->sections as $section ) {
 
-				$section_onload = ( ! $has_nav ) ? ' pbsettings-onload' : '';
+				$section_onload = ( ! $has_nav ) ? ' wpdk_settings-onload' : '';
 				$section_class  = ( ! empty( $section['class'] ) ) ? ' ' . $section['class'] : '';
 				$section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
-				echo '<div class="pbsettings-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
+				echo '<div class="wpdk_settings-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
 
-				echo ( $section_title || $section_icon ) ? '<div class="pbsettings-section-title"><h3>' . esc_html( $section_icon . $section_title ) . '</h3></div>' : '';
-				echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+				echo ( $section_title || $section_icon ) ? '<div class="wpdk_settings-section-title"><h3>' . esc_html( $section_icon . $section_title ) . '</h3></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 				if ( ! empty( $section['fields'] ) ) {
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 				} else {
 
-					echo '<div class="pbsettings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
+					echo '<div class="wpdk_settings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
 
 				}
 
@@ -212,11 +212,11 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 			if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-				echo '<div class="pbsettings-sections-reset">';
+				echo '<div class="wpdk_settings-sections-reset">';
 				echo '<label>';
 				echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
-				echo '<span class="button pbsettings-button-reset">' . esc_html__( 'Reset' ) . '</span>';
-				echo '<span class="button pbsettings-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post' ), esc_html__( 'Cancel' ) ) . '</span>';
+				echo '<span class="button wpdk_settings-button-reset">' . esc_html__( 'Reset' ) . '</span>';
+				echo '<span class="button wpdk_settings-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post' ), esc_html__( 'Cancel' ) ) . '</span>';
 				echo '</label>';
 				echo '</div>';
 
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WPDK_Settings_Comment_Metabox' ) ) {
 
 			echo '</div>';
 
-			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="pbsettings-nav-background"></div>' : '';
+			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="wpdk_settings-nav-background"></div>' : '';
 
 			echo '<div class="clear"></div>';
 

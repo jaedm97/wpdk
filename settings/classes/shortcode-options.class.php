@@ -48,7 +48,7 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 
 			add_action( 'admin_footer', array( $this, 'add_footer_modal_shortcode' ) );
 			add_action( 'customize_controls_print_footer_scripts', array( $this, 'add_footer_modal_shortcode' ) );
-			add_action( 'wp_ajax_pbsettings-get-shortcode-' . $this->unique, array( $this, 'get_shortcode' ) );
+			add_action( 'wp_ajax_wpdk_settings-get-shortcode-' . $this->unique, array( $this, 'get_shortcode' ) );
 
 			if ( ! empty( $this->args['show_in_editor'] ) ) {
 
@@ -135,22 +135,22 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 
 			$class        = ( $this->args['class'] ) ? ' ' . esc_attr( $this->args['class'] ) : '';
 			$has_select   = ( count( $this->pre_tabs ) > 1 ) ? true : false;
-			$single_usage = ( ! $has_select ) ? ' pbsettings-shortcode-single' : '';
+			$single_usage = ( ! $has_select ) ? ' wpdk_settings-shortcode-single' : '';
 			$hide_header  = ( ! $has_select ) ? ' hidden' : '';
 
 			?>
-            <div id="pbsettings-modal-<?php echo esc_attr( $this->unique ); ?>" class="wp-core-ui pbsettings-modal pbsettings-shortcode hidden<?php echo esc_attr( $single_usage . $class ); ?>" data-modal-id="<?php echo esc_attr( $this->unique ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'pb_settings_shortcode_nonce' ) ); ?>">
-                <div class="pbsettings-modal-table">
-                    <div class="pbsettings-modal-table-cell">
-                        <div class="pbsettings-modal-overlay"></div>
-                        <div class="pbsettings-modal-inner">
-                            <div class="pbsettings-modal-title">
+            <div id="wpdk_settings-modal-<?php echo esc_attr( $this->unique ); ?>" class="wp-core-ui wpdk_settings-modal wpdk_settings-shortcode hidden<?php echo esc_attr( $single_usage . $class ); ?>" data-modal-id="<?php echo esc_attr( $this->unique ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'pb_settings_shortcode_nonce' ) ); ?>">
+                <div class="wpdk_settings-modal-table">
+                    <div class="wpdk_settings-modal-table-cell">
+                        <div class="wpdk_settings-modal-overlay"></div>
+                        <div class="wpdk_settings-modal-inner">
+                            <div class="wpdk_settings-modal-title">
 								<?php echo esc_html( $this->args['button_title'] ); ?>
-                                <div class="pbsettings-modal-close"></div>
+                                <div class="wpdk_settings-modal-close"></div>
                             </div>
 							<?php
 
-							echo '<div class="pbsettings-modal-header' . esc_attr( $hide_header ) . '">';
+							echo '<div class="wpdk_settings-modal-header' . esc_attr( $hide_header ) . '">';
 							echo '<select>';
 							echo ( $has_select ) ? '<option value="">' . esc_attr( $this->args['select_title'] ) . '</option>' : '';
 
@@ -194,13 +194,13 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 							echo '</div>';
 
 							?>
-                            <div class="pbsettings-modal-content">
-                                <div class="pbsettings-modal-loading">
-                                    <div class="pbsettings-loading"></div>
+                            <div class="wpdk_settings-modal-content">
+                                <div class="wpdk_settings-modal-loading">
+                                    <div class="wpdk_settings-loading"></div>
                                 </div>
-                                <div class="pbsettings-modal-load"></div>
+                                <div class="wpdk_settings-modal-load"></div>
                             </div>
-                            <div class="pbsettings-modal-insert-wrapper hidden"><a href="#" class="button button-primary pbsettings-modal-insert"><?php echo esc_html( $this->args['insert_title'] ); ?></a></div>
+                            <div class="wpdk_settings-modal-insert-wrapper hidden"><a href="#" class="button button-primary wpdk_settings-modal-insert"><?php echo esc_html( $this->args['insert_title'] ); ?></a></div>
                         </div>
                     </div>
                 </div>
@@ -228,9 +228,9 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 					// View: normal
 					if ( ! empty( $section['fields'] ) && $view !== 'repeater' ) {
 
-						echo '<div class="pbsettings-fields">';
+						echo '<div class="wpdk_settings-fields">';
 
-						echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+						echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 						foreach ( $section['fields'] as $field ) {
 
@@ -261,13 +261,13 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 						$button_title    = ( ! empty( $section['button_title'] ) ) ? ' ' . $section['button_title'] : esc_html__( 'Add New' );
 						$inner_shortcode = ( ! empty( $section['group_shortcode'] ) ) ? $section['group_shortcode'] : $shortcode;
 
-						echo '<div class="pbsettings--repeatable">';
+						echo '<div class="wpdk_settings--repeatable">';
 
-						echo '<div class="pbsettings--repeat-shortcode">';
+						echo '<div class="wpdk_settings--repeat-shortcode">';
 
-						echo '<div class="pbsettings-repeat-remove fas fa-times"></div>';
+						echo '<div class="wpdk_settings-repeat-remove fas fa-times"></div>';
 
-						echo '<div class="pbsettings-fields">';
+						echo '<div class="wpdk_settings-fields">';
 
 						foreach ( $repeatable_fields as $field ) {
 
@@ -290,14 +290,14 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 
 						echo '</div>';
 
-						echo '<div class="pbsettings--repeat-button-block"><a class="button pbsettings--repeat-button" href="#"><i class="fas fa-plus-circle"></i> ' . esc_html( $button_title ) . '</a></div>';
+						echo '<div class="wpdk_settings--repeat-button-block"><a class="button wpdk_settings--repeat-button" href="#"><i class="fas fa-plus-circle"></i> ' . esc_html( $button_title ) . '</a></div>';
 
 					}
 
 				}
 
 			} else {
-				echo '<div class="pbsettings-field pbsettings-error-text">' . esc_html__( 'Error: Invalid nonce verification.' ) . '</div>';
+				echo '<div class="wpdk_settings-field wpdk_settings-error-text">' . esc_html__( 'Error: Invalid nonce verification.' ) . '</div>';
 			}
 
 			wp_send_json_success( array( 'content' => ob_get_clean() ) );
@@ -328,14 +328,14 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 				$depends[] = 'wp-edit-post';
 			}
 
-			wp_enqueue_script( 'pbsettings-gutenberg-block', WPDK_Settings::include_plugin_url( 'assets/js/gutenberg.js' ), $depends );
+			wp_enqueue_script( 'wpdk_settings-gutenberg-block', WPDK_Settings::include_plugin_url( 'assets/js/gutenberg.js' ), $depends );
 
-			wp_localize_script( 'pbsettings-gutenberg-block', 'pb_settings_gutenberg_blocks', WPDK_Settings::$shortcode_instances );
+			wp_localize_script( 'wpdk_settings-gutenberg-block', 'pb_settings_gutenberg_blocks', WPDK_Settings::$shortcode_instances );
 
 			foreach ( WPDK_Settings::$shortcode_instances as $block ) {
 
 				register_block_type( $block['name'], array(
-					'editor_script' => 'pbsettings-gutenberg-block',
+					'editor_script' => 'wpdk_settings-gutenberg-block',
 				) );
 
 			}
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WPDK_Settings_Shortcoder' ) ) {
 		public static function add_media_buttons( $editor_id ) {
 
 			foreach ( WPDK_Settings::$shortcode_instances as $value ) {
-				echo '<a href="#" class="button button-primary pbsettings-shortcode-button" data-editor-id="' . esc_attr( $editor_id ) . '" data-modal-id="' . esc_attr( $value['modal_id'] ) . '">' . esc_html( $value['button_title'] ) . '</a>';
+				echo '<a href="#" class="button button-primary wpdk_settings-shortcode-button" data-editor-id="' . esc_attr( $editor_id ) . '" data-modal-id="' . esc_attr( $value['modal_id'] ) . '">' . esc_html( $value['button_title'] ) . '</a>';
 			}
 
 		}

@@ -35,7 +35,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_textarea' ) ) {
 
             $button_title = WPDK_Settings::$shortcode_instances[$instance_key]['button_title'];
 
-            echo '<a href="#" class="button button-primary pbsettings-shortcode-button" data-modal-id="'. esc_attr( $instance_key ) .'">'. $button_title .'</a>';
+            echo '<a href="#" class="button button-primary wpdk_settings-shortcode-button" data-modal-id="'. esc_attr( $instance_key ) .'">'. $button_title .'</a>';
 
           }
 

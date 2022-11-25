@@ -104,17 +104,17 @@ if ( ! class_exists( 'WPDK_Settings_Nav_Menu_Options' ) ) {
 				delete_post_meta( $menu_item_id, '_pb_settings_errors_' . $this->unique );
 			}
 
-			echo '<div class="pb_settings pbsettings-nav-menu-options' . esc_attr( $class ) . '">';
+			echo '<div class="pb_settings wpdk_settings-nav-menu-options' . esc_attr( $class ) . '">';
 
 			foreach ( $this->sections as $section ) {
 
-				$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-nav-menu-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+				$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-nav-menu-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 				$section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
-				echo '<div class="pbsettings-fields">';
+				echo '<div class="wpdk_settings-fields">';
 
-				echo ( $section_title || $section_icon ) ? '<div class="pbsettings-nav-menu-title"><h4>' . esc_html( $section_icon . $section_title ) . '</h4></div>' : '';
-				echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+				echo ( $section_title || $section_icon ) ? '<div class="wpdk_settings-nav-menu-title"><h4>' . esc_html( $section_icon . $section_title ) . '</h4></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 				if ( ! empty( $section['fields'] ) ) {
 

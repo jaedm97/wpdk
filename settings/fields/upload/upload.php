@@ -40,18 +40,18 @@ if ( ! class_exists( 'WPDK_Settings_Field_upload' ) ) {
         $preview_style  = ( ! empty( $preview_width ) || ! empty( $preview_height ) ) ? ' style="'. esc_attr( $preview_width . $preview_height ) .'"': '';
         $preview_hidden = ( empty( $preview_src ) ) ? ' hidden' : '';
 
-        echo '<div class="pbsettings--preview'. esc_attr( $preview_hidden ) .'">';
-        echo '<div class="pbsettings-image-preview"'. $preview_style .'>';
-        echo '<i class="pbsettings--remove fas fa-times"></i><span><img src="'. esc_url( $preview_src ) .'" class="pbsettings--src" /></span>';
+        echo '<div class="wpdk_settings--preview'. esc_attr( $preview_hidden ) .'">';
+        echo '<div class="wpdk_settings-image-preview"'. $preview_style .'>';
+        echo '<i class="wpdk_settings--remove fas fa-times"></i><span><img src="'. esc_url( $preview_src ) .'" class="wpdk_settings--src" /></span>';
         echo '</div>';
         echo '</div>';
 
       }
 
-      echo '<div class="pbsettings--wrap">';
+      echo '<div class="wpdk_settings--wrap">';
       echo '<input type="text" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .'/>';
-      echo '<a href="#" class="button button-primary pbsettings--button" data-library="'. esc_attr( $library ) .'">'. $args['button_title'] .'</a>';
-      echo '<a href="#" class="button button-secondary pbsettings-warning-primary pbsettings--remove'. esc_attr( $hidden ) .'">'. $args['remove_title'] .'</a>';
+      echo '<a href="#" class="button button-primary wpdk_settings--button" data-library="'. esc_attr( $library ) .'">'. $args['button_title'] .'</a>';
+      echo '<a href="#" class="button button-secondary wpdk_settings-warning-primary wpdk_settings--remove'. esc_attr( $hidden ) .'">'. $args['remove_title'] .'</a>';
       echo '</div>';
 
       echo $this->field_after();

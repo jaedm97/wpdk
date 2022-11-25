@@ -36,17 +36,17 @@ if ( ! class_exists( 'WPDK_Settings_Field_link' ) ) {
 
       echo $this->field_before();
 
-      echo '<textarea readonly="readonly" class="pbsettings--link hidden"></textarea>';
+      echo '<textarea readonly="readonly" class="wpdk_settings--link hidden"></textarea>';
 
-      echo '<div class="'. esc_attr( $maybe_hidden ) .'"><div class="pbsettings--result">'. sprintf( '{url:"%s", text:"%s", target:"%s"}', $value['url'], $value['text'], $value['target'] ) .'</div></div>';
+      echo '<div class="'. esc_attr( $maybe_hidden ) .'"><div class="wpdk_settings--result">'. sprintf( '{url:"%s", text:"%s", target:"%s"}', $value['url'], $value['text'], $value['target'] ) .'</div></div>';
 
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[url]' ) ) .'" value="'. esc_attr( $value['url'] ) .'"'. $this->field_attributes( array( 'class' => 'pbsettings--url' ) ) .' />';
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[text]' ) ) .'" value="'. esc_attr( $value['text'] ) .'" class="pbsettings--text" />';
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[target]' ) ) .'" value="'. esc_attr( $value['target'] ) .'" class="pbsettings--target" />';
+      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[url]' ) ) .'" value="'. esc_attr( $value['url'] ) .'"'. $this->field_attributes( array( 'class' => 'wpdk_settings--url' ) ) .' />';
+      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[text]' ) ) .'" value="'. esc_attr( $value['text'] ) .'" class="wpdk_settings--text" />';
+      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[target]' ) ) .'" value="'. esc_attr( $value['target'] ) .'" class="wpdk_settings--target" />';
 
-      echo '<a href="#" class="button button-primary pbsettings--add'. esc_attr( $hidden ) .'">'. $args['add_title'] .'</a> ';
-      echo '<a href="#" class="button pbsettings--edit'. esc_attr( $maybe_hidden ) .'">'. $args['edit_title'] .'</a> ';
-      echo '<a href="#" class="button pbsettings-warning-primary pbsettings--remove'. esc_attr( $maybe_hidden ) .'">'. $args['remove_title'] .'</a>';
+      echo '<a href="#" class="button button-primary wpdk_settings--add'. esc_attr( $hidden ) .'">'. $args['add_title'] .'</a> ';
+      echo '<a href="#" class="button wpdk_settings--edit'. esc_attr( $maybe_hidden ) .'">'. $args['edit_title'] .'</a> ';
+      echo '<a href="#" class="button wpdk_settings-warning-primary wpdk_settings--remove'. esc_attr( $maybe_hidden ) .'">'. $args['remove_title'] .'</a>';
 
       echo $this->field_after();
 

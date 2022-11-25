@@ -20,20 +20,20 @@ if ( ! class_exists( 'WPDK_Settings_Field_accordion' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings-accordion-items" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings-accordion-items" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
 
       foreach ( $this->field['accordions'] as $key => $accordion ) {
 
-        echo '<div class="pbsettings-accordion-item">';
+        echo '<div class="wpdk_settings-accordion-item">';
 
-          $icon = ( ! empty( $accordion['icon'] ) ) ? 'pbsettings--icon '. $accordion['icon'] : 'pbsettings-accordion-icon fas fa-angle-right';
+          $icon = ( ! empty( $accordion['icon'] ) ) ? 'wpdk_settings--icon '. $accordion['icon'] : 'wpdk_settings-accordion-icon fas fa-angle-right';
 
-          echo '<h4 class="pbsettings-accordion-title">';
+          echo '<h4 class="wpdk_settings-accordion-title">';
           echo '<i class="'. esc_attr( $icon ) .'"></i>';
           echo esc_html( $accordion['title'] );
           echo '</h4>';
 
-          echo '<div class="pbsettings-accordion-content">';
+          echo '<div class="wpdk_settings-accordion-content">';
 
           foreach ( $accordion['fields'] as $field ) {
 

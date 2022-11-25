@@ -64,7 +64,7 @@
             });
 
             $selector.each(function (index) {
-                let ID = parseInt($(this).children('div.pbsettings-repeater-content').find(':input').attr('name').split(']')[1].replace('[', ''))
+                let ID = parseInt($(this).children('div.wpdk_settings-repeater-content').find(':input').attr('name').split(']')[1].replace('[', ''))
                 unique.push(ID);
                 let uniqueID = unique.filter((item, index) => unique.indexOf(item) !== index).includes(ID) ? $.now() : ID;
                 $(this).find(':input').each(function () {
@@ -199,8 +199,8 @@
             $(this).on('click', function (e) {
 
                 e.preventDefault();
-                $('.pbsettings-wrapper').toggleClass('pbsettings-show-all');
-                $('.pbsettings-section').pb_settings_reload_script();
+                $('.wpdk_settings-wrapper').toggleClass('wpdk_settings-show-all');
+                $('.wpdk_settings-section').pb_settings_reload_script();
                 $(this).find('.fa').toggleClass('fa-indent').toggleClass('fa-outdent');
 
             });
@@ -227,7 +227,7 @@
 
                 if ($link.length) {
 
-                    $link.closest('.pbsettings-tab-item').addClass('pbsettings-tab-expanded').siblings().removeClass('pbsettings-tab-expanded');
+                    $link.closest('.wpdk_settings-tab-item').addClass('wpdk_settings-tab-expanded').siblings().removeClass('wpdk_settings-tab-expanded');
 
                     if ($link.next().is('ul')) {
 
@@ -236,8 +236,8 @@
 
                     }
 
-                    $links.removeClass('pbsettings-active');
-                    $link.addClass('pbsettings-active');
+                    $links.removeClass('wpdk_settings-active');
+                    $link.addClass('wpdk_settings-active');
 
                     if ($last) {
                         $last.addClass('hidden');
@@ -248,7 +248,7 @@
                     $section.removeClass('hidden');
                     $section.pb_settings_reload_script();
 
-                    $('.pbsettings-section-id').val($section.index() + 1);
+                    $('.wpdk_settings-section-id').val($section.index() + 1);
 
                     $last = $section;
 
@@ -272,7 +272,7 @@
 
             var $nav = $(this),
                 $links = $nav.find('a'),
-                $sections = $nav.parent().find('.pbsettings-section'),
+                $sections = $nav.parent().find('.wpdk_settings-section'),
                 post_id = $('#post_ID').val() || 'global',
                 $last;
 
@@ -284,11 +284,11 @@
 
                     var $link = $(this);
 
-                    if ($link.parent().hasClass('pbsettings-extra-nav')) {
+                    if ($link.parent().hasClass('wpdk_settings-extra-nav')) {
                         window.open($link.attr('href'));
                     } else {
-                        $links.removeClass('pbsettings-active');
-                        $link.addClass('pbsettings-active');
+                        $links.removeClass('wpdk_settings-active');
+                        $link.addClass('wpdk_settings-active');
 
                         if ($last !== undefined) {
                             $last.addClass('hidden');
@@ -327,8 +327,8 @@
 
                 var maybe_value = $(this).val() || 'default';
 
-                $('.pbsettings-page-templates').removeClass('pbsettings-metabox-show').addClass('pbsettings-metabox-hide');
-                $('.pbsettings-page-' + maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')).removeClass('pbsettings-metabox-hide').addClass('pbsettings-metabox-show');
+                $('.wpdk_settings-page-templates').removeClass('wpdk_settings-metabox-show').addClass('wpdk_settings-metabox-hide');
+                $('.wpdk_settings-page-' + maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')).removeClass('wpdk_settings-metabox-hide').addClass('wpdk_settings-metabox-show');
 
             });
 
@@ -348,8 +348,8 @@
                 // Fallback for classic editor version
                 maybe_value = (maybe_value === '0') ? 'default' : maybe_value;
 
-                $('.pbsettings-post-formats').removeClass('pbsettings-metabox-show').addClass('pbsettings-metabox-hide');
-                $('.pbsettings-post-format-' + maybe_value).removeClass('pbsettings-metabox-hide').addClass('pbsettings-metabox-show');
+                $('.wpdk_settings-post-formats').removeClass('wpdk_settings-metabox-show').addClass('wpdk_settings-metabox-hide');
+                $('.wpdk_settings-post-format-' + maybe_value).removeClass('wpdk_settings-metabox-hide').addClass('wpdk_settings-metabox-show');
 
             });
 
@@ -368,15 +368,15 @@
             $input.on('change keyup', function () {
 
                 var value = $(this).val(),
-                    $wrapper = $('.pbsettings-wrapper'),
-                    $section = $wrapper.find('.pbsettings-section'),
-                    $fields = $section.find('> .pbsettings-field:not(.pbsettings-depend-on)'),
-                    $titles = $fields.find('> .pbsettings-title, .pbsettings-search-tags');
+                    $wrapper = $('.wpdk_settings-wrapper'),
+                    $section = $wrapper.find('.wpdk_settings-section'),
+                    $fields = $section.find('> .wpdk_settings-field:not(.wpdk_settings-depend-on)'),
+                    $titles = $fields.find('> .wpdk_settings-title, .wpdk_settings-search-tags');
 
                 if (value.length > 3) {
 
-                    $fields.addClass('pbsettings-metabox-hide');
-                    $wrapper.addClass('pbsettings-search-all');
+                    $fields.addClass('wpdk_settings-metabox-hide');
+                    $wrapper.addClass('wpdk_settings-search-all');
 
                     $titles.each(function () {
 
@@ -384,9 +384,9 @@
 
                         if ($title.text().match(new RegExp('.*?' + value + '.*?', 'i'))) {
 
-                            var $field = $title.closest('.pbsettings-field');
+                            var $field = $title.closest('.wpdk_settings-field');
 
-                            $field.removeClass('pbsettings-metabox-hide');
+                            $field.removeClass('wpdk_settings-metabox-hide');
                             $field.parent().pb_settings_reload_script();
 
                         }
@@ -395,8 +395,8 @@
 
                 } else {
 
-                    $fields.removeClass('pbsettings-metabox-hide');
-                    $wrapper.removeClass('pbsettings-search-all');
+                    $fields.removeClass('wpdk_settings-metabox-hide');
+                    $wrapper.removeClass('wpdk_settings-search-all');
 
                 }
 
@@ -413,7 +413,7 @@
 
             var $this = $(this),
                 $window = $(window),
-                $inner = $this.find('.pbsettings-header-inner'),
+                $inner = $this.find('.wpdk_settings-header-inner'),
                 padding = parseInt($inner.css('padding-left')) + parseInt($inner.css('padding-right')),
                 offset = 32,
                 scrollTop = 0,
@@ -427,10 +427,10 @@
 
                     if (stickyTop <= offset && winWidth > 782) {
                         $inner.css({width: $this.outerWidth() - padding});
-                        $this.css({height: $this.outerHeight()}).addClass('pbsettings-sticky');
+                        $this.css({height: $this.outerHeight()}).addClass('wpdk_settings-sticky');
                     } else {
                         $inner.removeAttr('style');
-                        $this.removeAttr('style').removeClass('pbsettings-sticky');
+                        $this.removeAttr('style').removeClass('wpdk_settings-sticky');
                     }
 
                 },
@@ -523,12 +523,12 @@
     $.fn.pb_settings_field_accordion = function () {
         return this.each(function () {
 
-            var $titles = $(this).find('.pbsettings-accordion-title');
+            var $titles = $(this).find('.wpdk_settings-accordion-title');
 
             $titles.on('click', function () {
 
                 var $title = $(this),
-                    $icon = $title.find('.pbsettings-accordion-icon'),
+                    $icon = $title.find('.wpdk_settings-accordion-icon'),
                     $content = $title.next();
 
                 if ($icon.hasClass('fa-angle-right')) {
@@ -544,7 +544,7 @@
 
                 }
 
-                $content.toggleClass('pbsettings-accordion-open');
+                $content.toggleClass('wpdk_settings-accordion-open');
 
             });
 
@@ -564,8 +564,8 @@
             var base = this,
                 $this = $(this),
                 $body = $('body'),
-                $import = $this.find('.pbsettings-import'),
-                $reset = $this.find('.pbsettings-reset');
+                $import = $this.find('.wpdk_settings-import'),
+                $reset = $this.find('.wpdk_settings-reset');
 
             base.notificationOverlay = function () {
 
@@ -599,7 +599,7 @@
 
                     base.notificationOverlay();
 
-                    window.wp.ajax.post('pbsettings-reset', {
+                    window.wp.ajax.post('wpdk_settings-reset', {
                         unique: $reset.data('unique'),
                         nonce: $reset.data('nonce')
                     })
@@ -623,10 +623,10 @@
 
                     base.notificationOverlay();
 
-                    window.wp.ajax.post('pbsettings-import', {
+                    window.wp.ajax.post('wpdk_settings-import', {
                         unique: $import.data('unique'),
                         nonce: $import.data('nonce'),
-                        data: $this.find('.pbsettings-import-data').val()
+                        data: $this.find('.wpdk_settings-import-data').val()
                     }).done(function (response) {
                         window.location.reload(true);
                     }).fail(function (response) {
@@ -646,7 +646,7 @@
     //
     $.fn.pb_settings_field_background = function () {
         return this.each(function () {
-            $(this).find('.pbsettings--background-image').pb_settings_reload_script();
+            $(this).find('.wpdk_settings--background-image').pb_settings_reload_script();
         });
     };
 
@@ -679,11 +679,11 @@
 
                         var $cssLink = $('<link>');
 
-                        $('#pbsettings-codemirror-css').after($cssLink);
+                        $('#wpdk_settings-codemirror-css').after($cssLink);
 
                         $cssLink.attr({
                             rel: 'stylesheet',
-                            id: 'pbsettings-codemirror-' + data_editor.theme + '-css',
+                            id: 'wpdk_settings-codemirror-' + data_editor.theme + '-css',
                             href: data_editor.cdnURL + '/theme/' + data_editor.theme + '.min.css',
                             type: 'text/css',
                             media: 'all'
@@ -716,16 +716,16 @@
 
             var $this = $(this),
                 $inputs = $this.find('input'),
-                settings = $this.find('.pbsettings-date-settings').data('settings'),
-                wrapper = '<div class="pbsettings-datepicker-wrapper"></div>';
+                settings = $this.find('.wpdk_settings-date-settings').data('settings'),
+                wrapper = '<div class="wpdk_settings-datepicker-wrapper"></div>';
 
             var defaults = {
                 showAnim: '',
                 beforeShow: function (input, inst) {
-                    $(inst.dpDiv).addClass('pbsettings-datepicker-wrapper');
+                    $(inst.dpDiv).addClass('wpdk_settings-datepicker-wrapper');
                 },
                 onClose: function (input, inst) {
-                    $(inst.dpDiv).removeClass('pbsettings-datepicker-wrapper');
+                    $(inst.dpDiv).removeClass('wpdk_settings-datepicker-wrapper');
                 },
             };
 
@@ -771,11 +771,11 @@
 
             var $this = $(this),
                 $inputs = $this.find('input'),
-                settings = $this.find('.pbsettings-datetime-settings').data('settings');
+                settings = $this.find('.wpdk_settings-datetime-settings').data('settings');
 
             settings = $.extend({}, settings, {
                 onReady: function (selectedDates, dateStr, instance) {
-                    $(instance.calendarContainer).addClass('pbsettings-flatpickr');
+                    $(instance.calendarContainer).addClass('wpdk_settings-flatpickr');
                 },
             });
 
@@ -803,7 +803,7 @@
     //
     $.fn.pb_settings_field_fieldset = function () {
         return this.each(function () {
-            $(this).find('.pbsettings-fieldset-content').pb_settings_reload_script();
+            $(this).find('.wpdk_settings-fieldset-content').pb_settings_reload_script();
         });
     };
 
@@ -814,18 +814,18 @@
         return this.each(function () {
 
             var $this = $(this),
-                $edit = $this.find('.pbsettings-edit-gallery'),
-                $clear = $this.find('.pbsettings-clear-gallery'),
+                $edit = $this.find('.wpdk_settings-edit-gallery'),
+                $clear = $this.find('.wpdk_settings-clear-gallery'),
                 $list = $this.find('ul'),
                 $input = $this.find('input'),
                 $img = $this.find('img'),
                 wp_media_frame;
 
-            $this.on('click', '.pbsettings-button, .pbsettings-edit-gallery', function (e) {
+            $this.on('click', '.wpdk_settings-button, .wpdk_settings-edit-gallery', function (e) {
 
                 var $el = $(this),
                     ids = $input.val(),
-                    what = ($el.hasClass('pbsettings-edit-gallery')) ? 'edit' : 'add',
+                    what = ($el.hasClass('wpdk_settings-edit-gallery')) ? 'edit' : 'add',
                     state = (what === 'add' && !ids.length) ? 'gallery' : 'gallery-edit';
 
                 e.preventDefault();
@@ -901,12 +901,12 @@
         return this.each(function () {
 
             var $this = $(this),
-                $fieldset = $this.children('.pbsettings-fieldset'),
+                $fieldset = $this.children('.wpdk_settings-fieldset'),
                 $group = $fieldset.length ? $fieldset : $this,
-                $wrapper = $group.children('.pbsettings-cloneable-wrapper'),
-                $hidden = $group.children('.pbsettings-cloneable-hidden'),
-                $max = $group.children('.pbsettings-cloneable-max'),
-                $min = $group.children('.pbsettings-cloneable-min'),
+                $wrapper = $group.children('.wpdk_settings-cloneable-wrapper'),
+                $hidden = $group.children('.wpdk_settings-cloneable-hidden'),
+                $max = $group.children('.wpdk_settings-cloneable-max'),
+                $min = $group.children('.wpdk_settings-cloneable-min'),
                 title_by = $wrapper.data('title-by'),
                 title_prefix = $wrapper.data('title-by-prefix'),
                 field_id = $wrapper.data('field-id'),
@@ -920,20 +920,20 @@
             }
 
             var update_title_numbers = function ($selector) {
-                $selector.find('.pbsettings-cloneable-title-number').each(function (index) {
-                    $(this).html(($(this).closest('.pbsettings-cloneable-item').index() + 1) + '.');
+                $selector.find('.wpdk_settings-cloneable-title-number').each(function (index) {
+                    $(this).html(($(this).closest('.wpdk_settings-cloneable-item').index() + 1) + '.');
                 });
             };
 
             $wrapper.accordion({
-                header: '> .pbsettings-cloneable-item > .pbsettings-cloneable-title',
+                header: '> .wpdk_settings-cloneable-item > .wpdk_settings-cloneable-title',
                 collapsible: true,
                 active: false,
                 animate: false,
                 heightStyle: 'content',
                 icons: {
-                    'header': 'pbsettings-cloneable-header-icon fas fa-angle-right',
-                    'activeHeader': 'pbsettings-cloneable-header-icon fas fa-angle-down'
+                    'header': 'wpdk_settings-cloneable-header-icon fas fa-angle-right',
+                    'activeHeader': 'wpdk_settings-cloneable-header-icon fas fa-angle-down'
                 },
                 activate: function (event, ui) {
 
@@ -942,7 +942,7 @@
 
                     if ($panel.length && !$panel.data('opened')) {
 
-                        var $title = $header.find('.pbsettings-cloneable-value');
+                        var $title = $header.find('.wpdk_settings-cloneable-value');
                         var inputs = [];
 
                         $.each(title_by, function (key, title_key) {
@@ -989,7 +989,7 @@
 
             $wrapper.sortable({
                 axis: 'y',
-                handle: '.pbsettings-cloneable-title,.pbsettings-cloneable-sort',
+                handle: '.wpdk_settings-cloneable-title,.wpdk_settings-cloneable-sort',
                 helper: 'original',
                 cursor: 'move',
                 placeholder: 'widget-placeholder',
@@ -997,12 +997,12 @@
 
                     $wrapper.accordion({active: false});
                     $wrapper.sortable('refreshPositions');
-                    ui.item.children('.pbsettings-cloneable-content').data('retry', true);
+                    ui.item.children('.wpdk_settings-cloneable-content').data('retry', true);
 
                 },
                 update: function (event, ui) {
 
-                    WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-cloneable-item'), field_id);
+                    WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-cloneable-item'), field_id);
                     $wrapper.pb_settings_customizer_refresh();
 
                     if (is_number) {
@@ -1012,11 +1012,11 @@
                 },
             });
 
-            $group.children('.pbsettings-cloneable-add').on('click', function (e) {
+            $group.children('.wpdk_settings-cloneable-add').on('click', function (e) {
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-cloneable-item').length;
+                var count = $wrapper.children('.wpdk_settings-cloneable-item').length;
 
                 $min.hide();
 
@@ -1027,7 +1027,7 @@
 
                 var $cloned_item = $hidden.pb_settings_clone(true);
 
-                $cloned_item.removeClass('pbsettings-cloneable-hidden');
+                $cloned_item.removeClass('wpdk_settings-cloneable-hidden');
 
                 $cloned_item.find(':input[name!="_pseudo"]').each(function () {
                     this.name = this.name.replace('___', '').replace(field_id + '[0]', field_id + '[' + $.now() + ']');
@@ -1049,7 +1049,7 @@
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-cloneable-item').length;
+                var count = $wrapper.children('.wpdk_settings-cloneable-item').length;
 
                 $min.hide();
 
@@ -1060,10 +1060,10 @@
 
                 var $this = $(this),
                     $parent = $this.parent().parent(),
-                    $cloned_helper = $parent.children('.pbsettings-cloneable-helper').pb_settings_clone(true),
-                    $cloned_title = $parent.children('.pbsettings-cloneable-title').pb_settings_clone(),
-                    $cloned_content = $parent.children('.pbsettings-cloneable-content').pb_settings_clone(),
-                    $cloned_item = $('<div class="pbsettings-cloneable-item" />');
+                    $cloned_helper = $parent.children('.wpdk_settings-cloneable-helper').pb_settings_clone(true),
+                    $cloned_title = $parent.children('.wpdk_settings-cloneable-title').pb_settings_clone(),
+                    $cloned_content = $parent.children('.wpdk_settings-cloneable-content').pb_settings_clone(),
+                    $cloned_item = $('<div class="wpdk_settings-cloneable-item" />');
 
                 $cloned_item.append($cloned_helper);
                 $cloned_item.append($cloned_title);
@@ -1071,7 +1071,7 @@
 
                 $wrapper.children().eq($parent.index()).after($cloned_item);
 
-                WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-cloneable-item'), field_id);
+                WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-cloneable-item'), field_id);
 
                 $wrapper.accordion('refresh');
                 $wrapper.pb_settings_customizer_refresh();
@@ -1083,14 +1083,14 @@
 
             };
 
-            $wrapper.children('.pbsettings-cloneable-item').children('.pbsettings-cloneable-helper').on('click', '.pbsettings-cloneable-clone', event_clone);
-            $group.children('.pbsettings-cloneable-hidden').children('.pbsettings-cloneable-helper').on('click', '.pbsettings-cloneable-clone', event_clone);
+            $wrapper.children('.wpdk_settings-cloneable-item').children('.wpdk_settings-cloneable-helper').on('click', '.wpdk_settings-cloneable-clone', event_clone);
+            $group.children('.wpdk_settings-cloneable-hidden').children('.wpdk_settings-cloneable-helper').on('click', '.wpdk_settings-cloneable-clone', event_clone);
 
             var event_remove = function (e) {
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-cloneable-item').length;
+                var count = $wrapper.children('.wpdk_settings-cloneable-item').length;
 
                 $max.hide();
                 $min.hide();
@@ -1100,9 +1100,9 @@
                     return;
                 }
 
-                $(this).closest('.pbsettings-cloneable-item').remove();
+                $(this).closest('.wpdk_settings-cloneable-item').remove();
 
-                WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-cloneable-item'), field_id);
+                WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-cloneable-item'), field_id);
 
                 $wrapper.pb_settings_customizer_refresh();
 
@@ -1112,8 +1112,8 @@
 
             };
 
-            $wrapper.children('.pbsettings-cloneable-item').children('.pbsettings-cloneable-helper').on('click', '.pbsettings-cloneable-remove', event_remove);
-            $group.children('.pbsettings-cloneable-hidden').children('.pbsettings-cloneable-helper').on('click', '.pbsettings-cloneable-remove', event_remove);
+            $wrapper.children('.wpdk_settings-cloneable-item').children('.wpdk_settings-cloneable-helper').on('click', '.wpdk_settings-cloneable-remove', event_remove);
+            $group.children('.wpdk_settings-cloneable-hidden').children('.wpdk_settings-cloneable-helper').on('click', '.wpdk_settings-cloneable-remove', event_remove);
 
         });
     };
@@ -1126,12 +1126,12 @@
 
             var $this = $(this);
 
-            $this.on('click', '.pbsettings-icon-add', function (e) {
+            $this.on('click', '.wpdk_settings-icon-add', function (e) {
 
                 e.preventDefault();
 
                 var $button = $(this);
-                var $modal = $('#pbsettings-modal-icon');
+                var $modal = $('#wpdk_settings-modal-icon');
 
                 $modal.removeClass('hidden');
 
@@ -1139,17 +1139,17 @@
 
                 if (!WPDK_Settings.vars.icon_modal_loaded) {
 
-                    $modal.find('.pbsettings-modal-loading').show();
+                    $modal.find('.wpdk_settings-modal-loading').show();
 
-                    window.wp.ajax.post('pbsettings-get-icons', {
+                    window.wp.ajax.post('wpdk_settings-get-icons', {
                         nonce: $button.data('nonce')
                     }).done(function (response) {
 
-                        $modal.find('.pbsettings-modal-loading').hide();
+                        $modal.find('.wpdk_settings-modal-loading').hide();
 
                         WPDK_Settings.vars.icon_modal_loaded = true;
 
-                        var $load = $modal.find('.pbsettings-modal-load').html(response.content);
+                        var $load = $modal.find('.wpdk_settings-modal-load').html(response.content);
 
                         $load.on('click', 'i', function (e) {
 
@@ -1157,16 +1157,16 @@
 
                             var icon = $(this).attr('title');
 
-                            WPDK_Settings.vars.$icon_target.find('.pbsettings-icon-preview i').removeAttr('class').addClass(icon);
-                            WPDK_Settings.vars.$icon_target.find('.pbsettings-icon-preview').removeClass('hidden');
-                            WPDK_Settings.vars.$icon_target.find('.pbsettings-icon-remove').removeClass('hidden');
+                            WPDK_Settings.vars.$icon_target.find('.wpdk_settings-icon-preview i').removeAttr('class').addClass(icon);
+                            WPDK_Settings.vars.$icon_target.find('.wpdk_settings-icon-preview').removeClass('hidden');
+                            WPDK_Settings.vars.$icon_target.find('.wpdk_settings-icon-remove').removeClass('hidden');
                             WPDK_Settings.vars.$icon_target.find('input').val(icon).trigger('change');
 
                             $modal.addClass('hidden');
 
                         });
 
-                        $modal.on('change keyup', '.pbsettings-icon-search', function () {
+                        $modal.on('change keyup', '.wpdk_settings-icon-search', function () {
 
                             var value = $(this).val(),
                                 $icons = $load.find('i');
@@ -1185,13 +1185,13 @@
 
                         });
 
-                        $modal.on('click', '.pbsettings-modal-close, .pbsettings-modal-overlay', function () {
+                        $modal.on('click', '.wpdk_settings-modal-close, .wpdk_settings-modal-overlay', function () {
                             $modal.addClass('hidden');
                         });
 
                     }).fail(function (response) {
-                        $modal.find('.pbsettings-modal-loading').hide();
-                        $modal.find('.pbsettings-modal-load').html(response.error);
+                        $modal.find('.wpdk_settings-modal-loading').hide();
+                        $modal.find('.wpdk_settings-modal-load').html(response.error);
                         $modal.on('click', function () {
                             $modal.addClass('hidden');
                         });
@@ -1200,9 +1200,9 @@
 
             });
 
-            $this.on('click', '.pbsettings-icon-remove', function (e) {
+            $this.on('click', '.wpdk_settings-icon-remove', function (e) {
                 e.preventDefault();
-                $this.find('.pbsettings-icon-preview').addClass('hidden');
+                $this.find('.wpdk_settings-icon-preview').addClass('hidden');
                 $this.find('input').val('').trigger('change');
                 $(this).addClass('hidden');
             });
@@ -1221,11 +1221,11 @@
             }
 
             var $this = $(this),
-                $map = $this.find('.pbsettings--map-osm'),
-                $search_input = $this.find('.pbsettings--map-search input'),
-                $latitude = $this.find('.pbsettings--latitude'),
-                $longitude = $this.find('.pbsettings--longitude'),
-                $zoom = $this.find('.pbsettings--zoom'),
+                $map = $this.find('.wpdk_settings--map-osm'),
+                $search_input = $this.find('.wpdk_settings--map-search input'),
+                $latitude = $this.find('.wpdk_settings--latitude'),
+                $longitude = $this.find('.wpdk_settings--longitude'),
+                $zoom = $this.find('.wpdk_settings--zoom'),
                 map_data = $map.data('map');
 
             var mapInit = L.map($map.get(0), map_data);
@@ -1256,7 +1256,7 @@
             });
 
             if (!$search_input.length) {
-                $search_input = $('[data-depend-id="' + $this.find('.pbsettings--address-field').data('address-field') + '"]');
+                $search_input = $('[data-depend-id="' + $this.find('.wpdk_settings--address-field').data('address-field') + '"]');
             }
 
             var cache = {};
@@ -1314,7 +1314,7 @@
 
                 },
                 create: function (event, ui) {
-                    $(this).autocomplete('widget').addClass('pbsettings-map-ui-autocomplate');
+                    $(this).autocomplete('widget').addClass('wpdk_settings-map-ui-autocomplate');
                 }
             });
 
@@ -1340,12 +1340,12 @@
         return this.each(function () {
 
             var $this = $(this),
-                $link = $this.find('.pbsettings--link'),
-                $add = $this.find('.pbsettings--add'),
-                $edit = $this.find('.pbsettings--edit'),
-                $remove = $this.find('.pbsettings--remove'),
-                $result = $this.find('.pbsettings--result'),
-                uniqid = WPDK_Settings.helper.uid('pbsettings-wplink-textarea-');
+                $link = $this.find('.wpdk_settings--link'),
+                $add = $this.find('.wpdk_settings--add'),
+                $edit = $this.find('.wpdk_settings--edit'),
+                $remove = $this.find('.wpdk_settings--remove'),
+                $result = $this.find('.wpdk_settings--result'),
+                uniqid = WPDK_Settings.helper.uid('wpdk_settings-wplink-textarea-');
 
             $add.on('click', function (e) {
 
@@ -1361,9 +1361,9 @@
 
                 $add.trigger('click');
 
-                $('#wp-link-url').val($this.find('.pbsettings--url').val());
-                $('#wp-link-text').val($this.find('.pbsettings--text').val());
-                $('#wp-link-target').prop('checked', ($this.find('.pbsettings--target').val() === '_blank'));
+                $('#wp-link-url').val($this.find('.wpdk_settings--url').val());
+                $('#wp-link-text').val($this.find('.wpdk_settings--text').val());
+                $('#wp-link-target').prop('checked', ($this.find('.wpdk_settings--target').val() === '_blank'));
 
             });
 
@@ -1371,9 +1371,9 @@
 
                 e.preventDefault();
 
-                $this.find('.pbsettings--url').val('').trigger('change');
-                $this.find('.pbsettings--text').val('');
-                $this.find('.pbsettings--target').val('');
+                $this.find('.wpdk_settings--url').val('').trigger('change');
+                $this.find('.wpdk_settings--text').val('');
+                $this.find('.wpdk_settings--target').val('');
 
                 $add.removeClass('hidden');
                 $edit.addClass('hidden');
@@ -1389,9 +1389,9 @@
                     text = $('#wp-link-text').val(),
                     target = (atts.target) ? atts.target : '';
 
-                $this.find('.pbsettings--url').val(href).trigger('change');
-                $this.find('.pbsettings--text').val(text);
-                $this.find('.pbsettings--target').val(target);
+                $this.find('.wpdk_settings--url').val(href).trigger('change');
+                $this.find('.wpdk_settings--text').val(text);
+                $this.find('.wpdk_settings--target').val(target);
 
                 $result.html('{url:"' + href + '", text:"' + text + '", target:"' + target + '"}');
 
@@ -1413,10 +1413,10 @@
         return this.each(function () {
 
             var $this = $(this),
-                $upload_button = $this.find('.pbsettings--button'),
-                $remove_button = $this.find('.pbsettings--remove'),
+                $upload_button = $this.find('.wpdk_settings--button'),
+                $remove_button = $this.find('.wpdk_settings--remove'),
                 $library = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
-                $auto_attributes = ($this.hasClass('pbsettings-assign-field-background')) ? $this.closest('.pbsettings-field-background').find('.pbsettings--auto-attributes') : false,
+                $auto_attributes = ($this.hasClass('wpdk_settings-assign-field-background')) ? $this.closest('.wpdk_settings-field-background').find('.wpdk_settings--auto-attributes') : false,
                 wp_media_frame;
 
             $upload_button.on('click', function (e) {
@@ -1448,12 +1448,12 @@
                         return;
                     }
 
-                    $this.find('.pbsettings--id').val(attributes.id);
-                    $this.find('.pbsettings--width').val(attributes.width);
-                    $this.find('.pbsettings--height').val(attributes.height);
-                    $this.find('.pbsettings--alt').val(attributes.alt);
-                    $this.find('.pbsettings--title').val(attributes.title);
-                    $this.find('.pbsettings--description').val(attributes.description);
+                    $this.find('.wpdk_settings--id').val(attributes.id);
+                    $this.find('.wpdk_settings--width').val(attributes.width);
+                    $this.find('.wpdk_settings--height').val(attributes.height);
+                    $this.find('.wpdk_settings--alt').val(attributes.alt);
+                    $this.find('.wpdk_settings--title').val(attributes.title);
+                    $this.find('.wpdk_settings--description').val(attributes.description);
 
                     if (typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.thumbnail !== 'undefined' && preview_size === 'thumbnail') {
                         thumbnail = attributes.sizes.thumbnail.url;
@@ -1466,15 +1466,15 @@
                     }
 
                     if ($auto_attributes) {
-                        $auto_attributes.removeClass('pbsettings--attributes-hidden');
+                        $auto_attributes.removeClass('wpdk_settings--attributes-hidden');
                     }
 
                     $remove_button.removeClass('hidden');
 
-                    $this.find('.pbsettings--preview').removeClass('hidden');
-                    $this.find('.pbsettings--src').attr('src', thumbnail);
-                    $this.find('.pbsettings--thumbnail').val(thumbnail);
-                    $this.find('.pbsettings--url').val(attributes.url).trigger('change');
+                    $this.find('.wpdk_settings--preview').removeClass('hidden');
+                    $this.find('.wpdk_settings--src').attr('src', thumbnail);
+                    $this.find('.wpdk_settings--thumbnail').val(thumbnail);
+                    $this.find('.wpdk_settings--url').val(attributes.url).trigger('change');
 
                 });
 
@@ -1487,13 +1487,13 @@
                 e.preventDefault();
 
                 if ($auto_attributes) {
-                    $auto_attributes.addClass('pbsettings--attributes-hidden');
+                    $auto_attributes.addClass('wpdk_settings--attributes-hidden');
                 }
 
                 $remove_button.addClass('hidden');
                 $this.find('input').val('');
-                $this.find('.pbsettings--preview').addClass('hidden');
-                $this.find('.pbsettings--url').trigger('change');
+                $this.find('.wpdk_settings--preview').addClass('hidden');
+                $this.find('.wpdk_settings--url').trigger('change');
 
             });
 
@@ -1508,38 +1508,38 @@
         return this.each(function () {
 
             var $this = $(this),
-                $fieldset = $this.children('.pbsettings-fieldset'),
+                $fieldset = $this.children('.wpdk_settings-fieldset'),
                 $repeater = $fieldset.length ? $fieldset : $this,
-                $wrapper = $repeater.children('.pbsettings-repeater-wrapper'),
-                $hidden = $repeater.children('.pbsettings-repeater-hidden'),
-                $max = $repeater.children('.pbsettings-repeater-max'),
-                $min = $repeater.children('.pbsettings-repeater-min'),
+                $wrapper = $repeater.children('.wpdk_settings-repeater-wrapper'),
+                $hidden = $repeater.children('.wpdk_settings-repeater-hidden'),
+                $max = $repeater.children('.wpdk_settings-repeater-max'),
+                $min = $repeater.children('.wpdk_settings-repeater-min'),
                 field_id = $wrapper.data('field-id'),
                 max = parseInt($wrapper.data('max')),
                 min = parseInt($wrapper.data('min'));
 
-            $wrapper.children('.pbsettings-repeater-item').children('.pbsettings-repeater-content').pb_settings_reload_script();
+            $wrapper.children('.wpdk_settings-repeater-item').children('.wpdk_settings-repeater-content').pb_settings_reload_script();
 
             $wrapper.sortable({
                 axis: 'y',
-                handle: '.pbsettings-repeater-sort',
+                handle: '.wpdk_settings-repeater-sort',
                 helper: 'original',
                 cursor: 'move',
                 placeholder: 'widget-placeholder',
                 update: function (event, ui) {
 
-                    WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-repeater-item'), field_id);
+                    WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-repeater-item'), field_id);
                     $wrapper.pb_settings_customizer_refresh();
                     ui.item.pb_settings_reload_script_retry();
 
                 }
             });
 
-            $repeater.children('.pbsettings-repeater-add').on('click', function (e) {
+            $repeater.children('.wpdk_settings-repeater-add').on('click', function (e) {
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-repeater-item').length;
+                var count = $wrapper.children('.wpdk_settings-repeater-item').length;
 
                 $min.hide();
 
@@ -1550,14 +1550,14 @@
 
                 var $cloned_item = $hidden.pb_settings_clone(true);
 
-                $cloned_item.removeClass('pbsettings-repeater-hidden');
+                $cloned_item.removeClass('wpdk_settings-repeater-hidden');
 
                 $cloned_item.find(':input[name!="_pseudo"]').each(function () {
                     this.name = this.name.replace('___', '').replace(field_id + '[0]', field_id + '[' + $.now() + ']');
                 });
 
                 $wrapper.append($cloned_item);
-                $cloned_item.children('.pbsettings-repeater-content').pb_settings_reload_script();
+                $cloned_item.children('.wpdk_settings-repeater-content').pb_settings_reload_script();
                 $wrapper.pb_settings_customizer_refresh();
                 $wrapper.pb_settings_customizer_listen({closest: true});
 
@@ -1567,7 +1567,7 @@
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-repeater-item').length;
+                var count = $wrapper.children('.wpdk_settings-repeater-item').length;
 
                 $min.hide();
 
@@ -1578,32 +1578,32 @@
 
                 var $this = $(this),
                     $parent = $this.parent().parent().parent(),
-                    $cloned_content = $parent.children('.pbsettings-repeater-content').pb_settings_clone(),
-                    $cloned_helper = $parent.children('.pbsettings-repeater-helper').pb_settings_clone(true),
-                    $cloned_item = $('<div class="pbsettings-repeater-item" />');
+                    $cloned_content = $parent.children('.wpdk_settings-repeater-content').pb_settings_clone(),
+                    $cloned_helper = $parent.children('.wpdk_settings-repeater-helper').pb_settings_clone(true),
+                    $cloned_item = $('<div class="wpdk_settings-repeater-item" />');
 
                 $cloned_item.append($cloned_content);
                 $cloned_item.append($cloned_helper);
 
                 $wrapper.children().eq($parent.index()).after($cloned_item);
 
-                $cloned_item.children('.pbsettings-repeater-content').pb_settings_reload_script();
+                $cloned_item.children('.wpdk_settings-repeater-content').pb_settings_reload_script();
 
-                WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-repeater-item'), field_id);
+                WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-repeater-item'), field_id);
 
                 $wrapper.pb_settings_customizer_refresh();
                 $wrapper.pb_settings_customizer_listen({closest: true});
 
             };
 
-            $wrapper.children('.pbsettings-repeater-item').children('.pbsettings-repeater-helper').on('click', '.pbsettings-repeater-clone', event_clone);
-            $repeater.children('.pbsettings-repeater-hidden').children('.pbsettings-repeater-helper').on('click', '.pbsettings-repeater-clone', event_clone);
+            $wrapper.children('.wpdk_settings-repeater-item').children('.wpdk_settings-repeater-helper').on('click', '.wpdk_settings-repeater-clone', event_clone);
+            $repeater.children('.wpdk_settings-repeater-hidden').children('.wpdk_settings-repeater-helper').on('click', '.wpdk_settings-repeater-clone', event_clone);
 
             var event_remove = function (e) {
 
                 e.preventDefault();
 
-                var count = $wrapper.children('.pbsettings-repeater-item').length;
+                var count = $wrapper.children('.wpdk_settings-repeater-item').length;
 
                 $max.hide();
                 $min.hide();
@@ -1613,16 +1613,16 @@
                     return;
                 }
 
-                $(this).closest('.pbsettings-repeater-item').remove();
+                $(this).closest('.wpdk_settings-repeater-item').remove();
 
-                WPDK_Settings.helper.name_nested_replace($wrapper.children('.pbsettings-repeater-item'), field_id);
+                WPDK_Settings.helper.name_nested_replace($wrapper.children('.wpdk_settings-repeater-item'), field_id);
 
                 $wrapper.pb_settings_customizer_refresh();
 
             };
 
-            $wrapper.children('.pbsettings-repeater-item').children('.pbsettings-repeater-helper').on('click', '.pbsettings-repeater-remove', event_remove);
-            $repeater.children('.pbsettings-repeater-hidden').children('.pbsettings-repeater-helper').on('click', '.pbsettings-repeater-remove', event_remove);
+            $wrapper.children('.wpdk_settings-repeater-item').children('.wpdk_settings-repeater-helper').on('click', '.wpdk_settings-repeater-remove', event_remove);
+            $repeater.children('.wpdk_settings-repeater-hidden').children('.wpdk_settings-repeater-helper').on('click', '.wpdk_settings-repeater-remove', event_remove);
 
         });
     };
@@ -1635,7 +1635,7 @@
 
             var $this = $(this),
                 $input = $this.find('input'),
-                $slider = $this.find('.pbsettings-slider-ui'),
+                $slider = $this.find('.wpdk_settings-slider-ui'),
                 data = $input.data(),
                 value = $input.val() || 0;
 
@@ -1667,7 +1667,7 @@
     $.fn.pb_settings_field_sortable = function () {
         return this.each(function () {
 
-            var $sortable = $(this).find('.pbsettings-sortable');
+            var $sortable = $(this).find('.wpdk_settings-sortable');
 
             $sortable.sortable({
                 axis: 'y',
@@ -1679,7 +1679,7 @@
                 }
             });
 
-            $sortable.find('.pbsettings-sortable-content').pb_settings_reload_script();
+            $sortable.find('.wpdk_settings-sortable-content').pb_settings_reload_script();
 
         });
     };
@@ -1691,8 +1691,8 @@
         return this.each(function () {
 
             var $this = $(this),
-                $enabled = $this.find('.pbsettings-enabled'),
-                $has_disabled = $this.find('.pbsettings-disabled'),
+                $enabled = $this.find('.wpdk_settings-enabled'),
+                $has_disabled = $this.find('.wpdk_settings-disabled'),
                 $disabled = ($has_disabled.length) ? $has_disabled : false;
 
             $enabled.sortable({
@@ -1702,7 +1702,7 @@
 
                     var $el = ui.item.find('input');
 
-                    if (ui.item.parent().hasClass('pbsettings-enabled')) {
+                    if (ui.item.parent().hasClass('wpdk_settings-enabled')) {
                         $el.attr('name', $el.attr('name').replace('disabled', 'enabled'));
                     } else {
                         $el.attr('name', $el.attr('name').replace('enabled', 'disabled'));
@@ -1749,7 +1749,7 @@
                 step: data.step || 1,
                 create: function (event, ui) {
                     if (data.unit) {
-                        $input.after('<span class="ui-button pbsettings--unit">' + data.unit + '</span>');
+                        $input.after('<span class="ui-button wpdk_settings--unit">' + data.unit + '</span>');
                     }
                 },
                 spin: function (event, ui) {
@@ -1766,18 +1766,18 @@
     $.fn.pb_settings_field_switcher = function () {
         return this.each(function () {
 
-            var $switcher = $(this).find('.pbsettings--switcher');
+            var $switcher = $(this).find('.wpdk_settings--switcher');
 
             $switcher.on('click', function () {
 
                 var value = 0;
                 var $input = $switcher.find('input');
 
-                if ($switcher.hasClass('pbsettings--active')) {
-                    $switcher.removeClass('pbsettings--active');
+                if ($switcher.hasClass('wpdk_settings--active')) {
+                    $switcher.removeClass('wpdk_settings--active');
                 } else {
                     value = 1;
-                    $switcher.addClass('pbsettings--active');
+                    $switcher.addClass('wpdk_settings--active');
                 }
 
                 $input.val(value).trigger('change');
@@ -1794,8 +1794,8 @@
         return this.each(function () {
 
             var $this = $(this),
-                $links = $this.find('.pbsettings-tabbed-nav a'),
-                $contents = $this.find('.pbsettings-tabbed-content');
+                $links = $this.find('.wpdk_settings-tabbed-nav a'),
+                $contents = $this.find('.wpdk_settings-tabbed-content');
 
             $contents.eq(0).pb_settings_reload_script();
 
@@ -1807,7 +1807,7 @@
                     index = $link.index(),
                     $content = $contents.eq(index);
 
-                $link.addClass('pbsettings-tabbed-active').siblings().removeClass('pbsettings-tabbed-active');
+                $link.addClass('wpdk_settings-tabbed-active').siblings().removeClass('wpdk_settings-tabbed-active');
                 $content.pb_settings_reload_script();
                 $content.removeClass('hidden').siblings().addClass('hidden');
 
@@ -1910,9 +1910,9 @@
                 //
                 // Constants
                 var selected_styles = [];
-                var $typography = $this.find('.pbsettings--typography');
-                var $type = $this.find('.pbsettings--type');
-                var $styles = $this.find('.pbsettings--block-font-style');
+                var $typography = $this.find('.wpdk_settings--typography');
+                var $type = $this.find('.wpdk_settings--type');
+                var $styles = $this.find('.wpdk_settings--block-font-style');
                 var unit = $typography.data('unit');
                 var line_height_unit = $typography.data('line-height-unit');
                 var exclude_fonts = $typography.data('exclude') ? $typography.data('exclude').split(',') : [];
@@ -1920,7 +1920,7 @@
                 //
                 //
                 // Chosen init
-                if ($this.find('.pbsettings--chosen').length) {
+                if ($this.find('.wpdk_settings--chosen').length) {
 
                     var $chosen_selects = $this.find('select');
 
@@ -1946,7 +1946,7 @@
                 //
                 //
                 // Font family select
-                var $font_family_select = $this.find('.pbsettings--font-family');
+                var $font_family_select = $this.find('.wpdk_settings--font-family');
                 var first_font_family = $font_family_select.val();
 
                 // Clear default font family select options
@@ -1982,11 +1982,11 @@
                 //
                 //
                 // Font style select
-                var $font_style_block = $this.find('.pbsettings--block-font-style');
+                var $font_style_block = $this.find('.wpdk_settings--block-font-style');
 
                 if ($font_style_block.length) {
 
-                    var $font_style_select = $this.find('.pbsettings--font-style-select');
+                    var $font_style_select = $this.find('.wpdk_settings--font-style-select');
                     var first_style_value = $font_style_select.val() ? $font_style_select.val().replace(/normal/g, '') : '';
 
                     //
@@ -2005,18 +2005,18 @@
                         var font_weight = (style_value && style_value !== 'italic' && style_value !== 'normal') ? style_value.replace('italic', '') : font_normal;
                         var font_style = (style_value && style_value.substr(-6) === 'italic') ? 'italic' : '';
 
-                        $this.find('.pbsettings--font-weight').val(font_weight);
-                        $this.find('.pbsettings--font-style').val(font_style);
+                        $this.find('.wpdk_settings--font-weight').val(font_weight);
+                        $this.find('.wpdk_settings--font-style').val(font_style);
 
                     });
 
                     //
                     //
                     // Extra font style select
-                    var $extra_font_style_block = $this.find('.pbsettings--block-extra-styles');
+                    var $extra_font_style_block = $this.find('.wpdk_settings--block-extra-styles');
 
                     if ($extra_font_style_block.length) {
-                        var $extra_font_style_select = $this.find('.pbsettings--extra-styles');
+                        var $extra_font_style_select = $this.find('.wpdk_settings--extra-styles');
                         var first_extra_style_value = $extra_font_style_select.val();
                     }
 
@@ -2025,9 +2025,9 @@
                 //
                 //
                 // Subsets select
-                var $subset_block = $this.find('.pbsettings--block-subset');
+                var $subset_block = $this.find('.wpdk_settings--block-subset');
                 if ($subset_block.length) {
-                    var $subset_select = $this.find('.pbsettings--subset');
+                    var $subset_select = $this.find('.wpdk_settings--subset');
                     var first_subset_select_value = $subset_select.val();
                     var subset_multi_select = $subset_select.data('multiple') || false;
                 }
@@ -2035,7 +2035,7 @@
                 //
                 //
                 // Backup font family
-                var $backup_font_family_block = $this.find('.pbsettings--block-backup-font-family');
+                var $backup_font_family_block = $this.find('.wpdk_settings--block-backup-font-family');
 
                 //
                 //
@@ -2157,11 +2157,11 @@
                 //
                 //
                 // Preview
-                var $preview_block = $this.find('.pbsettings--block-preview');
+                var $preview_block = $this.find('.wpdk_settings--block-preview');
 
                 if ($preview_block.length) {
 
-                    var $preview = $this.find('.pbsettings--preview');
+                    var $preview = $this.find('.wpdk_settings--preview');
 
                     // Set preview styles on change
                     $this.on('change', WPDK_Settings.helper.debounce(function (event) {
@@ -2169,19 +2169,19 @@
                         $preview_block.removeClass('hidden');
 
                         var font_family = $font_family_select.val(),
-                            font_weight = $this.find('.pbsettings--font-weight').val(),
-                            font_style = $this.find('.pbsettings--font-style').val(),
-                            font_size = $this.find('.pbsettings--font-size').val(),
-                            font_variant = $this.find('.pbsettings--font-variant').val(),
-                            line_height = $this.find('.pbsettings--line-height').val(),
-                            text_align = $this.find('.pbsettings--text-align').val(),
-                            text_transform = $this.find('.pbsettings--text-transform').val(),
-                            text_decoration = $this.find('.pbsettings--text-decoration').val(),
-                            text_color = $this.find('.pbsettings--color').val(),
-                            word_spacing = $this.find('.pbsettings--word-spacing').val(),
-                            letter_spacing = $this.find('.pbsettings--letter-spacing').val(),
-                            custom_style = $this.find('.pbsettings--custom-style').val(),
-                            type = $this.find('.pbsettings--type').val();
+                            font_weight = $this.find('.wpdk_settings--font-weight').val(),
+                            font_style = $this.find('.wpdk_settings--font-style').val(),
+                            font_size = $this.find('.wpdk_settings--font-size').val(),
+                            font_variant = $this.find('.wpdk_settings--font-variant').val(),
+                            line_height = $this.find('.wpdk_settings--line-height').val(),
+                            text_align = $this.find('.wpdk_settings--text-align').val(),
+                            text_transform = $this.find('.wpdk_settings--text-transform').val(),
+                            text_decoration = $this.find('.wpdk_settings--text-decoration').val(),
+                            text_color = $this.find('.wpdk_settings--color').val(),
+                            word_spacing = $this.find('.wpdk_settings--word-spacing').val(),
+                            letter_spacing = $this.find('.wpdk_settings--letter-spacing').val(),
+                            custom_style = $this.find('.wpdk_settings--custom-style').val(),
+                            type = $this.find('.wpdk_settings--type').val();
 
                         if (type === 'google') {
                             base.load_google_font(font_family, font_weight, font_style);
@@ -2240,9 +2240,9 @@
                     // Preview black and white backgrounds trigger
                     $preview_block.on('click', function () {
 
-                        $preview.toggleClass('pbsettings--black-background');
+                        $preview.toggleClass('wpdk_settings--black-background');
 
-                        var $toggle = $preview_block.find('.pbsettings--toggle');
+                        var $toggle = $preview_block.find('.wpdk_settings--toggle');
 
                         if ($toggle.hasClass('fa-toggle-off')) {
                             $toggle.removeClass('fa-toggle-off').addClass('fa-toggle-on');
@@ -2273,10 +2273,10 @@
 
             var $this = $(this),
                 $input = $this.find('input'),
-                $upload_button = $this.find('.pbsettings--button'),
-                $remove_button = $this.find('.pbsettings--remove'),
-                $preview_wrap = $this.find('.pbsettings--preview'),
-                $preview_src = $this.find('.pbsettings--src'),
+                $upload_button = $this.find('.wpdk_settings--button'),
+                $remove_button = $this.find('.wpdk_settings--remove'),
+                $preview_wrap = $this.find('.wpdk_settings--preview'),
+                $preview_src = $this.find('.wpdk_settings--src'),
                 $library = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
                 wp_media_frame;
 
@@ -2359,7 +2359,7 @@
             }
 
             var $this = $(this),
-                $editor = $this.find('.pbsettings-wp-editor'),
+                $editor = $this.find('.wpdk_settings-wp-editor'),
                 $textarea = $this.find('textarea');
 
             // If there is wp-editor remove it for avoid dupliated wp-editor conflicts.
@@ -2372,7 +2372,7 @@
             }
 
             // Generate a unique id
-            var uid = WPDK_Settings.helper.uid('pbsettings-editor-');
+            var uid = WPDK_Settings.helper.uid('wpdk_settings-editor-');
 
             $textarea.attr('id', uid);
 
@@ -2408,13 +2408,13 @@
             // Override editor tinymce settings
             if (field_editor_settings.tinymce === false) {
                 default_editor_settings.tinymce = false;
-                $editor.addClass('pbsettings-no-tinymce');
+                $editor.addClass('wpdk_settings-no-tinymce');
             }
 
             // Override editor quicktags settings
             if (field_editor_settings.quicktags === false) {
                 default_editor_settings.quicktags = false;
-                $editor.addClass('pbsettings-no-quicktags');
+                $editor.addClass('wpdk_settings-no-quicktags');
             }
 
             // Wait until :visible
@@ -2432,13 +2432,13 @@
 
                 if ($editor_buttons.length) {
 
-                    $editor_buttons.find('.pbsettings-shortcode-button').data('editor-id', uid);
+                    $editor_buttons.find('.wpdk_settings-shortcode-button').data('editor-id', uid);
 
                 } else {
 
                     var $media_buttons = $(window.pb_settings_media_buttons);
 
-                    $media_buttons.find('.pbsettings-shortcode-button').data('editor-id', uid);
+                    $media_buttons.find('.wpdk_settings-shortcode-button').data('editor-id', uid);
 
                     $editor.prepend($media_buttons);
 
@@ -2496,8 +2496,8 @@
         return this.each(function () {
 
             var $this = $(this),
-                $buttons = $('.pbsettings-save'),
-                $panel = $('.pbsettings-options'),
+                $buttons = $('.wpdk_settings-save'),
+                $panel = $('.wpdk_settings-options'),
                 flooding = false,
                 timeout;
 
@@ -2510,46 +2510,46 @@
 
                     $buttons.attr('value', $text);
 
-                    if ($this.hasClass('pbsettings-save-ajax')) {
+                    if ($this.hasClass('wpdk_settings-save-ajax')) {
 
                         e.preventDefault();
 
-                        $panel.addClass('pbsettings-saving');
+                        $panel.addClass('wpdk_settings-saving');
                         $buttons.prop('disabled', true);
 
                         window.wp.ajax.post('pb_settings_' + $panel.data('unique') + '_ajax_save', {
-                            data: $('#pbsettings-form').serializeJSONWPDK_Settings()
+                            data: $('#wpdk_settings-form').serializeJSONWPDK_Settings()
                         })
                             .done(function (response) {
 
                                 // clear errors
-                                $('.pbsettings-error').remove();
+                                $('.wpdk_settings-error').remove();
 
                                 if (Object.keys(response.errors).length) {
 
-                                    var error_icon = '<i class="pbsettings-label-error pbsettings-error">!</i>';
+                                    var error_icon = '<i class="wpdk_settings-label-error wpdk_settings-error">!</i>';
 
                                     $.each(response.errors, function (key, error_message) {
 
                                         var $field = $('[data-depend-id="' + key + '"]'),
-                                            $link = $('a[href="#tab=' + $field.closest('.pbsettings-section').data('section-id') + '"]'),
-                                            $tab = $link.closest('.pbsettings-tab-item');
+                                            $link = $('a[href="#tab=' + $field.closest('.wpdk_settings-section').data('section-id') + '"]'),
+                                            $tab = $link.closest('.wpdk_settings-tab-item');
 
-                                        $field.closest('.pbsettings-fieldset').append('<p class="pbsettings-error pbsettings-error-text">' + error_message + '</p>');
+                                        $field.closest('.wpdk_settings-fieldset').append('<p class="wpdk_settings-error wpdk_settings-error-text">' + error_message + '</p>');
 
-                                        if (!$link.find('.pbsettings-error').length) {
+                                        if (!$link.find('.wpdk_settings-error').length) {
                                             $link.append(error_icon);
                                         }
 
-                                        if (!$tab.find('.pbsettings-arrow .pbsettings-error').length) {
-                                            $tab.find('.pbsettings-arrow').append(error_icon);
+                                        if (!$tab.find('.wpdk_settings-arrow .wpdk_settings-error').length) {
+                                            $tab.find('.wpdk_settings-arrow').append(error_icon);
                                         }
 
                                     });
 
                                 }
 
-                                $panel.removeClass('pbsettings-saving');
+                                $panel.removeClass('wpdk_settings-saving');
                                 $buttons.prop('disabled', false).attr('value', $value);
                                 flooding = false;
 
@@ -2558,7 +2558,7 @@
 
                                 clearTimeout(timeout);
 
-                                var $result_success = $('.pbsettings-form-success');
+                                var $result_success = $('.wpdk_settings-form-success');
                                 $result_success.empty().append(response.notice).fadeIn('fast', function () {
                                     timeout = setTimeout(function () {
                                         $result_success.fadeOut('fast');
@@ -2592,10 +2592,10 @@
         return this.each(function () {
 
             var $this = $(this),
-                $content = $this.find('.pbsettings-content'),
-                $form_success = $this.find('.pbsettings-form-success'),
-                $form_warning = $this.find('.pbsettings-form-warning'),
-                $save_button = $this.find('.pbsettings-header .pbsettings-save');
+                $content = $this.find('.wpdk_settings-content'),
+                $form_success = $this.find('.wpdk_settings-form-success'),
+                $form_warning = $this.find('.wpdk_settings-form-warning'),
+                $save_button = $this.find('.wpdk_settings-header .wpdk_settings-save');
 
             WPDK_Settings.vars.$form_warning = $form_warning;
 
@@ -2616,7 +2616,7 @@
 
             }
 
-            if ($form_success.hasClass('pbsettings-form-show')) {
+            if ($form_success.hasClass('wpdk_settings-form-show')) {
                 setTimeout(function () {
                     $form_success.fadeOut('fast');
                 }, 1000);
@@ -2645,7 +2645,7 @@
             if ($form.attr('id') === 'addtag') {
 
                 var $submit = $form.find('#submit'),
-                    $cloned = $this.find('.pbsettings-field').pb_settings_clone();
+                    $cloned = $this.find('.wpdk_settings-field').pb_settings_clone();
 
                 $submit.on('click', function () {
 
@@ -2782,10 +2782,10 @@
         return this.each(function () {
 
             var $modal = $(this),
-                $load = $modal.find('.pbsettings-modal-load'),
-                $content = $modal.find('.pbsettings-modal-content'),
-                $insert = $modal.find('.pbsettings-modal-insert'),
-                $loading = $modal.find('.pbsettings-modal-loading'),
+                $load = $modal.find('.wpdk_settings-modal-load'),
+                $content = $modal.find('.wpdk_settings-modal-content'),
+                $insert = $modal.find('.wpdk_settings-modal-insert'),
+                $loading = $modal.find('.wpdk_settings-modal-loading'),
                 $select = $modal.find('select'),
                 modal_id = $modal.data('modal-id'),
                 nonce = $modal.data('nonce'),
@@ -2799,7 +2799,7 @@
                 $cloned,
                 $button;
 
-            $(document).on('click', '.pbsettings-shortcode-button[data-modal-id="' + modal_id + '"]', function (e) {
+            $(document).on('click', '.wpdk_settings-shortcode-button[data-modal-id="' + modal_id + '"]', function (e) {
 
                 e.preventDefault();
 
@@ -2811,7 +2811,7 @@
                 $modal.removeClass('hidden');
 
                 // single usage trigger first shortcode
-                if ($modal.hasClass('pbsettings-shortcode-single') && sc_name === undefined) {
+                if ($modal.hasClass('wpdk_settings-shortcode-single') && sc_name === undefined) {
                     $select.trigger('change');
                 }
 
@@ -2833,7 +2833,7 @@
 
                     $loading.show();
 
-                    window.wp.ajax.post('pbsettings-get-shortcode-' + modal_id, {
+                    window.wp.ajax.post('wpdk_settings-get-shortcode-' + modal_id, {
                         shortcode_key: sc_key,
                         nonce: nonce
                     })
@@ -2845,10 +2845,10 @@
 
                             $insert.parent().removeClass('hidden');
 
-                            $cloned = $appended.find('.pbsettings--repeat-shortcode').pb_settings_clone();
+                            $cloned = $appended.find('.wpdk_settings--repeat-shortcode').pb_settings_clone();
 
                             $appended.pb_settings_reload_script();
-                            $appended.find('.pbsettings-fields').pb_settings_reload_script();
+                            $appended.find('.wpdk_settings-fields').pb_settings_reload_script();
 
                         });
 
@@ -2869,7 +2869,7 @@
                 }
 
                 var shortcode = '';
-                var serialize = $modal.find('.pbsettings-field:not(.pbsettings-depend-on)').find(':input:not(.ignore)').serializeObjectWPDK_Settings();
+                var serialize = $modal.find('.wpdk_settings-field:not(.wpdk_settings-depend-on)').find(':input:not(.ignore)').serializeObjectWPDK_Settings();
 
                 switch (sc_view) {
 
@@ -2925,31 +2925,31 @@
 
             });
 
-            $modal.on('click', '.pbsettings--repeat-button', function (e) {
+            $modal.on('click', '.wpdk_settings--repeat-button', function (e) {
 
                 e.preventDefault();
 
-                var $repeatable = $modal.find('.pbsettings--repeatable');
+                var $repeatable = $modal.find('.wpdk_settings--repeatable');
                 var $new_clone = $cloned.pb_settings_clone();
-                var $remove_btn = $new_clone.find('.pbsettings-repeat-remove');
+                var $remove_btn = $new_clone.find('.wpdk_settings-repeat-remove');
 
                 var $appended = $new_clone.appendTo($repeatable);
 
-                $new_clone.find('.pbsettings-fields').pb_settings_reload_script();
+                $new_clone.find('.wpdk_settings-fields').pb_settings_reload_script();
 
-                WPDK_Settings.helper.name_nested_replace($modal.find('.pbsettings--repeat-shortcode'), sc_group);
+                WPDK_Settings.helper.name_nested_replace($modal.find('.wpdk_settings--repeat-shortcode'), sc_group);
 
                 $remove_btn.on('click', function () {
 
                     $new_clone.remove();
 
-                    WPDK_Settings.helper.name_nested_replace($modal.find('.pbsettings--repeat-shortcode'), sc_group);
+                    WPDK_Settings.helper.name_nested_replace($modal.find('.wpdk_settings--repeat-shortcode'), sc_group);
 
                 });
 
             });
 
-            $modal.on('click', '.pbsettings-modal-close, .pbsettings-modal-overlay', function () {
+            $modal.on('click', '.wpdk_settings-modal-close, .wpdk_settings-modal-overlay', function () {
                 $modal.addClass('hidden');
             });
 
@@ -3014,8 +3014,8 @@
 
                     var ui_color_value = ui.color.toString();
 
-                    $container.removeClass('pbsettings--transparent-active');
-                    $container.find('.pbsettings--transparent-offset').css('background-color', ui_color_value);
+                    $container.removeClass('wpdk_settings--transparent-active');
+                    $container.find('.wpdk_settings--transparent-offset').css('background-color', ui_color_value);
                     $input.val(ui_color_value).trigger('change');
 
                 },
@@ -3024,28 +3024,28 @@
                     $container = $input.closest('.wp-picker-container');
 
                     var a8cIris = $input.data('a8cIris'),
-                        $transparent_wrap = $('<div class="pbsettings--transparent-wrap">' +
-                            '<div class="pbsettings--transparent-slider"></div>' +
-                            '<div class="pbsettings--transparent-offset"></div>' +
-                            '<div class="pbsettings--transparent-text"></div>' +
-                            '<div class="pbsettings--transparent-button">transparent <i class="fas fa-toggle-off"></i></div>' +
+                        $transparent_wrap = $('<div class="wpdk_settings--transparent-wrap">' +
+                            '<div class="wpdk_settings--transparent-slider"></div>' +
+                            '<div class="wpdk_settings--transparent-offset"></div>' +
+                            '<div class="wpdk_settings--transparent-text"></div>' +
+                            '<div class="wpdk_settings--transparent-button">transparent <i class="fas fa-toggle-off"></i></div>' +
                             '</div>').appendTo($container.find('.wp-picker-holder')),
-                        $transparent_slider = $transparent_wrap.find('.pbsettings--transparent-slider'),
-                        $transparent_text = $transparent_wrap.find('.pbsettings--transparent-text'),
-                        $transparent_offset = $transparent_wrap.find('.pbsettings--transparent-offset'),
-                        $transparent_button = $transparent_wrap.find('.pbsettings--transparent-button');
+                        $transparent_slider = $transparent_wrap.find('.wpdk_settings--transparent-slider'),
+                        $transparent_text = $transparent_wrap.find('.wpdk_settings--transparent-text'),
+                        $transparent_offset = $transparent_wrap.find('.wpdk_settings--transparent-offset'),
+                        $transparent_button = $transparent_wrap.find('.wpdk_settings--transparent-button');
 
                     if ($input.val() === 'transparent') {
-                        $container.addClass('pbsettings--transparent-active');
+                        $container.addClass('wpdk_settings--transparent-active');
                     }
 
                     $transparent_button.on('click', function () {
                         if ($input.val() !== 'transparent') {
                             $input.val('transparent').trigger('change').removeClass('iris-error');
-                            $container.addClass('pbsettings--transparent-active');
+                            $container.addClass('wpdk_settings--transparent-active');
                         } else {
                             $input.val(a8cIris._color.toString()).trigger('change');
-                            $container.removeClass('pbsettings--transparent-active');
+                            $container.removeClass('wpdk_settings--transparent-active');
                         }
                     });
 
@@ -3075,7 +3075,7 @@
                                 a8cIris._color._alpha = 1;
                                 $transparent_text.text('');
                                 $transparent_slider.slider('option', 'value', 100);
-                                $container.removeClass('pbsettings--transparent-active');
+                                $container.removeClass('wpdk_settings--transparent-active');
                                 $input.trigger('change');
 
                             });
@@ -3092,7 +3092,7 @@
 
                                 if (default_color.value === 'transparent') {
                                     $input.removeClass('iris-error');
-                                    $container.addClass('pbsettings--transparent-active');
+                                    $container.addClass('wpdk_settings--transparent-active');
                                 }
 
                             });
@@ -3113,8 +3113,8 @@
 
             var $this = $(this),
                 $inited = $this.parent().find('.chosen-container'),
-                is_sortable = $this.hasClass('pbsettings-chosen-sortable') || false,
-                is_ajax = $this.hasClass('pbsettings-chosen-ajax') || false,
+                is_sortable = $this.hasClass('wpdk_settings-chosen-sortable') || false,
+                is_ajax = $this.hasClass('wpdk_settings-chosen-ajax') || false,
                 is_multiple = $this.attr('multiple') || false,
                 set_width = is_multiple ? '100%' : 'auto',
                 set_options = $.extend({
@@ -3157,7 +3157,7 @@
             // Chosen keep options order
             if (is_multiple) {
 
-                var $hidden_select = $this.parent().find('.pbsettings-hide-select');
+                var $hidden_select = $this.parent().find('.wpdk_settings-hide-select');
                 var $hidden_value = $hidden_select.val() || [];
 
                 $this.on('change', function (obj, result) {
@@ -3207,7 +3207,7 @@
 
                         var select_options = '';
                         var chosen_object = $this.data('chosen');
-                        var $prev_select = $this.parent().find('.pbsettings-hide-select');
+                        var $prev_select = $this.parent().find('.wpdk_settings-hide-select');
 
                         $chosen_choices.find('.search-choice-close').each(function () {
                             var option_array_index = $(this).data('option-array-index');
@@ -3237,8 +3237,8 @@
         return this.each(function () {
 
             var $this = $(this),
-                $input = $this.find('.pbsettings--input'),
-                $checkbox = $this.find('.pbsettings--checkbox');
+                $input = $this.find('.wpdk_settings--input'),
+                $checkbox = $this.find('.wpdk_settings--checkbox');
 
             $checkbox.on('click', function () {
                 $input.val(Number($checkbox.prop('checked'))).trigger('change');
@@ -3254,7 +3254,7 @@
         return this.each(function () {
 
             var $this = $(this),
-                $siblings = $this.find('.pbsettings--sibling'),
+                $siblings = $this.find('.wpdk_settings--sibling'),
                 multiple = $this.data('multiple') || false;
 
             $siblings.on('click', function () {
@@ -3263,11 +3263,11 @@
 
                 if (multiple) {
 
-                    if ($sibling.hasClass('pbsettings--active')) {
-                        $sibling.removeClass('pbsettings--active');
+                    if ($sibling.hasClass('wpdk_settings--active')) {
+                        $sibling.removeClass('wpdk_settings--active');
                         $sibling.find('input').prop('checked', false).trigger('change');
                     } else {
-                        $sibling.addClass('pbsettings--active');
+                        $sibling.addClass('wpdk_settings--active');
                         $sibling.find('input').prop('checked', true).trigger('change');
                     }
 
@@ -3275,7 +3275,7 @@
 
                     $this.find('input').prop('checked', false);
                     $sibling.find('input').prop('checked', true).trigger('change');
-                    $sibling.addClass('pbsettings--active').siblings().removeClass('pbsettings--active');
+                    $sibling.addClass('wpdk_settings--active').siblings().removeClass('wpdk_settings--active');
 
                 }
 
@@ -3297,7 +3297,7 @@
             $this.on({
                 mouseenter: function () {
 
-                    $tooltip = $('<div class="pbsettings-tooltip"></div>').html($this.find('.pbsettings-help-text').html()).appendTo('body');
+                    $tooltip = $('<div class="wpdk_settings-tooltip"></div>').html($this.find('.wpdk_settings-help-text').html()).appendTo('body');
                     offset_left = (WPDK_Settings.vars.is_rtl) ? ($this.offset().left + 24) : ($this.offset().left - $tooltip.outerWidth());
 
                     $tooltip.css({
@@ -3326,7 +3326,7 @@
         return this.each(function () {
 
             var $this = $(this),
-                $complex = $this.closest('.pbsettings-customize-complex');
+                $complex = $this.closest('.wpdk_settings-customize-complex');
 
             if ($complex.length) {
 
@@ -3353,7 +3353,7 @@
 
             }
 
-            $(document).trigger('pbsettings-customizer-refresh', $this);
+            $(document).trigger('wpdk_settings-customizer-refresh', $this);
 
         });
     };
@@ -3373,7 +3373,7 @@
                 return;
             }
 
-            var $this = (settings.closest) ? $(this).closest('.pbsettings-customize-complex') : $(this),
+            var $this = (settings.closest) ? $(this).closest('.wpdk_settings-customize-complex') : $(this),
                 $input = $this.find(':input'),
                 unique_id = $this.data('unique-id'),
                 option_id = $this.data('option-id');
@@ -3403,8 +3403,8 @@
 
         if ($this.hasClass('open') && !$this.data('inited')) {
 
-            var $fields = $this.find('.pbsettings-customize-field');
-            var $complex = $this.find('.pbsettings-customize-complex');
+            var $fields = $this.find('.wpdk_settings-customize-field');
+            var $complex = $this.find('.wpdk_settings-customize-complex');
 
             if ($fields.length) {
                 $this.pb_settings_dependency();
@@ -3426,7 +3426,7 @@
         var window_width = navigator.userAgent.indexOf('AppleWebKit/') > -1 ? WPDK_Settings.vars.$window.width() : window.innerWidth;
 
         if (window_width <= 782 && !WPDK_Settings.vars.onloaded) {
-            $('.pbsettings-section').pb_settings_reload_script();
+            $('.wpdk_settings-section').pb_settings_reload_script();
             WPDK_Settings.vars.onloaded = true;
         }
 
@@ -3440,7 +3440,7 @@
 
             $(document).on('widget-added widget-updated', function (event, $widget) {
 
-                var $fields = $widget.find('.pbsettings-fields');
+                var $fields = $widget.find('.wpdk_settings-fields');
 
                 if ($fields.length) {
                     $fields.pb_settings_reload_script();
@@ -3450,7 +3450,7 @@
 
             $(document).on('click', '.widget-top', function (event) {
 
-                var $fields = $(this).parent().find('.pbsettings-fields');
+                var $fields = $(this).parent().find('.wpdk_settings-fields');
 
                 if ($fields.length) {
                     $fields.pb_settings_reload_script();
@@ -3459,7 +3459,7 @@
             });
 
             $('.widgets-sortables, .control-section-sidebar').on('sortstop', function (event, ui) {
-                ui.item.find('.pbsettings-fields').pb_settings_reload_script_retry();
+                ui.item.find('.wpdk_settings-fields').pb_settings_reload_script_retry();
             });
 
         });
@@ -3474,11 +3474,11 @@
             var $navmenu = $(this);
 
             $navmenu.on('click', 'a.item-edit', function () {
-                $(this).closest('li.menu-item').find('.pbsettings-fields').pb_settings_reload_script();
+                $(this).closest('li.menu-item').find('.wpdk_settings-fields').pb_settings_reload_script();
             });
 
             $navmenu.on('sortstop', function (event, ui) {
-                ui.item.find('.pbsettings-fields').pb_settings_reload_script_retry();
+                ui.item.find('.wpdk_settings-fields').pb_settings_reload_script_retry();
             });
 
         });
@@ -3493,7 +3493,7 @@
             var $this = $(this);
 
             if ($this.data('inited')) {
-                $this.children('.pbsettings-field-wp_editor').pb_settings_field_wp_editor();
+                $this.children('.wpdk_settings-field-wp_editor').pb_settings_field_wp_editor();
             }
 
         });
@@ -3516,52 +3516,52 @@
             if (!$this.data('inited')) {
 
                 // Field plugins
-                $this.children('.pbsettings-field-accordion').pb_settings_field_accordion();
-                $this.children('.pbsettings-field-backup').pb_settings_field_backup();
-                $this.children('.pbsettings-field-background').pb_settings_field_background();
-                $this.children('.pbsettings-field-code_editor').pb_settings_field_code_editor();
-                $this.children('.pbsettings-field-date').pb_settings_field_date();
-                $this.children('.pbsettings-field-datetime').pb_settings_field_datetime();
-                $this.children('.pbsettings-field-fieldset').pb_settings_field_fieldset();
-                $this.children('.pbsettings-field-gallery').pb_settings_field_gallery();
-                $this.children('.pbsettings-field-group').pb_settings_field_group();
-                $this.children('.pbsettings-field-icon').pb_settings_field_icon();
-                $this.children('.pbsettings-field-link').pb_settings_field_link();
-                $this.children('.pbsettings-field-media').pb_settings_field_media();
-                $this.children('.pbsettings-field-map').pb_settings_field_map();
-                $this.children('.pbsettings-field-repeater').pb_settings_field_repeater();
-                $this.children('.pbsettings-field-slider').pb_settings_field_slider();
-                $this.children('.pbsettings-field-sortable').pb_settings_field_sortable();
-                $this.children('.pbsettings-field-sorter').pb_settings_field_sorter();
-                $this.children('.pbsettings-field-spinner').pb_settings_field_spinner();
-                $this.children('.pbsettings-field-switcher').pb_settings_field_switcher();
-                $this.children('.pbsettings-field-tabbed').pb_settings_field_tabbed();
-                $this.children('.pbsettings-field-typography').pb_settings_field_typography();
-                $this.children('.pbsettings-field-upload').pb_settings_field_upload();
-                $this.children('.pbsettings-field-wp_editor').pb_settings_field_wp_editor();
+                $this.children('.wpdk_settings-field-accordion').pb_settings_field_accordion();
+                $this.children('.wpdk_settings-field-backup').pb_settings_field_backup();
+                $this.children('.wpdk_settings-field-background').pb_settings_field_background();
+                $this.children('.wpdk_settings-field-code_editor').pb_settings_field_code_editor();
+                $this.children('.wpdk_settings-field-date').pb_settings_field_date();
+                $this.children('.wpdk_settings-field-datetime').pb_settings_field_datetime();
+                $this.children('.wpdk_settings-field-fieldset').pb_settings_field_fieldset();
+                $this.children('.wpdk_settings-field-gallery').pb_settings_field_gallery();
+                $this.children('.wpdk_settings-field-group').pb_settings_field_group();
+                $this.children('.wpdk_settings-field-icon').pb_settings_field_icon();
+                $this.children('.wpdk_settings-field-link').pb_settings_field_link();
+                $this.children('.wpdk_settings-field-media').pb_settings_field_media();
+                $this.children('.wpdk_settings-field-map').pb_settings_field_map();
+                $this.children('.wpdk_settings-field-repeater').pb_settings_field_repeater();
+                $this.children('.wpdk_settings-field-slider').pb_settings_field_slider();
+                $this.children('.wpdk_settings-field-sortable').pb_settings_field_sortable();
+                $this.children('.wpdk_settings-field-sorter').pb_settings_field_sorter();
+                $this.children('.wpdk_settings-field-spinner').pb_settings_field_spinner();
+                $this.children('.wpdk_settings-field-switcher').pb_settings_field_switcher();
+                $this.children('.wpdk_settings-field-tabbed').pb_settings_field_tabbed();
+                $this.children('.wpdk_settings-field-typography').pb_settings_field_typography();
+                $this.children('.wpdk_settings-field-upload').pb_settings_field_upload();
+                $this.children('.wpdk_settings-field-wp_editor').pb_settings_field_wp_editor();
 
                 // Field colors
-                $this.children('.pbsettings-field-border').find('.pbsettings-color').pb_settings_color();
-                $this.children('.pbsettings-field-background').find('.pbsettings-color').pb_settings_color();
-                $this.children('.pbsettings-field-color').find('.pbsettings-color').pb_settings_color();
-                $this.children('.pbsettings-field-color_group').find('.pbsettings-color').pb_settings_color();
-                $this.children('.pbsettings-field-link_color').find('.pbsettings-color').pb_settings_color();
-                $this.children('.pbsettings-field-typography').find('.pbsettings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-border').find('.wpdk_settings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-background').find('.wpdk_settings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-color').find('.wpdk_settings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-color_group').find('.wpdk_settings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-link_color').find('.wpdk_settings-color').pb_settings_color();
+                $this.children('.wpdk_settings-field-typography').find('.wpdk_settings-color').pb_settings_color();
 
                 // Field chosenjs
-                $this.children('.pbsettings-field-select').find('.pbsettings-chosen').pb_settings_chosen();
+                $this.children('.wpdk_settings-field-select').find('.wpdk_settings-chosen').pb_settings_chosen();
 
                 // Field Checkbox
-                $this.children('.pbsettings-field-checkbox').find('.pbsettings-checkbox').pb_settings_checkbox();
+                $this.children('.wpdk_settings-field-checkbox').find('.wpdk_settings-checkbox').pb_settings_checkbox();
 
                 // Field Siblings
-                $this.children('.pbsettings-field-button_set').find('.pbsettings-siblings').pb_settings_siblings();
-                $this.children('.pbsettings-field-image_select').find('.pbsettings-siblings').pb_settings_siblings();
-                $this.children('.pbsettings-field-image_select_sortable').find('.pbsettings-siblings').pb_settings_siblings();
-                $this.children('.pbsettings-field-palette').find('.pbsettings-siblings').pb_settings_siblings();
+                $this.children('.wpdk_settings-field-button_set').find('.wpdk_settings-siblings').pb_settings_siblings();
+                $this.children('.wpdk_settings-field-image_select').find('.wpdk_settings-siblings').pb_settings_siblings();
+                $this.children('.wpdk_settings-field-image_select_sortable').find('.wpdk_settings-siblings').pb_settings_siblings();
+                $this.children('.wpdk_settings-field-palette').find('.wpdk_settings-siblings').pb_settings_siblings();
 
                 // Help Tooptip
-                $this.children('.pbsettings-field').find('.pbsettings-help').pb_settings_help();
+                $this.children('.wpdk_settings-field').find('.wpdk_settings-help').pb_settings_help();
 
                 if (settings.dependency) {
                     $this.pb_settings_dependency();
@@ -3569,7 +3569,7 @@
 
                 $this.data('inited', true);
 
-                $(document).trigger('pbsettings-reload-script', $this);
+                $(document).trigger('wpdk_settings-reload-script', $this);
 
             }
 
@@ -3581,19 +3581,19 @@
     //
     $(document).ready(function () {
 
-        $('.pbsettings-save').pb_settings_save();
-        $('.pbsettings-options').pb_settings_options();
-        $('.pbsettings-sticky-header').pb_settings_sticky();
-        $('.pbsettings-nav-options').pb_settings_nav_options();
-        $('.pbsettings-nav-metabox').pb_settings_nav_metabox();
-        $('.pbsettings-taxonomy').pb_settings_taxonomy();
-        $('.pbsettings-page-templates').pb_settings_page_templates();
-        $('.pbsettings-post-formats').pb_settings_post_formats();
-        $('.pbsettings-shortcode').pb_settings_shortcode();
-        $('.pbsettings-search').pb_settings_search();
-        $('.pbsettings-confirm').pb_settings_confirm();
-        $('.pbsettings-expand-all').pb_settings_expand_all();
-        $('.pbsettings-onload').pb_settings_reload_script();
+        $('.wpdk_settings-save').pb_settings_save();
+        $('.wpdk_settings-options').pb_settings_options();
+        $('.wpdk_settings-sticky-header').pb_settings_sticky();
+        $('.wpdk_settings-nav-options').pb_settings_nav_options();
+        $('.wpdk_settings-nav-metabox').pb_settings_nav_metabox();
+        $('.wpdk_settings-taxonomy').pb_settings_taxonomy();
+        $('.wpdk_settings-page-templates').pb_settings_page_templates();
+        $('.wpdk_settings-post-formats').pb_settings_post_formats();
+        $('.wpdk_settings-shortcode').pb_settings_shortcode();
+        $('.wpdk_settings-search').pb_settings_search();
+        $('.wpdk_settings-confirm').pb_settings_confirm();
+        $('.wpdk_settings-expand-all').pb_settings_expand_all();
+        $('.wpdk_settings-onload').pb_settings_reload_script();
         $('#widgets-editor').pb_settings_widgets();
         $('#widgets-right').pb_settings_widgets();
         $('#menu-to-edit').pb_settings_nav_menu();

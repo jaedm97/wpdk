@@ -37,8 +37,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_date' ) ) {
           'to'   => '',
         ) );
 
-        echo '<label class="pbsettings--from">'. esc_attr( $args['text_from'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[from]' ) ) .'" value="'. esc_attr( $value['from'] ) .'"'. $this->field_attributes() .'/></label>';
-        echo '<label class="pbsettings--to">'. esc_attr( $args['text_to'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[to]' ) ) .'" value="'. esc_attr( $value['to'] ) .'"'. $this->field_attributes() .'/></label>';
+        echo '<label class="wpdk_settings--from">'. esc_attr( $args['text_from'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[from]' ) ) .'" value="'. esc_attr( $value['from'] ) .'"'. $this->field_attributes() .'/></label>';
+        echo '<label class="wpdk_settings--to">'. esc_attr( $args['text_to'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[to]' ) ) .'" value="'. esc_attr( $value['to'] ) .'"'. $this->field_attributes() .'/></label>';
 
       } else {
 
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_date' ) ) {
 
       }
 
-      echo '<div class="pbsettings-date-settings" data-settings="'. esc_attr( json_encode( $settings ) ) .'"></div>';
+      echo '<div class="wpdk_settings-date-settings" data-settings="'. esc_attr( json_encode( $settings ) ) .'"></div>';
 
       echo $this->field_after();
 

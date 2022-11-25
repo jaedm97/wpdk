@@ -35,13 +35,13 @@ if ( ! class_exists( 'WPDK_Settings_Field_button_set' ) ) {
 
 				if ( is_array( $options ) && ! empty( $options ) ) {
 
-					echo '<div class="pbsettings-siblings pbsettings--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+					echo '<div class="wpdk_settings-siblings wpdk_settings--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 					foreach ( $options as $key => $option ) {
 
 						$type         = ( $args['multiple'] ) ? 'checkbox' : 'radio';
 						$extra        = ( $args['multiple'] ) ? '[]' : '';
-						$active       = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' pbsettings--active' : '';
+						$active       = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' wpdk_settings--active' : '';
 						$checked      = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
 						$availability = isset( $option['availability'] ) ? $option['availability'] : '';
 						
@@ -53,9 +53,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_button_set' ) ) {
 							$is_disabled = empty( $availability ) ? '' : 'disabled';
 						}
 
-						echo '<div class="pbsettings--sibling pbsettings--button' . esc_attr( $active ) . ' ' . esc_attr( $availability ) . '" ' . esc_attr( $is_disabled ) . '>';
+						echo '<div class="wpdk_settings--sibling wpdk_settings--button' . esc_attr( $active ) . ' ' . esc_attr( $availability ) . '" ' . esc_attr( $is_disabled ) . '>';
 						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . $this->field_attributes() . esc_attr( $checked ) . '/>';
-						echo '<div class="pbsettings--name">' . wp_kses_post( $option['label'] ) . '</div>';
+						echo '<div class="wpdk_settings--name">' . wp_kses_post( $option['label'] ) . '</div>';
 						echo '</div>';
 					}
 

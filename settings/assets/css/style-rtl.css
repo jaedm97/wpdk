@@ -55,7 +55,7 @@
 /**
  * 01. Base
  */
-.pbsettings-options {
+.wpdk_settings-options {
   margin-left: 20px;
   margin-right: 0;
 }
@@ -63,66 +63,66 @@
 /**
  * 01. 01. Header
  */
-.pbsettings-header h1 {
+.wpdk_settings-header h1 {
   float: right;
 }
-.pbsettings-header fieldset {
+.wpdk_settings-header fieldset {
   float: left;
 }
 
 /**
  * 01. 02. Header Buttons
  */
-.pbsettings-buttons {
+.wpdk_settings-buttons {
   float: left;
   direction: ltr;
 }
 
-.pbsettings-header-left {
+.wpdk_settings-header-left {
   float: right;
 }
 
-.pbsettings-header-right {
+.wpdk_settings-header-right {
   float: left;
 }
 
 /**
  * 01. 03. Navigation
  */
-.pbsettings-nav {
+.wpdk_settings-nav {
   float: right;
 }
-.pbsettings-nav ul {
+.wpdk_settings-nav ul {
   clear: right;
 }
-.pbsettings-nav ul li .pbsettings-active:after {
+.wpdk_settings-nav ul li .wpdk_settings-active:after {
   right: auto;
   left: 0;
   border-left-color: #fff;
   border-right-color: transparent;
 }
-.pbsettings-nav ul li .pbsettings-arrow:after {
+.wpdk_settings-nav ul li .wpdk_settings-arrow:after {
   content: "\f053";
   right: auto;
   left: 10px;
 }
-.pbsettings-nav ul li.pbsettings-tab-expanded .pbsettings-arrow:after {
+.wpdk_settings-nav ul li.wpdk_settings-tab-expanded .wpdk_settings-arrow:after {
   transform: rotate(-90deg);
 }
-.pbsettings-nav ul ul li a {
+.wpdk_settings-nav ul ul li a {
   padding-right: 25px;
   padding-left: 15px;
 }
-.pbsettings-nav ul ul:before {
+.wpdk_settings-nav ul ul:before {
   left: auto;
   right: 15px;
 }
-.pbsettings-nav .pbsettings-tab-icon {
+.wpdk_settings-nav .wpdk_settings-tab-icon {
   margin-left: 5px;
   margin-right: 0;
 }
 
-.pbsettings-nav-background {
+.wpdk_settings-nav-background {
   left: auto;
   right: 0;
 }
@@ -130,7 +130,7 @@
 /**
  * 01. 04. Content
  */
-.pbsettings-content {
+.wpdk_settings-content {
   margin-left: 0;
   margin-right: 225px;
 }
@@ -138,19 +138,19 @@
 /**
  * 01. 05. Section
  */
-.pbsettings-sections {
+.wpdk_settings-sections {
   float: right;
 }
 
 /**
  * 01. 06. Show all options
  */
-.pbsettings-show-all .pbsettings-content {
+.wpdk_settings-show-all .wpdk_settings-content {
   margin-right: 0;
   overflow: hidden;
 }
 
-.pbsettings-expand-all {
+.wpdk_settings-expand-all {
   float: right;
   right: auto;
   left: 40px;
@@ -161,31 +161,31 @@
 /**
  * 01. 07. Search Input
  */
-.pbsettings-search {
+.wpdk_settings-search {
   float: right;
 }
-.pbsettings-search input {
+.wpdk_settings-search input {
   margin: 0 0 0 5px;
 }
 
 /**
  * 01. 08. Copyright
  */
-.pbsettings-copyright {
+.wpdk_settings-copyright {
   float: right;
 }
 
 /**
  * 01. 09. Metabox
  */
-.pbsettings-metabox {
+.wpdk_settings-metabox {
   margin: -6px -12px -12px -12px;
 }
-.pbsettings-metabox .pbsettings-section-title {
+.wpdk_settings-metabox .wpdk_settings-section-title {
   padding: 20px;
 }
 
-.pbsettings-section-title .pbsettings-section-icon {
+.wpdk_settings-section-title .wpdk_settings-section-icon {
   margin-left: 5px;
   margin-right: 0;
 }
@@ -193,28 +193,28 @@
 /**
  * 02. Fields
  */
-.pbsettings-field .pbsettings-title {
+.wpdk_settings-field .wpdk_settings-title {
   float: right;
 }
-.pbsettings-field .pbsettings-fieldset {
+.wpdk_settings-field .wpdk_settings-fieldset {
   float: left;
 }
 
-.pbsettings-pseudo-field {
+.wpdk_settings-pseudo-field {
   padding: 0 0 0 5px !important;
 }
 
 /**
  * 02. 01. Field: typography
  */
-.pbsettings-field-typography select {
+.wpdk_settings-field-typography select {
   margin: 0;
   width: 100%;
 }
-.pbsettings-field-typography .pbsettings--blocks-inputs .pbsettings--blocks {
+.wpdk_settings-field-typography .wpdk_settings--blocks-inputs .wpdk_settings--blocks {
   flex-direction: row-reverse;
 }
-.pbsettings-field-typography .pbsettings--unit {
+.wpdk_settings-field-typography .wpdk_settings--unit {
   left: 4px;
   right: auto;
 }
@@ -222,22 +222,22 @@
 /**
  * 02. 02. Field: checkbox, radio
  */
-.pbsettings-field-checkbox ul ul li,
-.pbsettings-field-radio ul ul li {
+.wpdk_settings-field-checkbox ul ul li,
+.wpdk_settings-field-radio ul ul li {
   margin-left: 0;
   margin-right: 8px;
 }
-.pbsettings-field-checkbox ul ul li:first-child,
-.pbsettings-field-radio ul ul li:first-child {
+.wpdk_settings-field-checkbox ul ul li:first-child,
+.wpdk_settings-field-radio ul ul li:first-child {
   margin-right: 0;
 }
-.pbsettings-field-checkbox .pbsettings--inline-list li,
-.pbsettings-field-radio .pbsettings--inline-list li {
+.wpdk_settings-field-checkbox .wpdk_settings--inline-list li,
+.wpdk_settings-field-radio .wpdk_settings--inline-list li {
   margin-right: 0;
   margin-left: 15px;
 }
-.pbsettings-field-checkbox .pbsettings--text,
-.pbsettings-field-radio .pbsettings--text {
+.wpdk_settings-field-checkbox .wpdk_settings--text,
+.wpdk_settings-field-radio .wpdk_settings--text {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -245,10 +245,10 @@
 /**
  * 02. 03. Field: switcher
  */
-.pbsettings-field-switcher .pbsettings--switcher {
+.wpdk_settings-field-switcher .wpdk_settings--switcher {
   float: right;
 }
-.pbsettings-field-switcher .pbsettings--label {
+.wpdk_settings-field-switcher .wpdk_settings--label {
   float: right;
   margin-left: 0;
   margin-right: 5px;
@@ -257,8 +257,8 @@
 /**
  * 02. 04. Field: upload
  */
-.pbsettings-field-upload .pbsettings--remove,
-.pbsettings-field-upload .pbsettings--button {
+.wpdk_settings-field-upload .wpdk_settings--remove,
+.wpdk_settings-field-upload .wpdk_settings--button {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -266,10 +266,10 @@
 /**
  * 02. 05. Field: group
  */
-.pbsettings-field-group .pbsettings-cloneable-title {
+.wpdk_settings-field-group .wpdk_settings-cloneable-title {
   padding: 15px 10px 15px 65px;
 }
-.pbsettings-field-group .pbsettings-cloneable-helper {
+.wpdk_settings-field-group .wpdk_settings-cloneable-helper {
   right: auto;
   left: 10px;
 }
@@ -277,7 +277,7 @@
 /**
  * 02. 06. Field: repeater
  */
-.pbsettings-field-repeater .pbsettings-repeater-helper {
+.wpdk_settings-field-repeater .wpdk_settings-repeater-helper {
   border-left: 0;
   border-right: 1px solid #eee;
 }
@@ -285,7 +285,7 @@
 /**
  * 02. 07. Field: help
  */
-.pbsettings-help {
+.wpdk_settings-help {
   right: auto;
   left: 5px;
 }
@@ -293,11 +293,11 @@
 /**
  * 02. 08. Field: icon
  */
-.pbsettings-field-icon .button {
+.wpdk_settings-field-icon .button {
   margin-right: 0;
   margin-left: 5px;
 }
-.pbsettings-field-icon .pbsettings-icon-preview i {
+.wpdk_settings-field-icon .wpdk_settings-icon-preview i {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -305,11 +305,11 @@
 /**
  * 02. 09. Field: gallery
  */
-.pbsettings-field-gallery ul li {
+.wpdk_settings-field-gallery ul li {
   margin-right: 0;
   margin-left: 5px;
 }
-.pbsettings-field-gallery .button {
+.wpdk_settings-field-gallery .button {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -317,11 +317,11 @@
 /**
  * 02. 11. Field: tabbed
  */
-.pbsettings-field-tabbed .pbsettings-tabbed-nav .pbsettings--icon {
+.wpdk_settings-field-tabbed .wpdk_settings-tabbed-nav .wpdk_settings--icon {
   padding-right: 0;
   padding-left: 5px;
 }
-.pbsettings-field-tabbed .pbsettings-tabbed-nav a {
+.wpdk_settings-field-tabbed .wpdk_settings-tabbed-nav a {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -329,18 +329,18 @@
 /**
  * 02. 12. Field: media
  */
-.pbsettings-field-media .button {
+.wpdk_settings-field-media .button {
   margin-left: 0;
   margin-right: 7px;
 }
-.pbsettings-field-media .hidden + .button {
+.wpdk_settings-field-media .hidden + .button {
   margin-right: 0;
 }
 
 /**
  * 02. 13. Field: notice
  */
-.pbsettings-notice {
+.wpdk_settings-notice {
   border-left: none;
   border-right-style: solid;
   border-right-width: 4px;
@@ -349,25 +349,25 @@
 /**
  * 02. 14. Field: border, spacing, dimensions
  */
-.pbsettings-field-dimensions .pbsettings--input,
-.pbsettings-field-dimensions .pbsettings-fieldset,
-.pbsettings-field-spacing .pbsettings--input,
-.pbsettings-field-spacing .pbsettings-fieldset,
-.pbsettings-field-border .pbsettings--input,
-.pbsettings-field-border .pbsettings-fieldset {
+.wpdk_settings-field-dimensions .wpdk_settings--input,
+.wpdk_settings-field-dimensions .wpdk_settings-fieldset,
+.wpdk_settings-field-spacing .wpdk_settings--input,
+.wpdk_settings-field-spacing .wpdk_settings-fieldset,
+.wpdk_settings-field-border .wpdk_settings--input,
+.wpdk_settings-field-border .wpdk_settings-fieldset {
   direction: ltr;
 }
-.pbsettings-field-dimensions .pbsettings--inputs,
-.pbsettings-field-dimensions .pbsettings--color,
-.pbsettings-field-spacing .pbsettings--inputs,
-.pbsettings-field-spacing .pbsettings--color,
-.pbsettings-field-border .pbsettings--inputs,
-.pbsettings-field-border .pbsettings--color {
+.wpdk_settings-field-dimensions .wpdk_settings--inputs,
+.wpdk_settings-field-dimensions .wpdk_settings--color,
+.wpdk_settings-field-spacing .wpdk_settings--inputs,
+.wpdk_settings-field-spacing .wpdk_settings--color,
+.wpdk_settings-field-border .wpdk_settings--inputs,
+.wpdk_settings-field-border .wpdk_settings--color {
   float: right;
 }
-.pbsettings-field-dimensions .pbsettings--color,
-.pbsettings-field-spacing .pbsettings--color,
-.pbsettings-field-border .pbsettings--color {
+.wpdk_settings-field-dimensions .wpdk_settings--color,
+.wpdk_settings-field-spacing .wpdk_settings--color,
+.wpdk_settings-field-border .wpdk_settings--color {
   margin-right: 4px;
   direction: rtl;
 }
@@ -375,14 +375,14 @@
 /**
  * 02. 15. Field: background
  */
-.pbsettings-field-background .pbsettings--block {
+.wpdk_settings-field-background .wpdk_settings--block {
   float: right;
 }
-.pbsettings-field-background .pbsettings--select,
-.pbsettings-field-background .pbsettings--media {
+.wpdk_settings-field-background .wpdk_settings--select,
+.wpdk_settings-field-background .wpdk_settings--media {
   padding-right: 0;
 }
-.pbsettings-field-background .pbsettings--title {
+.wpdk_settings-field-background .wpdk_settings--title {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -390,7 +390,7 @@
 /**
  * 02. 16. Field: spinner
  */
-.pbsettings-field-spinner .pbsettings--spin {
+.wpdk_settings-field-spinner .wpdk_settings--spin {
   float: right;
   direction: ltr;
 }
@@ -398,26 +398,26 @@
 /**
  * 02. 17. Field: slider
  */
-.pbsettings-field-slider .pbsettings-slider-ui {
+.wpdk_settings-field-slider .wpdk_settings-slider-ui {
   direction: ltr;
   margin-right: 0;
   margin-left: 15px;
 }
-.pbsettings-field-slider .pbsettings--input {
+.wpdk_settings-field-slider .wpdk_settings--input {
   direction: ltr;
 }
 
 /**
  * 02. 18. Field: button_set
  */
-.pbsettings-field-button_set .pbsettings--button-group {
+.wpdk_settings-field-button_set .wpdk_settings--button-group {
   float: right;
 }
 
 /**
  * 02. 19. Field: link_color
  */
-.pbsettings-field-link_color .pbsettings--left {
+.wpdk_settings-field-link_color .wpdk_settings--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -426,7 +426,7 @@
 /**
  * 02. 20. Field: color_group
  */
-.pbsettings-field-color_group .pbsettings--left {
+.wpdk_settings-field-color_group .wpdk_settings--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -435,7 +435,7 @@
 /**
  * 02. 21. Field: palette
  */
-.pbsettings-field-palette .pbsettings--palette {
+.wpdk_settings-field-palette .wpdk_settings--palette {
   margin-right: 0;
   margin-left: 10px;
 }
@@ -443,7 +443,7 @@
 /**
  * 02. 22. Field: accordion
  */
-.pbsettings-field-accordion .pbsettings--icon {
+.wpdk_settings-field-accordion .wpdk_settings--icon {
   margin-right: 0;
   margin-left: 2px;
 }
@@ -451,7 +451,7 @@
 /**
  * 02. 23. Field: date
  */
-.pbsettings-field-date .pbsettings--to {
+.wpdk_settings-field-date .wpdk_settings--to {
   margin-left: 0;
   margin-right: 7px;
 }
@@ -459,7 +459,7 @@
 /**
  * 02. 24. Field: map
  */
-.pbsettings-field-map .pbsettings--map-input:last-child {
+.wpdk_settings-field-map .wpdk_settings--map-input:last-child {
   padding-left: 0;
   padding-right: 10px;
 }
@@ -467,7 +467,7 @@
 /**
  * 02. 25. Field: sortable
  */
-.pbsettings-field-sortable .pbsettings-sortable-helper {
+.wpdk_settings-field-sortable .wpdk_settings-sortable-helper {
   border-left: none;
   border-right: 1px solid #eee;
 }
@@ -475,10 +475,10 @@
 /**
  * 02. 26. Field: number
  */
-.pbsettings-field-number .pbsettings--wrap {
+.wpdk_settings-field-number .wpdk_settings--wrap {
   float: right;
 }
-.pbsettings-field-number .pbsettings--unit {
+.wpdk_settings-field-number .wpdk_settings--unit {
   left: 4px;
   right: auto;
 }
@@ -486,20 +486,20 @@
 /**
  * 03. Taxonomy
  */
-.pbsettings-taxonomy-add-fields {
+.wpdk_settings-taxonomy-add-fields {
   margin-right: 0;
   margin-left: 30px;
 }
-.pbsettings-taxonomy-add-fields .pbsettings-field > .pbsettings-fieldset > .pbsettings-help {
+.wpdk_settings-taxonomy-add-fields .wpdk_settings-field > .wpdk_settings-fieldset > .wpdk_settings-help {
   left: -5px;
   right: auto;
 }
 
-.pbsettings-taxonomy-edit-fields {
+.wpdk_settings-taxonomy-edit-fields {
   margin-right: 0;
   margin-left: 35px;
 }
-.pbsettings-taxonomy-edit-fields .pbsettings-field > .pbsettings-fieldset > .pbsettings-help {
+.wpdk_settings-taxonomy-edit-fields .wpdk_settings-field > .wpdk_settings-fieldset > .wpdk_settings-help {
   right: auto;
   left: -5px;
 }
@@ -507,11 +507,11 @@
 /**
  * 04. Profile
  */
-.pbsettings-profile-options > h2 > .fa {
+.wpdk_settings-profile-options > h2 > .fa {
   padding-right: 0;
   padding-left: 7px;
 }
-.pbsettings-profile-options > .pbsettings-field > .pbsettings-fieldset > .pbsettings-help {
+.wpdk_settings-profile-options > .wpdk_settings-field > .wpdk_settings-fieldset > .wpdk_settings-help {
   left: -5px;
   right: auto;
 }
@@ -519,17 +519,17 @@
 /**
  * 05. Nav Menu
  */
-.pbsettings-nav-menu-options > .pbsettings-fields {
+.wpdk_settings-nav-menu-options > .wpdk_settings-fields {
   margin-left: 0;
   margin-right: -10px;
 }
 
-.pbsettings-nav-menu-title {
+.wpdk_settings-nav-menu-title {
   padding-left: 14px;
   padding-right: 12px;
 }
 
-.pbsettings-nav-menu-icon {
+.wpdk_settings-nav-menu-icon {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -537,15 +537,15 @@
 /**
  * 06. Modal
  */
-.pbsettings-modal-content .pbsettings-field {
+.wpdk_settings-modal-content .wpdk_settings-field {
   padding: 15px 15px 15px 30px;
 }
 
-.pbsettings-modal-title {
+.wpdk_settings-modal-title {
   padding: 0 16px 0 36px;
 }
 
-.pbsettings-modal-close {
+.wpdk_settings-modal-close {
   right: auto;
   left: 0;
 }
@@ -553,7 +553,7 @@
 /**
  * 07. Customizer
  */
-.control-section .pbsettings-field .pbsettings-fieldset {
+.control-section .wpdk_settings-field .wpdk_settings-fieldset {
   margin-right: 0;
 }
 
@@ -561,30 +561,30 @@
  * 08. Responsive
  */
 @media only screen and (max-width: 1200px) {
-  .pbsettings-metabox .pbsettings-field .pbsettings-fieldset {
+  .wpdk_settings-metabox .wpdk_settings-field .wpdk_settings-fieldset {
     margin-left: 0;
   }
 }
 @media only screen and (max-width: 782px) {
-  .pb_settings .pbsettings-fieldset,
-  .pb_settings .pbsettings-content {
+  .pb_settings .wpdk_settings-fieldset,
+  .pb_settings .wpdk_settings-content {
     margin-right: 0;
   }
 }
 /**
  * 09. Others
  */
-.pbsettings-field .pbsettings--transparent-slider {
+.wpdk_settings-field .wpdk_settings--transparent-slider {
   margin-left: 0;
   margin-right: 2px;
 }
-.pbsettings-field .pbsettings--transparent-slider .ui-slider-handle {
+.wpdk_settings-field .wpdk_settings--transparent-slider .ui-slider-handle {
   margin: 0 -11px;
 }
-.pbsettings-field .pbsettings--transparent-offset {
+.wpdk_settings-field .wpdk_settings--transparent-offset {
   background-position: center right;
 }
-.pbsettings-field .pbsettings--transparent-text {
+.wpdk_settings-field .wpdk_settings--transparent-text {
   right: auto;
   left: 10px;
 }

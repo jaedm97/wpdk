@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_wp_editor' ) ) {
 
 			echo $this->field_before();
 
-			echo ( pb_settings_wp_editor_api() ) ? '<div class="pbsettings-wp-editor" data-editor-settings="' . esc_attr( json_encode( $editor_settings ) ) . '">' : '';
+			echo ( pb_settings_wp_editor_api() ) ? '<div class="wpdk_settings-wp-editor" data-editor-settings="' . esc_attr( json_encode( $editor_settings ) ) . '">' : '';
 
 			echo '<textarea name="' . esc_attr( $this->field_name() ) . '"' . $this->field_attributes( $attributes ) . $editor_height . '>' . $this->value . '</textarea>';
 

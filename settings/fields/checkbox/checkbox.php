@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_checkbox' ) ) {
         'query_args' => array(),
       ) );
 
-      $inline_class = ( $args['inline'] ) ? ' class="pbsettings--inline-list"' : '';
+      $inline_class = ( $args['inline'] ) ? ' class="wpdk_settings--inline-list"' : '';
 
       echo $this->field_before();
 
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_checkbox' ) ) {
                     echo '<li>';
                     echo '<label>';
                     echo '<input type="checkbox" name="'. esc_attr( $this->field_name( '[]' ) ) .'" value="'. esc_attr( $sub_key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-                    echo '<span class="pbsettings--text">'. esc_attr( $sub_value ) .'</span>';
+                    echo '<span class="wpdk_settings--text">'. esc_attr( $sub_value ) .'</span>';
                     echo '</label>';
                     echo '</li>';
                   }
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_checkbox' ) ) {
               echo '<li>';
               echo '<label>';
               echo '<input type="checkbox" name="'. esc_attr( $this->field_name( '[]' ) ) .'" value="'. esc_attr( $option_key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-              echo '<span class="pbsettings--text">'. esc_attr( $option_value ) .'</span>';
+              echo '<span class="wpdk_settings--text">'. esc_attr( $option_value ) .'</span>';
               echo '</label>';
               echo '</li>';
 
@@ -79,10 +79,10 @@ if ( ! class_exists( 'WPDK_Settings_Field_checkbox' ) ) {
 
       } else {
 
-        echo '<label class="pbsettings-checkbox">';
-        echo '<input type="hidden" name="'. esc_attr( $this->field_name() ) .'" value="'. $this->value .'" class="pbsettings--input"'. $this->field_attributes() .'/>';
-        echo '<input type="checkbox" name="_pseudo" class="pbsettings--checkbox"'. esc_attr( checked( $this->value, 1, false ) ) . $this->field_attributes() .'/>';
-        echo ( ! empty( $this->field['label'] ) ) ? '<span class="pbsettings--text">'. esc_attr( $this->field['label'] ) .'</span>' : '';
+        echo '<label class="wpdk_settings-checkbox">';
+        echo '<input type="hidden" name="'. esc_attr( $this->field_name() ) .'" value="'. $this->value .'" class="wpdk_settings--input"'. $this->field_attributes() .'/>';
+        echo '<input type="checkbox" name="_pseudo" class="wpdk_settings--checkbox"'. esc_attr( checked( $this->value, 1, false ) ) . $this->field_attributes() .'/>';
+        echo ( ! empty( $this->field['label'] ) ) ? '<span class="wpdk_settings--text">'. esc_attr( $this->field['label'] ) .'</span>' : '';
         echo '</label>';
 
       }

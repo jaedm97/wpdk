@@ -22,14 +22,14 @@ if ( ! class_exists( 'WPDK_Settings_Field_palette' ) ) {
 
       if ( ! empty( $palette ) ) {
 
-        echo '<div class="pbsettings-siblings pbsettings--palettes">';
+        echo '<div class="wpdk_settings-siblings wpdk_settings--palettes">';
 
         foreach ( $palette as $key => $colors ) {
 
-          $active  = ( $key === $this->value ) ? ' pbsettings--active' : '';
+          $active  = ( $key === $this->value ) ? ' wpdk_settings--active' : '';
           $checked = ( $key === $this->value ) ? ' checked' : '';
 
-          echo '<div class="pbsettings--sibling pbsettings--palette'. esc_attr( $active ) .'">';
+          echo '<div class="wpdk_settings--sibling wpdk_settings--palette'. esc_attr( $active ) .'">';
 
           if ( ! empty( $colors ) ) {
 

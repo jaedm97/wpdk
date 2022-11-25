@@ -199,7 +199,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 				global $submenu;
 
 				$menu_slug = $this->args['menu_slug'];
-				$menu_icon = ( ! empty( $this->args['admin_bar_menu_icon'] ) ) ? '<span class="pbsettings-ab-icon ab-icon ' . esc_attr( $this->args['admin_bar_menu_icon'] ) . '"></span>' : '';
+				$menu_icon = ( ! empty( $this->args['admin_bar_menu_icon'] ) ) ? '<span class="wpdk_settings-ab-icon ab-icon ' . esc_attr( $this->args['admin_bar_menu_icon'] ) . '"></span>' : '';
 
 				$wp_admin_bar->add_node( array(
 					'id'    => $menu_slug,
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 					foreach ( $sections['fields'] as $field ) {
 						if ( ! empty( $field['id'] ) ) {
 							if ( array_key_exists( $field['id'], $this->errors ) ) {
-								$err = '<span class="pbsettings-label-error">!</span>';
+								$err = '<span class="wpdk_settings-label-error">!</span>';
 							}
 						}
 					}
@@ -528,66 +528,66 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 		public function add_options_html() {
 
 			$has_nav       = ( count( $this->pre_tabs ) > 1 ) ? true : false;
-			$show_all      = ( ! $has_nav ) ? ' pbsettings-show-all' : '';
-			$ajax_class    = ( $this->args['ajax_save'] ) ? ' pbsettings-save-ajax' : '';
-			$sticky_class  = ( $this->args['sticky_header'] ) ? ' pbsettings-sticky-header' : '';
+			$show_all      = ( ! $has_nav ) ? ' wpdk_settings-show-all' : '';
+			$ajax_class    = ( $this->args['ajax_save'] ) ? ' wpdk_settings-save-ajax' : '';
+			$sticky_class  = ( $this->args['sticky_header'] ) ? ' wpdk_settings-sticky-header' : '';
 			$wrapper_class = ( $this->args['framework_class'] ) ? ' ' . $this->args['framework_class'] : '';
-			$theme         = ( $this->args['theme'] ) ? ' pbsettings-theme-' . $this->args['theme'] : '';
+			$theme         = ( $this->args['theme'] ) ? ' wpdk_settings-theme-' . $this->args['theme'] : '';
 			$class         = ( $this->args['class'] ) ? ' ' . $this->args['class'] : '';
 			$nav_type      = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 			$form_action   = ( $this->args['form_action'] ) ? $this->args['form_action'] : '';
 
 			do_action( 'pb_settings_options_before' );
 
-			echo '<div class="pb_settings pbsettings-options' . esc_attr( $theme . $class . $wrapper_class ) . '" data-slug="' . esc_attr( $this->args['menu_slug'] ) . '" data-unique="' . esc_attr( $this->unique ) . '">';
+			echo '<div class="pb_settings wpdk_settings-options' . esc_attr( $theme . $class . $wrapper_class ) . '" data-slug="' . esc_attr( $this->args['menu_slug'] ) . '" data-unique="' . esc_attr( $this->unique ) . '">';
 
-			echo '<div class="pbsettings-container">';
+			echo '<div class="wpdk_settings-container">';
 
-			echo '<form method="post" action="' . esc_attr( $form_action ) . '" enctype="multipart/form-data" id="pbsettings-form" autocomplete="off" novalidate="novalidate">';
+			echo '<form method="post" action="' . esc_attr( $form_action ) . '" enctype="multipart/form-data" id="wpdk_settings-form" autocomplete="off" novalidate="novalidate">';
 
-			echo '<input type="hidden" class="pbsettings-section-id" name="pb_settings_transient[section]" value="1">';
+			echo '<input type="hidden" class="wpdk_settings-section-id" name="pb_settings_transient[section]" value="1">';
 
 			wp_nonce_field( 'pb_settings_options_nonce', 'pb_settings_options_nonce' . $this->unique );
 
-			echo '<div class="pbsettings-header' . esc_attr( $sticky_class ) . '">';
-			echo '<div class="pbsettings-header-inner">';
+			echo '<div class="wpdk_settings-header' . esc_attr( $sticky_class ) . '">';
+			echo '<div class="wpdk_settings-header-inner">';
 
 			$product_url         = isset( $this->args['product_url'] ) ? $this->args['product_url'] : '';
 			$product_version     = isset( $this->args['product_version'] ) ? $this->args['product_version'] : '';
 			$product_version_pro = isset( $this->args['product_version_pro'] ) ? $this->args['product_version_pro'] : '';
 
-			echo '<div class="pbsettings-header-left">';
+			echo '<div class="wpdk_settings-header-left">';
 			echo '<h1>' .
 			     esc_html( $this->args['framework_title'] ) .
-			     ( empty( $product_version ) ? '' : sprintf( '<a href="%s" target="_blank" class="pbsettings-version-free">Version %s</a>', $product_url, $product_version ) ) .
-			     ( empty( $product_version_pro ) ? '' : sprintf( '<a href="%s" target="_blank" class="pbsettings-version-pro">Pro %s</a>', $product_url, $product_version_pro ) ) .
+			     ( empty( $product_version ) ? '' : sprintf( '<a href="%s" target="_blank" class="wpdk_settings-version-free">Version %s</a>', $product_url, $product_version ) ) .
+			     ( empty( $product_version_pro ) ? '' : sprintf( '<a href="%s" target="_blank" class="wpdk_settings-version-pro">Pro %s</a>', $product_url, $product_version_pro ) ) .
 			     '</h1>';
 			echo '</div>';
 
-			echo '<div class="pbsettings-header-right">';
+			echo '<div class="wpdk_settings-header-right">';
 
-			$notice_class = ( ! empty( $this->notice ) ) ? 'pbsettings-form-show' : '';
+			$notice_class = ( ! empty( $this->notice ) ) ? 'wpdk_settings-form-show' : '';
 			$notice_text  = ( ! empty( $this->notice ) ) ? $this->notice : '';
 
-			echo '<div class="pbsettings-form-result pbsettings-form-success ' . esc_attr( $notice_class ) . '">' . esc_html( $notice_text ) . '</div>';
+			echo '<div class="wpdk_settings-form-result wpdk_settings-form-success ' . esc_attr( $notice_class ) . '">' . esc_html( $notice_text ) . '</div>';
 
-			echo ( $this->args['show_form_warning'] ) ? '<div class="pbsettings-form-result pbsettings-form-warning">' . esc_html__( 'Save your changes!' ) . '</div>' : '';
+			echo ( $this->args['show_form_warning'] ) ? '<div class="wpdk_settings-form-result wpdk_settings-form-warning">' . esc_html__( 'Save your changes!' ) . '</div>' : '';
 
-			echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="pbsettings-expand-all" title="' . esc_html__( 'show all settings' ) . '"><i class="fas fa-outdent"></i></div>' : '';
+			echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="wpdk_settings-expand-all" title="' . esc_html__( 'show all settings' ) . '"><i class="fas fa-outdent"></i></div>' : '';
 
-			echo ( $this->args['show_search'] ) ? '<div class="pbsettings-search"><input type="text" name="pbsettings-search" placeholder="' . esc_html__( 'Search...' ) . '" autocomplete="off" /></div>' : '';
+			echo ( $this->args['show_search'] ) ? '<div class="wpdk_settings-search"><input type="text" name="wpdk_settings-search" placeholder="' . esc_html__( 'Search...' ) . '" autocomplete="off" /></div>' : '';
 
-			echo '<div class="pbsettings-buttons">';
+			echo '<div class="wpdk_settings-buttons">';
 
 			if ( ! empty( $this->args['quick_links'] ) && is_array( $this->args['quick_links'] ) ) {
 				foreach ( $this->args['quick_links'] as $quick_link ) {
-					echo '<a class="pbsettings-quick-link" href="' . esc_url( $quick_link['url'] ) . '" target="_blank">' . esc_html( $quick_link['label'] ) . '</a>';
+					echo '<a class="wpdk_settings-quick-link" href="' . esc_url( $quick_link['url'] ) . '" target="_blank">' . esc_html( $quick_link['label'] ) . '</a>';
 				}
 			}
 
-			echo '<input type="submit" name="' . esc_attr( $this->unique ) . '[_nonce][save]" class="button button-primary pbsettings-top-save pbsettings-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save' ) . '" data-save="' . esc_html__( 'Saving...' ) . '">';
-			echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="pb_settings_transient[reset_section]" class="button button-secondary pbsettings-reset-section pbsettings-confirm" value="' . esc_html__( 'Reset Section' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?' ) . '">' : '';
-			echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="pb_settings_transient[reset]" class="button pbsettings-warning-primary pbsettings-reset-all pbsettings-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All' ) : esc_html__( 'Reset' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?' ) . '">' : '';
+			echo '<input type="submit" name="' . esc_attr( $this->unique ) . '[_nonce][save]" class="button button-primary wpdk_settings-top-save wpdk_settings-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save' ) . '" data-save="' . esc_html__( 'Saving...' ) . '">';
+			echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="pb_settings_transient[reset_section]" class="button button-secondary wpdk_settings-reset-section wpdk_settings-confirm" value="' . esc_html__( 'Reset Section' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?' ) . '">' : '';
+			echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="pb_settings_transient[reset]" class="button wpdk_settings-warning-primary wpdk_settings-reset-all wpdk_settings-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All' ) : esc_html__( 'Reset' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?' ) . '">' : '';
 			echo '</div>';
 
 			echo '</div>';
@@ -596,24 +596,24 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 			echo '</div>';
 			echo '</div>';
 
-			echo '<div class="pbsettings-wrapper' . esc_attr( $show_all ) . '">';
+			echo '<div class="wpdk_settings-wrapper' . esc_attr( $show_all ) . '">';
 
 			if ( $has_nav ) {
 
-				echo '<div class="pbsettings-nav pbsettings-nav-' . esc_attr( $nav_type ) . ' pbsettings-nav-options">';
+				echo '<div class="wpdk_settings-nav wpdk_settings-nav-' . esc_attr( $nav_type ) . ' wpdk_settings-nav-options">';
 
 				echo '<ul>';
 
 				foreach ( $this->pre_tabs as $tab ) {
 					$tab_id    = sanitize_title( $tab['title'] );
 					$tab_error = $this->error_check( $tab );
-					$tab_icon  = ( ! empty( $tab['icon'] ) ) ? '<i class="pbsettings-tab-icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
+					$tab_icon  = ( ! empty( $tab['icon'] ) ) ? '<i class="wpdk_settings-tab-icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
 
 					if ( ! empty( $tab['subs'] ) ) {
 
-						echo '<li class="pbsettings-tab-item">';
+						echo '<li class="wpdk_settings-tab-item">';
 
-						echo '<a href="#tab=' . esc_attr( $tab_id ) . '" data-tab-id="' . esc_attr( $tab_id ) . '" class="pbsettings-arrow">' . wp_kses_post( $tab_icon . $tab['title'] . $tab_error ) . '</a>';
+						echo '<a href="#tab=' . esc_attr( $tab_id ) . '" data-tab-id="' . esc_attr( $tab_id ) . '" class="wpdk_settings-arrow">' . wp_kses_post( $tab_icon . $tab['title'] . $tab_error ) . '</a>';
 
 						echo '<ul>';
 
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 
 							$sub_id    = $tab_id . '/' . sanitize_title( $sub['title'] );
 							$sub_error = $this->error_check( $sub );
-							$sub_icon  = ( ! empty( $sub['icon'] ) ) ? '<i class="pbsettings-tab-icon ' . esc_attr( $sub['icon'] ) . '"></i>' : '';
+							$sub_icon  = ( ! empty( $sub['icon'] ) ) ? '<i class="wpdk_settings-tab-icon ' . esc_attr( $sub['icon'] ) . '"></i>' : '';
 
 							echo '<li><a href="#tab=' . esc_attr( $sub_id ) . '" data-tab-id="' . esc_attr( $sub_id ) . '">' . wp_kses_post( $sub_icon . $sub['title'] . $sub_error ) . '</a></li>';
 
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 
 					} else {
 
-						echo '<li class="pbsettings-tab-item"><a href="#tab=' . esc_attr( $tab_id ) . '" data-tab-id="' . esc_attr( $tab_id ) . '">' . esc_html( $tab_icon . $tab['title'] . $tab_error ) . '</a></li>';
+						echo '<li class="wpdk_settings-tab-item"><a href="#tab=' . esc_attr( $tab_id ) . '" data-tab-id="' . esc_attr( $tab_id ) . '">' . esc_html( $tab_icon . $tab['title'] . $tab_error ) . '</a></li>';
 
 					}
 
@@ -645,22 +645,22 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 
 			}
 
-			echo '<div class="pbsettings-content">';
+			echo '<div class="wpdk_settings-content">';
 
-			echo '<div class="pbsettings-sections">';
+			echo '<div class="wpdk_settings-sections">';
 
 			foreach ( $this->pre_sections as $section ) {
 
-				$section_onload = ( ! $has_nav ) ? ' pbsettings-onload' : '';
+				$section_onload = ( ! $has_nav ) ? ' wpdk_settings-onload' : '';
 				$section_class  = ( ! empty( $section['class'] ) ) ? ' ' . $section['class'] : '';
-				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 				$section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 				$section_parent = ( ! empty( $section['ptitle'] ) ) ? sanitize_title( $section['ptitle'] ) . '/' : '';
 				$section_slug   = ( ! empty( $section['title'] ) ) ? sanitize_title( $section_title ) : '';
 
-				echo '<div class="pbsettings-section hidden' . esc_attr( $section_onload . $section_class ) . '" data-section-id="' . esc_attr( $section_parent . $section_slug ) . '">';
-				echo ( $has_nav ) ? '<div class="pbsettings-section-title"><h3>' . wp_kses_data( $section_icon . $section_title ) . '</h3></div>' : '';
-				echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . wp_kses_data( $section['description'] ) . '</div>' : '';
+				echo '<div class="wpdk_settings-section hidden' . esc_attr( $section_onload . $section_class ) . '" data-section-id="' . esc_attr( $section_parent . $section_slug ) . '">';
+				echo ( $has_nav ) ? '<div class="wpdk_settings-section-title"><h3>' . wp_kses_data( $section_icon . $section_title ) . '</h3></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . wp_kses_data( $section['description'] ) . '</div>' : '';
 
 				if ( ! empty( $section['fields'] ) ) {
 
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 					do_action( 'WPDK_Settings/section/' . $section['id'] );
 
 				} else {
-					echo '<div class="pbsettings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
+					echo '<div class="wpdk_settings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
 				}
 
 				echo '</div>';
@@ -698,23 +698,23 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 
 			echo '</div>';
 
-			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="pbsettings-nav-background"></div>' : '';
+			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="wpdk_settings-nav-background"></div>' : '';
 
 			echo '</div>';
 
 			if ( ! empty( $this->args['show_footer'] ) ) {
 
-				echo '<div class="pbsettings-footer">';
+				echo '<div class="wpdk_settings-footer">';
 
 				if ( ! empty( $this->args['show_footer_buttons'] ) ) {
-					echo '<div class="pbsettings-buttons">';
-					echo '<input type="submit" name="pb_settings_transient[save]" class="button button-primary pbsettings-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save' ) . '" data-save="' . esc_html__( 'Saving...' ) . '">';
-					echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="pb_settings_transient[reset_section]" class="button button-secondary pbsettings-reset-section pbsettings-confirm" value="' . esc_html__( 'Reset Section' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?' ) . '">' : '';
-					echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="pb_settings_transient[reset]" class="button pbsettings-warning-primary pbsettings-reset-all pbsettings-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All' ) : esc_html__( 'Reset' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?' ) . '">' : '';
+					echo '<div class="wpdk_settings-buttons">';
+					echo '<input type="submit" name="pb_settings_transient[save]" class="button button-primary wpdk_settings-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save' ) . '" data-save="' . esc_html__( 'Saving...' ) . '">';
+					echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="pb_settings_transient[reset_section]" class="button button-secondary wpdk_settings-reset-section wpdk_settings-confirm" value="' . esc_html__( 'Reset Section' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?' ) . '">' : '';
+					echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="pb_settings_transient[reset]" class="button wpdk_settings-warning-primary wpdk_settings-reset-all wpdk_settings-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All' ) : esc_html__( 'Reset' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?' ) . '">' : '';
 					echo '</div>';
 				}
 
-				echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="pbsettings-copyright">' . $this->args['footer_text'] . '</div>' : '';
+				echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="wpdk_settings-copyright">' . $this->args['footer_text'] . '</div>' : '';
 
 				echo '<div class="clear"></div>';
 				echo '</div>';

@@ -96,17 +96,17 @@ if ( ! class_exists( 'WPDK_Settings_Profile_Options' ) ) {
 				delete_user_meta( $profile_id, '_pb_settings_errors_' . $this->unique );
 			}
 
-			echo '<div class="pb_settings pbsettings-profile-options pbsettings-onload' . esc_attr( $class ) . '">';
+			echo '<div class="pb_settings wpdk_settings-profile-options wpdk_settings-onload' . esc_attr( $class ) . '">';
 
 			wp_nonce_field( 'pb_settings_profile_nonce', 'pb_settings_profile_nonce' . $this->unique );
 
 			foreach ( $this->sections as $section ) {
 
-				$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+				$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 				$section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
 				echo ( $section_title || $section_icon ) ? '<h2>' . esc_html( $section_icon . $section_title ) . '</h2>' : '';
-				echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 				if ( ! empty( $section['fields'] ) ) {
 

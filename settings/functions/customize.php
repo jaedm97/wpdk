@@ -77,8 +77,8 @@ if ( ! class_exists( 'WP_Customize_Control_WPDK_Settings' ) && class_exists( 'WP
 				$depend .= ' data-value="' . esc_attr( $data_value ) . '"';
 				$depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-				$visible = ' pbsettings-dependency-control';
-				$visible .= ( ! empty( $depend_visible ) ) ? ' pbsettings-depend-visible' : ' pbsettings-depend-hidden';
+				$visible = ' wpdk_settings-dependency-control';
+				$visible .= ( ! empty( $depend_visible ) ) ? ' wpdk_settings-depend-visible' : ' wpdk_settings-depend-hidden';
 
 			}
 
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WP_Customize_Control_WPDK_Settings' ) && class_exists( 'WP
 			$field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
 			$custom     = ( ! empty( $this->field['customizer'] ) ) ? true : false;
 			$is_complex = ( in_array( $this->field['type'], $complex ) ) ? true : false;
-			$class      = ( $is_complex || $custom ) ? ' pbsettings-customize-complex' : '';
+			$class      = ( $is_complex || $custom ) ? ' wpdk_settings-customize-complex' : '';
 			$atts       = ( $is_complex || $custom ) ? ' data-unique-id="' . esc_attr( $this->unique ) . '" data-option-id="' . esc_attr( $field_id ) . '"' : '';
 
 			if ( ! $is_complex && ! $custom ) {
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WP_Customize_Control_WPDK_Settings' ) && class_exists( 'WP
 
 			$this->field['dependency'] = array();
 
-			echo '<div class="pbsettings-customize-field' . esc_attr( $class ) . '"' . $atts . '>';
+			echo '<div class="wpdk_settings-customize-field' . esc_attr( $class ) . '"' . $atts . '>';
 
 			WPDK_Settings::field( $this->field, $this->value(), $this->unique, 'customize' );
 

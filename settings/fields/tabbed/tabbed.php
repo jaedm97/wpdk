@@ -20,23 +20,23 @@ if ( ! class_exists( 'WPDK_Settings_Field_tabbed' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings-tabbed-nav" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings-tabbed-nav" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
       foreach ( $this->field['tabs'] as $key => $tab ) {
 
-        $tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="pbsettings--icon '. esc_attr( $tab['icon'] ) .'"></i>' : '';
-        $tabbed_active = ( empty( $key ) ) ? 'pbsettings-tabbed-active' : '';
+        $tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="wpdk_settings--icon '. esc_attr( $tab['icon'] ) .'"></i>' : '';
+        $tabbed_active = ( empty( $key ) ) ? 'wpdk_settings-tabbed-active' : '';
 
         echo '<a href="#" class="'. esc_attr( $tabbed_active ) .'"">'. $tabbed_icon . esc_attr( $tab['title'] ) .'</a>';
 
       }
       echo '</div>';
 
-      echo '<div class="pbsettings-tabbed-contents">';
+      echo '<div class="wpdk_settings-tabbed-contents">';
       foreach ( $this->field['tabs'] as $key => $tab ) {
 
         $tabbed_hidden = ( ! empty( $key ) ) ? ' hidden' : '';
 
-        echo '<div class="pbsettings-tabbed-content'. esc_attr( $tabbed_hidden ) .'">';
+        echo '<div class="wpdk_settings-tabbed-content'. esc_attr( $tabbed_hidden ) .'">';
 
         foreach ( $tab['fields'] as $field ) {
 

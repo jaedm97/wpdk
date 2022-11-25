@@ -298,7 +298,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 
 		// Create metabox options
 		public static function createMetabox( $id, $args = array() ) {
-			self::$args['metabox_options'][ $id ] = wp_parse_args( $args, array( 'class' => 'pbsettings-meta-box' ) );
+			self::$args['metabox_options'][ $id ] = wp_parse_args( $args, array( 'class' => 'wpdk_settings-meta-box' ) );
 		}
 
 		// Create menu options
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 
 			$path     = '';
 			$file     = ltrim( $file, '/' );
-			$override = apply_filters( 'pb_settings_override', 'pbsettings-override' );
+			$override = apply_filters( 'pb_settings_override', 'wpdk_settings-override' );
 
 			if ( file_exists( get_parent_theme_file_path( $override . '/' . $file ) ) ) {
 				$path = get_parent_theme_file_path( $override . '/' . $file );
@@ -591,7 +591,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 					self::$enqueue = true;
 				}
 
-				if ( $wpscreen->id === 'tools_page_pbsettings-welcome' ) {
+				if ( $wpscreen->id === 'tools_page_wpdk_settings-welcome' ) {
 					self::$enqueue = true;
 				}
 
@@ -610,10 +610,10 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 
 			// Font awesome 4 and 5 loader
 			if ( apply_filters( 'pb_settings_fa4', false ) ) {
-				wp_enqueue_style( 'pbsettings-fa', 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+				wp_enqueue_style( 'wpdk_settings-fa', 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 			} else {
-				wp_enqueue_style( 'pbsettings-fa5', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.5', 'all' );
-				wp_enqueue_style( 'pbsettings-fa5-v4-shims', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/v4-shims.min.css', array(), '5.15.5', 'all' );
+				wp_enqueue_style( 'wpdk_settings-fa5', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.5', 'all' );
+				wp_enqueue_style( 'wpdk_settings-fa5-v4-shims', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/v4-shims.min.css', array(), '5.15.5', 'all' );
 			}
 
 			$version = defined( 'PB_CLEAN_CACHE' ) && PB_CLEAN_CACHE ? time() : self::$version;
@@ -624,12 +624,12 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 
 			// Main RTL styles
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'pbsettings-rtl', self::include_plugin_url( 'assets/css/style-rtl.css' ), array(), $version, 'all' );
+				wp_enqueue_style( 'wpdk_settings-rtl', self::include_plugin_url( 'assets/css/style-rtl.css' ), array(), $version, 'all' );
 			}
 
 			// Main scripts
-			wp_enqueue_script( 'pbsettings-plugins', self::include_plugin_url( 'assets/js/plugins.js' ), array(), $version, true );
-			wp_enqueue_script( 'pb_settings', self::include_plugin_url( 'assets/js/main.js' ), array( 'pbsettings-plugins' ), $version, true );
+			wp_enqueue_script( 'wpdk_settings-plugins', self::include_plugin_url( 'assets/js/plugins.js' ), array(), $version, true );
+			wp_enqueue_script( 'pb_settings', self::include_plugin_url( 'assets/js/main.js' ), array( 'wpdk_settings-plugins' ), $version, true );
 
 			// Main variables
 			wp_localize_script( 'pb_settings', 'pb_settings_vars', array(
@@ -688,7 +688,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 
 					$query['display'] = 'swap';
 
-					wp_enqueue_style( 'pbsettings-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
+					wp_enqueue_style( 'wpdk_settings-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
 
 				}
 
@@ -700,9 +700,9 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 						$fonts[] = $family . ( ( ! empty( $styles ) ) ? ':' . implode( ',', $styles ) : '' );
 					}
 
-					wp_enqueue_script( 'pbsettings-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
+					wp_enqueue_script( 'wpdk_settings-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
 
-					wp_localize_script( 'pbsettings-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
+					wp_localize_script( 'wpdk_settings-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
 
 				}
 
@@ -714,7 +714,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 		public static function add_admin_body_class( $classes ) {
 
 			if ( apply_filters( 'pb_settings_fa4', false ) ) {
-				$classes .= 'pbsettings-fa5-shims';
+				$classes .= 'wpdk_settings-fa5-shims';
 			}
 
 			return $classes;
@@ -749,7 +749,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 			$visible          = '';
 			$unique           = ( ! empty( $unique ) ) ? $unique : '';
 			$class            = ( ! empty( $field['class'] ) ) ? ' ' . esc_attr( $field['class'] ) : '';
-			$is_pseudo        = ( ! empty( $field['pseudo'] ) ) ? ' pbsettings-pseudo-field' : '';
+			$is_pseudo        = ( ! empty( $field['pseudo'] ) ) ? ' wpdk_settings-pseudo-field' : '';
 			$field_type       = ( ! empty( $field['type'] ) ) ? esc_attr( $field['type'] ) : '';
 			$availability     = ( ! empty( $field['availability'] ) ) ? esc_attr( $field['availability'] ) : '';
 			$has_availability = empty( $availability ) ? '' : ' availability ' . $availability;
@@ -775,22 +775,22 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 				$depend .= ' data-value="' . esc_attr( $data_value ) . '"';
 				$depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-				$visible = ( ! empty( $depend_visible ) ) ? ' pbsettings-depend-visible' : ' pbsettings-depend-hidden';
+				$visible = ( ! empty( $depend_visible ) ) ? ' wpdk_settings-depend-visible' : ' wpdk_settings-depend-hidden';
 			}
 
 			// These attributes has been sanitized above.
-			echo '<div class="pbsettings-field pbsettings-field-' . esc_attr( $field_type . $is_pseudo . $class . $visible . $has_availability ) . '"' . $depend . '>';
+			echo '<div class="wpdk_settings-field wpdk_settings-field-' . esc_attr( $field_type . $is_pseudo . $class . $visible . $has_availability ) . '"' . $depend . '>';
 
 			if ( ! empty( $field_type ) ) {
 
 				if ( ! empty( $field['title'] ) ) {
-					echo '<div class="pbsettings-title">';
+					echo '<div class="wpdk_settings-title">';
 					echo '<h4>' . esc_html( $field['title'] ) . '</h4>';
-					echo ( ! empty( $field['subtitle'] ) ) ? '<div class="pbsettings-subtitle-text">' . esc_html( $field['subtitle'] ) . '</div>' : '';
+					echo ( ! empty( $field['subtitle'] ) ) ? '<div class="wpdk_settings-subtitle-text">' . esc_html( $field['subtitle'] ) . '</div>' : '';
 					echo '</div>';
 				}
 
-				echo ( ! empty( $field['title'] ) ) ? '<div class="pbsettings-fieldset">' : '';
+				echo ( ! empty( $field['title'] ) ) ? '<div class="wpdk_settings-fieldset">' : '';
 
 				$value = ( ! isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
 				$value = ( isset( $field['value'] ) ) ? $field['value'] : $value;
@@ -820,7 +820,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 					$notice_url = isset( self::$args['pro_url'] ) ? self::$args['pro_url'] : '';
 				}
 
-				echo '<a class="pbsettings-availability-notice" href="' . esc_url( $notice_url ) . '" target="_blank">' . esc_html( $availability ) . '</a>';
+				echo '<a class="wpdk_settings-availability-notice" href="' . esc_url( $notice_url ) . '" target="_blank">' . esc_html( $availability ) . '</a>';
 			}
 
 			echo '<div class="clear"></div>';

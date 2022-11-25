@@ -61,15 +61,15 @@ if ( ! class_exists( 'WPDK_Settings_Field_background' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings--background-colors">';
+      echo '<div class="wpdk_settings--background-colors">';
 
       //
       // Background Color
       if ( ! empty( $args['background_color'] ) ) {
 
-        echo '<div class="pbsettings--color">';
+        echo '<div class="wpdk_settings--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="pbsettings--title">'. esc_html__( 'From' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="wpdk_settings--title">'. esc_html__( 'From' ) .'</div>' : '';
 
         WPDK_Settings::field( array(
           'id'      => 'background-color',
@@ -85,9 +85,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_background' ) ) {
       // Background Gradient Color
       if ( ! empty( $args['background_gradient_color'] ) && ! empty( $args['background_gradient'] ) ) {
 
-        echo '<div class="pbsettings--color">';
+        echo '<div class="wpdk_settings--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="pbsettings--title">'. esc_html__( 'To' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="wpdk_settings--title">'. esc_html__( 'To' ) .'</div>' : '';
 
         WPDK_Settings::field( array(
           'id'      => 'background-gradient-color',
@@ -103,9 +103,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_background' ) ) {
       // Background Gradient Direction
       if ( ! empty( $args['background_gradient_direction'] ) && ! empty( $args['background_gradient'] ) ) {
 
-        echo '<div class="pbsettings--color">';
+        echo '<div class="wpdk_settings--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="pbsettings---title">'. esc_html__( 'Direction' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="wpdk_settings---title">'. esc_html__( 'Direction' ) .'</div>' : '';
 
         WPDK_Settings::field( array(
           'id'          => 'background-gradient-direction',
@@ -129,12 +129,12 @@ if ( ! class_exists( 'WPDK_Settings_Field_background' ) ) {
       // Background Image
       if ( ! empty( $args['background_image'] ) ) {
 
-        echo '<div class="pbsettings--background-image">';
+        echo '<div class="wpdk_settings--background-image">';
 
         WPDK_Settings::field( array(
           'id'          => 'background-image',
           'type'        => 'media',
-          'class'       => 'pbsettings-assign-field-background',
+          'class'       => 'wpdk_settings-assign-field-background',
           'library'     => $args['background_image_library'],
           'preview'     => $args['background_image_preview'],
           'placeholder' => $args['background_image_placeholder'],
@@ -145,10 +145,10 @@ if ( ! class_exists( 'WPDK_Settings_Field_background' ) ) {
 
       }
 
-      $auto_class   = ( ! empty( $args['background_auto_attributes'] ) ) ? ' pbsettings--auto-attributes' : '';
-      $hidden_class = ( ! empty( $args['background_auto_attributes'] ) && empty( $this->value['background-image']['url'] ) ) ? ' pbsettings--attributes-hidden' : '';
+      $auto_class   = ( ! empty( $args['background_auto_attributes'] ) ) ? ' wpdk_settings--auto-attributes' : '';
+      $hidden_class = ( ! empty( $args['background_auto_attributes'] ) && empty( $this->value['background-image']['url'] ) ) ? ' wpdk_settings--attributes-hidden' : '';
 
-      echo '<div class="pbsettings--background-attributes'. esc_attr( $auto_class . $hidden_class ) .'">';
+      echo '<div class="wpdk_settings--background-attributes'. esc_attr( $auto_class . $hidden_class ) .'">';
 
       //
       // Background Position

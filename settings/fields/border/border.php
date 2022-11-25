@@ -65,16 +65,16 @@ if ( ! class_exists( 'WPDK_Settings_Field_border' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings--inputs" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings--inputs" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
 
       if ( ! empty( $args['all'] ) ) {
 
         $placeholder = ( ! empty( $args['all_placeholder'] ) ) ? ' placeholder="'. esc_attr( $args['all_placeholder'] ) .'"' : '';
 
-        echo '<div class="pbsettings--input">';
-        echo ( ! empty( $args['all_icon'] ) ) ? '<span class="pbsettings--label pbsettings--icon">'. $args['all_icon'] .'</span>' : '';
-        echo '<input type="number" name="'. esc_attr( $this->field_name( '[all]' ) ) .'" value="'. esc_attr( $value['all'] ) .'"'. $placeholder .' class="pbsettings-input-number pbsettings--is-unit" step="any" />';
-        echo ( ! empty( $args['unit'] ) ) ? '<span class="pbsettings--label pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
+        echo '<div class="wpdk_settings--input">';
+        echo ( ! empty( $args['all_icon'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--icon">'. $args['all_icon'] .'</span>' : '';
+        echo '<input type="number" name="'. esc_attr( $this->field_name( '[all]' ) ) .'" value="'. esc_attr( $value['all'] ) .'"'. $placeholder .' class="wpdk_settings-input-number wpdk_settings--is-unit" step="any" />';
+        echo ( ! empty( $args['unit'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
         echo '</div>';
 
       } else {
@@ -93,10 +93,10 @@ if ( ! class_exists( 'WPDK_Settings_Field_border' ) ) {
 
           $placeholder = ( ! empty( $args[$property.'_placeholder'] ) ) ? ' placeholder="'. esc_attr( $args[$property.'_placeholder'] ) .'"' : '';
 
-          echo '<div class="pbsettings--input">';
-          echo ( ! empty( $args[$property.'_icon'] ) ) ? '<span class="pbsettings--label pbsettings--icon">'. $args[$property.'_icon'] .'</span>' : '';
-          echo '<input type="number" name="'. esc_attr( $this->field_name( '['. $property .']' ) ) .'" value="'. esc_attr( $value[$property] ) .'"'. $placeholder .' class="pbsettings-input-number pbsettings--is-unit" step="any" />';
-          echo ( ! empty( $args['unit'] ) ) ? '<span class="pbsettings--label pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
+          echo '<div class="wpdk_settings--input">';
+          echo ( ! empty( $args[$property.'_icon'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--icon">'. $args[$property.'_icon'] .'</span>' : '';
+          echo '<input type="number" name="'. esc_attr( $this->field_name( '['. $property .']' ) ) .'" value="'. esc_attr( $value[$property] ) .'"'. $placeholder .' class="wpdk_settings-input-number wpdk_settings--is-unit" step="any" />';
+          echo ( ! empty( $args['unit'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
           echo '</div>';
 
         }
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_border' ) ) {
       }
 
       if ( ! empty( $args['style'] ) ) {
-        echo '<div class="pbsettings--input">';
+        echo '<div class="wpdk_settings--input">';
         echo '<select name="'. esc_attr( $this->field_name( '[style]' ) ) .'">';
         foreach ( $border_props as $border_prop_key => $border_prop_value ) {
           $selected = ( $value['style'] === $border_prop_key ) ? ' selected' : '';
@@ -118,9 +118,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_border' ) ) {
 
       if ( ! empty( $args['color'] ) ) {
         $default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="'. esc_attr( $default_value['color'] ) .'"' : '';
-        echo '<div class="pbsettings--color">';
-        echo '<div class="pbsettings-field-color">';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[color]' ) ) .'" value="'. esc_attr( $value['color'] ) .'" class="pbsettings-color"'. $default_color_attr .' />';
+        echo '<div class="wpdk_settings--color">';
+        echo '<div class="wpdk_settings-field-color">';
+        echo '<input type="text" name="'. esc_attr( $this->field_name( '[color]' ) ) .'" value="'. esc_attr( $value['color'] ) .'" class="wpdk_settings-color"'. $default_color_attr .' />';
         echo '</div>';
         echo '</div>';
       }

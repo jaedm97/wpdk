@@ -18,7 +18,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_sortable' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings-sortable" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings-sortable" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
 
       $pre_sortby = array();
       $pre_fields = array();
@@ -51,9 +51,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_sortable' ) ) {
 
       foreach ( $pre_sortby as $key => $field ) {
 
-        echo '<div class="pbsettings-sortable-item">';
+        echo '<div class="wpdk_settings-sortable-item">';
 
-          echo '<div class="pbsettings-sortable-content">';
+          echo '<div class="wpdk_settings-sortable-content">';
 
           $field_default = ( isset( $this->field['default'][$key] ) ) ? $this->field['default'][$key] : '';
           $field_value   = ( isset( $this->value[$key] ) ) ? $this->value[$key] : $field_default;
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_sortable' ) ) {
 
           echo '</div>';
 
-          echo '<div class="pbsettings-sortable-helper"><i class="fas fa-arrows-alt"></i></div>';
+          echo '<div class="wpdk_settings-sortable-helper"><i class="fas fa-arrows-alt"></i></div>';
 
         echo '</div>';
 

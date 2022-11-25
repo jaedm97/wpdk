@@ -39,12 +39,12 @@
       },
       edit: function (props) {
         return (
-          createElement('div', {className: 'pbsettings-shortcode-block'},
+          createElement('div', {className: 'wpdk_settings-shortcode-block'},
 
             createElement(Button, {
               'data-modal-id': block.modal_id,
               'data-gutenberg-id': block.name,
-              className: 'is-secondary pbsettings-shortcode-button',
+              className: 'is-secondary wpdk_settings-shortcode-button',
               onClick: function () {
                 window.pb_settings_gutenberg_props = props;
               },

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_radio' ) ) {
         'query_args' => array(),
       ) );
 
-      $inline_class = ( $args['inline'] ) ? ' class="pbsettings--inline-list"' : '';
+      $inline_class = ( $args['inline'] ) ? ' class="wpdk_settings--inline-list"' : '';
 
       echo $this->field_before();
 
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_radio' ) ) {
                     echo '<li>';
                     echo '<label>';
                     echo '<input type="radio" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $sub_key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-                    echo '<span class="pbsettings--text">'. esc_attr( $sub_value ) .'</span>';
+                    echo '<span class="wpdk_settings--text">'. esc_attr( $sub_value ) .'</span>';
                     echo '</label>';
                     echo '</li>';
                   }
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_radio' ) ) {
               echo '<li>';
               echo '<label>';
               echo '<input type="radio" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $option_key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-              echo '<span class="pbsettings--text">'. esc_attr( $option_value ) .'</span>';
+              echo '<span class="wpdk_settings--text">'. esc_attr( $option_value ) .'</span>';
               echo '</label>';
               echo '</li>';
 
@@ -80,7 +80,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_radio' ) ) {
 
         $label = ( isset( $this->field['label'] ) ) ? $this->field['label'] : '';
         echo '<label><input type="radio" name="'. esc_attr( $this->field_name() ) .'" value="1"'. $this->field_attributes() . esc_attr( checked( $this->value, 1, false ) ) .'/>';
-        echo ( ! empty( $this->field['label'] ) ) ? '<span class="pbsettings--text">'. esc_attr( $this->field['label'] ) .'</span>' : '';
+        echo ( ! empty( $this->field['label'] ) ) ? '<span class="wpdk_settings--text">'. esc_attr( $this->field['label'] ) .'</span>' : '';
         echo '</label>';
 
       }

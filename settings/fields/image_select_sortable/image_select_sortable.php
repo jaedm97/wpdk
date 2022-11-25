@@ -25,7 +25,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_image_select_sortable' ) ) {
 				'inline'   => false,
 				'options'  => array(),
 			) );
-			$inline  = ( $args['inline'] ) ? ' pbsettings--inline-list' : '';
+			$inline  = ( $args['inline'] ) ? ' wpdk_settings--inline-list' : '';
 			$value   = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 			$options = array();
 
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_image_select_sortable' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="pbsettings-siblings pbsettings--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+				echo '<div class="wpdk_settings-siblings wpdk_settings--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 				$num = 1;
 
@@ -51,12 +51,12 @@ if ( ! class_exists( 'WPDK_Settings_Field_image_select_sortable' ) ) {
 
 					$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
 					$extra   = ( $args['multiple'] ) ? '[' . $num . ']' : '';
-					$active  = ( in_array( $key, $value ) ) ? ' pbsettings--active' : '';
+					$active  = ( in_array( $key, $value ) ) ? ' wpdk_settings--active' : '';
 					$checked = ( in_array( $key, $value ) ) ? ' checked' : '';
 
-					echo '<div class="pbsettings--sibling-wrap">';
+					echo '<div class="wpdk_settings--sibling-wrap">';
 					echo '<span class="sortable"><i class="fa fa-arrows" aria-hidden="true"></i></span>';
-					echo '<div class="pbsettings--sibling pbsettings--image' . esc_attr( $active ) . '">';
+					echo '<div class="wpdk_settings--sibling wpdk_settings--image' . esc_attr( $active ) . '">';
 					echo '<figure>';
 					echo '<img src="' . esc_url( $option ) . '" alt="img-' . esc_attr( $num ++ ) . '" />';
 					echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . $this->field_attributes() . esc_attr( $checked ) . '/>';

@@ -2773,7 +2773,7 @@
 
       _this.options.data['term'] = value;
 
-      _this.chosenXhr = window.wp.ajax.post('pbsettings-chosen', _this.options.data).done( function( response ) {
+      _this.chosenXhr = window.wp.ajax.post('wpdk_settings-chosen', _this.options.data).done( function( response ) {
         _this.show_results( response );
       }).fail( function( response ) {
         _this.container.find('.no-results').text(response.error);
@@ -2820,7 +2820,7 @@
 
     if( this.is_multiple ) {
 
-      var $hidden_select = this.element.parent().find('.pbsettings-hide-select');
+      var $hidden_select = this.element.parent().find('.wpdk_settings-hide-select');
       var $hidden_value  = $hidden_select.val() || [];
 
       this.element.WPDK_SettingsChosenOrder($hidden_value, true);
@@ -4549,7 +4549,7 @@
       if( result ) {
 
         $(controls).each(function() {
-          $(this).removeClass('pbsettings-depend-on');
+          $(this).removeClass('wpdk_settings-depend-on');
         });
 
         $(this.rules).each(function() {
@@ -4559,7 +4559,7 @@
       } else {
 
         $(controls).each(function() {
-          $(this).addClass('pbsettings-depend-on');
+          $(this).addClass('wpdk_settings-depend-on');
         });
 
         $(this.rules).each(function() {

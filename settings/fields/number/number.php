@@ -24,9 +24,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_number' ) ) {
       ) );
 
       echo $this->field_before();
-      echo '<div class="pbsettings--wrap">';
+      echo '<div class="wpdk_settings--wrap">';
       echo '<input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .' min="'. esc_attr( $args['min'] ) .'" max="'. esc_attr( $args['max'] ) .'" step="'. esc_attr( $args['step'] ) .'"/>';
-      echo ( ! empty( $args['unit'] ) ) ? '<span class="pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
+      echo ( ! empty( $args['unit'] ) ) ? '<span class="wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
       echo '</div>';
       echo $this->field_after();
 

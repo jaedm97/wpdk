@@ -82,18 +82,18 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
       $default_value    = ( ! empty( $this->field['default'] ) ) ? wp_parse_args( $this->field['default'], $default_value ) : $default_value;
       $this->value      = wp_parse_args( $this->value, $default_value );
       $this->chosen     = $args['chosen'];
-      $chosen_class     = ( $this->chosen ) ? ' pbsettings--chosen' : '';
+      $chosen_class     = ( $this->chosen ) ? ' wpdk_settings--chosen' : '';
       $line_height_unit = ( ! empty( $args['line_height_unit'] ) ) ? $args['line_height_unit'] : $args['unit'];
 
-      echo '<div class="pbsettings--typography'. esc_attr( $chosen_class ) .'" data-depend-id="'. esc_attr( $this->field['id'] ) .'" data-unit="'. esc_attr( $args['unit'] ) .'" data-line-height-unit="'. esc_attr( $line_height_unit ) .'" data-exclude="'. esc_attr( $args['exclude'] ) .'">';
+      echo '<div class="wpdk_settings--typography'. esc_attr( $chosen_class ) .'" data-depend-id="'. esc_attr( $this->field['id'] ) .'" data-unit="'. esc_attr( $args['unit'] ) .'" data-line-height-unit="'. esc_attr( $line_height_unit ) .'" data-exclude="'. esc_attr( $args['exclude'] ) .'">';
 
-        echo '<div class="pbsettings--blocks pbsettings--blocks-selects">';
+        echo '<div class="wpdk_settings--blocks wpdk_settings--blocks-selects">';
 
           //
           // Font Family
           if ( ! empty( $args['font_family'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Font Family' ) .'</div>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Font Family' ) .'</div>';
             echo $this->create_select( array( $this->value['font-family'] => $this->value['font-family'] ), 'font-family', esc_html__( 'Select a font' ) );
             echo '</div>';
           }
@@ -101,8 +101,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Backup Font Family
           if ( ! empty( $args['backup_font_family'] ) ) {
-            echo '<div class="pbsettings--block pbsettings--block-backup-font-family hidden">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Backup Font Family' ) .'</div>';
+            echo '<div class="wpdk_settings--block wpdk_settings--block-backup-font-family hidden">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Backup Font Family' ) .'</div>';
             echo $this->create_select( apply_filters( 'pb_settings_field_typography_backup_font_family', array(
               'Arial, Helvetica, sans-serif',
               "'Arial Black', Gadget, sans-serif",
@@ -126,22 +126,22 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
 
             //
             // Font Style Select
-            echo '<div class="pbsettings--block pbsettings--block-font-style hidden">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Font Style', 'pb_settings') .'</div>';
-            echo '<select class="pbsettings--font-style-select" data-placeholder="Default">';
+            echo '<div class="wpdk_settings--block wpdk_settings--block-font-style hidden">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Font Style', 'pb_settings') .'</div>';
+            echo '<select class="wpdk_settings--font-style-select" data-placeholder="Default">';
             echo '<option value="">'. ( ! $this->chosen ? esc_html__( 'Default' ) : '' ) .'</option>';
             if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
               echo '<option value="'. esc_attr( strtolower( $this->value['font-weight'] . $this->value['font-style'] ) ) .'" selected></option>';
             }
             echo '</select>';
-            echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[font-weight]' ) ) .'" class="pbsettings--font-weight" value="'. esc_attr( $this->value['font-weight'] ) .'" />';
-            echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[font-style]' ) ) .'" class="pbsettings--font-style" value="'. esc_attr( $this->value['font-style'] ) .'" />';
+            echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[font-weight]' ) ) .'" class="wpdk_settings--font-weight" value="'. esc_attr( $this->value['font-weight'] ) .'" />';
+            echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[font-style]' ) ) .'" class="wpdk_settings--font-style" value="'. esc_attr( $this->value['font-style'] ) .'" />';
 
             //
             // Extra Font Style Select
             if ( ! empty( $args['extra_styles'] ) ) {
-              echo '<div class="pbsettings--block-extra-styles hidden">';
-              echo ( ! $this->chosen ) ? '<div class="pbsettings--title">'. esc_html__( 'Load Extra Styles' ) .'</div>' : '';
+              echo '<div class="wpdk_settings--block-extra-styles hidden">';
+              echo ( ! $this->chosen ) ? '<div class="wpdk_settings--title">'. esc_html__( 'Load Extra Styles' ) .'</div>' : '';
               $placeholder = ( $this->chosen ) ? esc_html__( 'Load Extra Styles' ) : esc_html__( 'Default' );
               echo $this->create_select( $this->value['extra-styles'], 'extra-styles', $placeholder, true );
               echo '</div>';
@@ -154,8 +154,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Subset
           if ( ! empty( $args['subset'] ) ) {
-            echo '<div class="pbsettings--block pbsettings--block-subset hidden">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Subset' ) .'</div>';
+            echo '<div class="wpdk_settings--block wpdk_settings--block-subset hidden">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Subset' ) .'</div>';
             $subset = ( is_array( $this->value['subset'] ) ) ? $this->value['subset'] : array_filter( (array) $this->value['subset'] );
             echo $this->create_select( $subset, 'subset', esc_html__( 'Default' ), $args['multi_subset'] );
             echo '</div>';
@@ -164,8 +164,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Text Align
           if ( ! empty( $args['text_align'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Text Align' ) .'</div>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Text Align' ) .'</div>';
             echo $this->create_select( array(
               'inherit' => esc_html__( 'Inherit' ),
               'left'    => esc_html__( 'Left' ),
@@ -180,8 +180,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Font Variant
           if ( ! empty( $args['font_variant'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Font Variant' ) .'</div>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Font Variant' ) .'</div>';
             echo $this->create_select( array(
               'normal'         => esc_html__( 'Normal' ),
               'small-caps'     => esc_html__( 'Small Caps' ),
@@ -193,8 +193,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Text Transform
           if ( ! empty( $args['text_transform'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Text Transform' ) .'</div>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Text Transform' ) .'</div>';
             echo $this->create_select( array(
               'none'       => esc_html__( 'None' ),
               'capitalize' => esc_html__( 'Capitalize' ),
@@ -207,8 +207,8 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Text Decoration
           if ( ! empty( $args['text_decoration'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Text Decoration' ) .'</div>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Text Decoration' ) .'</div>';
             echo $this->create_select( array(
               'none'               => esc_html__( 'None' ),
               'underline'          => esc_html__( 'Solid' ),
@@ -224,16 +224,16 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
 
         echo '</div>';
 
-        echo '<div class="pbsettings--blocks pbsettings--blocks-inputs">';
+        echo '<div class="wpdk_settings--blocks wpdk_settings--blocks-inputs">';
 
           //
           // Font Size
           if ( ! empty( $args['font_size'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Font Size' ) .'</div>';
-            echo '<div class="pbsettings--input-wrap">';
-            echo '<input type="number" name="'. esc_attr( $this->field_name( '[font-size]' ) ) .'" class="pbsettings--font-size pbsettings--input pbsettings-input-number" value="'. esc_attr( $this->value['font-size'] ) .'" step="any" />';
-            echo '<span class="pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Font Size' ) .'</div>';
+            echo '<div class="wpdk_settings--input-wrap">';
+            echo '<input type="number" name="'. esc_attr( $this->field_name( '[font-size]' ) ) .'" class="wpdk_settings--font-size wpdk_settings--input wpdk_settings-input-number" value="'. esc_attr( $this->value['font-size'] ) .'" step="any" />';
+            echo '<span class="wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>';
             echo '</div>';
             echo '</div>';
           }
@@ -241,11 +241,11 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Line Height
           if ( ! empty( $args['line_height'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Line Height' ) .'</div>';
-            echo '<div class="pbsettings--input-wrap">';
-            echo '<input type="number" name="'. esc_attr( $this->field_name( '[line-height]' ) ) .'" class="pbsettings--line-height pbsettings--input pbsettings-input-number" value="'. esc_attr( $this->value['line-height'] ) .'" step="any" />';
-            echo '<span class="pbsettings--unit">'. esc_attr( $line_height_unit ) .'</span>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Line Height' ) .'</div>';
+            echo '<div class="wpdk_settings--input-wrap">';
+            echo '<input type="number" name="'. esc_attr( $this->field_name( '[line-height]' ) ) .'" class="wpdk_settings--line-height wpdk_settings--input wpdk_settings-input-number" value="'. esc_attr( $this->value['line-height'] ) .'" step="any" />';
+            echo '<span class="wpdk_settings--unit">'. esc_attr( $line_height_unit ) .'</span>';
             echo '</div>';
             echo '</div>';
           }
@@ -253,11 +253,11 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Letter Spacing
           if ( ! empty( $args['letter_spacing'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Letter Spacing' ) .'</div>';
-            echo '<div class="pbsettings--input-wrap">';
-            echo '<input type="number" name="'. esc_attr( $this->field_name( '[letter-spacing]' ) ) .'" class="pbsettings--letter-spacing pbsettings--input pbsettings-input-number" value="'. esc_attr( $this->value['letter-spacing'] ) .'" step="any" />';
-            echo '<span class="pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Letter Spacing' ) .'</div>';
+            echo '<div class="wpdk_settings--input-wrap">';
+            echo '<input type="number" name="'. esc_attr( $this->field_name( '[letter-spacing]' ) ) .'" class="wpdk_settings--letter-spacing wpdk_settings--input wpdk_settings-input-number" value="'. esc_attr( $this->value['letter-spacing'] ) .'" step="any" />';
+            echo '<span class="wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>';
             echo '</div>';
             echo '</div>';
           }
@@ -265,11 +265,11 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
           //
           // Word Spacing
           if ( ! empty( $args['word_spacing'] ) ) {
-            echo '<div class="pbsettings--block">';
-            echo '<div class="pbsettings--title">'. esc_html__( 'Word Spacing' ) .'</div>';
-            echo '<div class="pbsettings--input-wrap">';
-            echo '<input type="number" name="'. esc_attr( $this->field_name( '[word-spacing]' ) ) .'" class="pbsettings--word-spacing pbsettings--input pbsettings-input-number" value="'. esc_attr( $this->value['word-spacing'] ) .'" step="any" />';
-            echo '<span class="pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>';
+            echo '<div class="wpdk_settings--block">';
+            echo '<div class="wpdk_settings--title">'. esc_html__( 'Word Spacing' ) .'</div>';
+            echo '<div class="wpdk_settings--input-wrap">';
+            echo '<input type="number" name="'. esc_attr( $this->field_name( '[word-spacing]' ) ) .'" class="wpdk_settings--word-spacing wpdk_settings--input wpdk_settings-input-number" value="'. esc_attr( $this->value['word-spacing'] ) .'" step="any" />';
+            echo '<span class="wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>';
             echo '</div>';
             echo '</div>';
           }
@@ -280,10 +280,10 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
         // Font Color
         if ( ! empty( $args['color'] ) ) {
           $default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="'. esc_attr( $default_value['color'] ) .'"' : '';
-          echo '<div class="pbsettings--block pbsettings--block-font-color">';
-          echo '<div class="pbsettings--title">'. esc_html__( 'Font Color' ) .'</div>';
-          echo '<div class="pbsettings-field-color">';
-          echo '<input type="text" name="'. esc_attr( $this->field_name( '[color]' ) ) .'" class="pbsettings-color pbsettings--color" value="'. esc_attr( $this->value['color'] ) .'"'. $default_color_attr .' />';
+          echo '<div class="wpdk_settings--block wpdk_settings--block-font-color">';
+          echo '<div class="wpdk_settings--title">'. esc_html__( 'Font Color' ) .'</div>';
+          echo '<div class="wpdk_settings-field-color">';
+          echo '<input type="text" name="'. esc_attr( $this->field_name( '[color]' ) ) .'" class="wpdk_settings-color wpdk_settings--color" value="'. esc_attr( $this->value['color'] ) .'"'. $default_color_attr .' />';
           echo '</div>';
           echo '</div>';
         }
@@ -291,9 +291,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
         //
         // Custom style
         if ( ! empty( $args['custom_style'] ) ) {
-          echo '<div class="pbsettings--block pbsettings--block-custom-style">';
-          echo '<div class="pbsettings--title">'. esc_html__( 'Custom Style' ) .'</div>';
-          echo '<textarea name="'. esc_attr( $this->field_name( '[custom-style]' ) ) .'" class="pbsettings--custom-style">'. esc_attr( $this->value['custom-style'] ) .'</textarea>';
+          echo '<div class="wpdk_settings--block wpdk_settings--block-custom-style">';
+          echo '<div class="wpdk_settings--title">'. esc_html__( 'Custom Style' ) .'</div>';
+          echo '<textarea name="'. esc_attr( $this->field_name( '[custom-style]' ) ) .'" class="wpdk_settings--custom-style">'. esc_attr( $this->value['custom-style'] ) .'</textarea>';
           echo '</div>';
         }
 
@@ -302,14 +302,14 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
         $always_preview = ( $args['preview'] !== 'always' ) ? ' hidden' : '';
 
         if ( ! empty( $args['preview'] ) ) {
-          echo '<div class="pbsettings--block pbsettings--block-preview'. esc_attr( $always_preview ) .'">';
-          echo '<div class="pbsettings--toggle fas fa-toggle-off"></div>';
-          echo '<div class="pbsettings--preview">'. esc_attr( $args['preview_text'] ) .'</div>';
+          echo '<div class="wpdk_settings--block wpdk_settings--block-preview'. esc_attr( $always_preview ) .'">';
+          echo '<div class="wpdk_settings--toggle fas fa-toggle-off"></div>';
+          echo '<div class="wpdk_settings--preview">'. esc_attr( $args['preview_text'] ) .'</div>';
           echo '</div>';
         }
 
-        echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[type]' ) ) .'" class="pbsettings--type" value="'. esc_attr( $this->value['type'] ) .'" />';
-        echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[unit]' ) ) .'" class="pbsettings--unit-save" value="'. esc_attr( $args['unit'] ) .'" />';
+        echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[type]' ) ) .'" class="wpdk_settings--type" value="'. esc_attr( $this->value['type'] ) .'" />';
+        echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[unit]' ) ) .'" class="wpdk_settings--unit-save" value="'. esc_attr( $args['unit'] ) .'" />';
 
       echo '</div>';
 
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
       $multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
       $chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
 
-      $output  = '<select name="'. esc_attr( $this->field_name( '['. $name .']'. $multiple_name ) ) .'" class="pbsettings--'. esc_attr( $name ) . esc_attr( $chosen_rtl ) .'" data-placeholder="'. esc_attr( $placeholder ) .'"'. $multiple_attr .'>';
+      $output  = '<select name="'. esc_attr( $this->field_name( '['. $name .']'. $multiple_name ) ) .'" class="wpdk_settings--'. esc_attr( $name ) . esc_attr( $chosen_rtl ) .'" data-placeholder="'. esc_attr( $placeholder ) .'"'. $multiple_attr .'>';
       $output .= ( ! empty( $placeholder ) ) ? '<option value="">'. esc_attr( ( ! $this->chosen ) ? $placeholder : '' ) .'</option>' : '';
 
       if ( ! empty( $options ) ) {
@@ -347,11 +347,11 @@ if ( ! class_exists( 'WPDK_Settings_Field_typography' ) ) {
 
     public function enqueue() {
 
-      if ( ! wp_script_is( 'pbsettings-webfontloader' ) ) {
+      if ( ! wp_script_is( 'wpdk_settings-webfontloader' ) ) {
 
         WPDK_Settings::include_plugin_file( 'fields/typography/google-fonts.php' );
 
-        wp_enqueue_script( 'pbsettings-webfontloader', 'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js', array( 'pb_settings' ), '1.6.28', true );
+        wp_enqueue_script( 'wpdk_settings-webfontloader', 'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js', array( 'pb_settings' ), '1.6.28', true );
 
         $webfonts = array();
 

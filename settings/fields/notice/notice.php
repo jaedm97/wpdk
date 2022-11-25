@@ -18,7 +18,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_notice' ) ) {
 
       $style = ( ! empty( $this->field['style'] ) ) ? $this->field['style'] : 'normal';
 
-      echo ( ! empty( $this->field['content'] ) ) ? '<div class="pbsettings-notice pbsettings-notice-'. esc_attr( $style ) .'">'. $this->field['content'] .'</div>' : '';
+      echo ( ! empty( $this->field['content'] ) ) ? '<div class="wpdk_settings-notice wpdk_settings-notice-'. esc_attr( $style ) .'">'. $this->field['content'] .'</div>' : '';
 
     }
 

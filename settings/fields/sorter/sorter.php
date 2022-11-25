@@ -28,12 +28,12 @@ if ( ! class_exists( 'WPDK_Settings_Field_sorter' ) ) {
       $enabled_options  = ( ! empty( $this->value['enabled'] ) ) ? $this->value['enabled'] : array();
       $disabled_options = ( ! empty( $this->value['disabled'] ) ) ? $this->value['disabled'] : array();
 
-      echo '<div class="pbsettings-sorter" data-depend-id="'. esc_attr( $this->field['id'] ) .'"></div>';
+      echo '<div class="wpdk_settings-sorter" data-depend-id="'. esc_attr( $this->field['id'] ) .'"></div>';
 
-      echo ( $args['disabled'] ) ? '<div class="pbsettings-modules">' : '';
+      echo ( $args['disabled'] ) ? '<div class="wpdk_settings-modules">' : '';
 
-      echo ( ! empty( $args['enabled_title'] ) ) ? '<div class="pbsettings-sorter-title">'. esc_attr( $args['enabled_title'] ) .'</div>' : '';
-      echo '<ul class="pbsettings-enabled">';
+      echo ( ! empty( $args['enabled_title'] ) ) ? '<div class="wpdk_settings-sorter-title">'. esc_attr( $args['enabled_title'] ) .'</div>' : '';
+      echo '<ul class="wpdk_settings-enabled">';
       if ( ! empty( $enabled_options ) ) {
         foreach ( $enabled_options as $key => $value ) {
           echo '<li><input type="hidden" name="'. esc_attr( $this->field_name( '[enabled]['. $key .']' ) ) .'" value="'. esc_attr( $value ) .'"/><label>'. esc_attr( $value ) .'</label></li>';
@@ -46,9 +46,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_sorter' ) ) {
 
         echo '</div>';
 
-        echo '<div class="pbsettings-modules">';
-        echo ( ! empty( $args['disabled_title'] ) ) ? '<div class="pbsettings-sorter-title">'. esc_attr( $args['disabled_title'] ) .'</div>' : '';
-        echo '<ul class="pbsettings-disabled">';
+        echo '<div class="wpdk_settings-modules">';
+        echo ( ! empty( $args['disabled_title'] ) ) ? '<div class="wpdk_settings-sorter-title">'. esc_attr( $args['disabled_title'] ) .'</div>' : '';
+        echo '<ul class="wpdk_settings-disabled">';
         if ( ! empty( $disabled_options ) ) {
           foreach ( $disabled_options as $key => $value ) {
           echo '<li><input type="hidden" name="'. esc_attr( $this->field_name( '[disabled]['. $key .']' ) ) .'" value="'. esc_attr( $value ) .'"/><label>'. esc_attr( $value ) .'</label></li>';

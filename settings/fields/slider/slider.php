@@ -23,15 +23,15 @@ if ( ! class_exists( 'WPDK_Settings_Field_slider' ) ) {
         'unit' => '',
       ) );
 
-      $is_unit = ( ! empty( $args['unit'] ) ) ? ' pbsettings--is-unit' : '';
+      $is_unit = ( ! empty( $args['unit'] ) ) ? ' wpdk_settings--is-unit' : '';
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings--wrap">';
-      echo '<div class="pbsettings-slider-ui"></div>';
-      echo '<div class="pbsettings--input">';
-      echo '<input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes( array( 'class' => 'pbsettings-input-number'. esc_attr( $is_unit ) ) ) .' data-min="'. esc_attr( $args['min'] ) .'" data-max="'. esc_attr( $args['max'] ) .'" data-step="'. esc_attr( $args['step'] ) .'" step="any" />';
-      echo ( ! empty( $args['unit'] ) ) ? '<span class="pbsettings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
+      echo '<div class="wpdk_settings--wrap">';
+      echo '<div class="wpdk_settings-slider-ui"></div>';
+      echo '<div class="wpdk_settings--input">';
+      echo '<input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes( array( 'class' => 'wpdk_settings-input-number'. esc_attr( $is_unit ) ) ) .' data-min="'. esc_attr( $args['min'] ) .'" data-max="'. esc_attr( $args['max'] ) .'" data-step="'. esc_attr( $args['step'] ) .'" step="any" />';
+      echo ( ! empty( $args['unit'] ) ) ? '<span class="wpdk_settings--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
       echo '</div>';
       echo '</div>';
 

@@ -39,9 +39,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_gallery' ) ) {
       }
       echo '</ul>';
 
-      echo '<a href="#" class="button button-primary pbsettings-button">'. $args['add_title'] .'</a>';
-      echo '<a href="#" class="button pbsettings-edit-gallery'. esc_attr( $hidden ) .'">'. $args['edit_title'] .'</a>';
-      echo '<a href="#" class="button pbsettings-warning-primary pbsettings-clear-gallery'. esc_attr( $hidden ) .'">'. $args['clear_title'] .'</a>';
+      echo '<a href="#" class="button button-primary wpdk_settings-button">'. $args['add_title'] .'</a>';
+      echo '<a href="#" class="button wpdk_settings-edit-gallery'. esc_attr( $hidden ) .'">'. $args['edit_title'] .'</a>';
+      echo '<a href="#" class="button wpdk_settings-warning-primary wpdk_settings-clear-gallery'. esc_attr( $hidden ) .'">'. $args['clear_title'] .'</a>';
       echo '<input type="hidden" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .'/>';
 
       echo $this->field_after();

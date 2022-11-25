@@ -36,32 +36,32 @@ if ( ! class_exists( 'WPDK_Settings_Field_dimensions' ) ) {
 
       $value   = wp_parse_args( $this->value, $default_values );
       $unit    = ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? $args['units'][0] : '';
-      $is_unit = ( ! empty( $unit ) ) ? ' pbsettings--is-unit' : '';
+      $is_unit = ( ! empty( $unit ) ) ? ' wpdk_settings--is-unit' : '';
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings--inputs" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+      echo '<div class="wpdk_settings--inputs" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
 
       if ( ! empty( $args['width'] ) ) {
         $placeholder = ( ! empty( $args['width_placeholder'] ) ) ? ' placeholder="'. esc_attr( $args['width_placeholder'] ) .'"' : '';
-        echo '<div class="pbsettings--input">';
-        echo ( ! empty( $args['width_icon'] ) ) ? '<span class="pbsettings--label pbsettings--icon">'. $args['width_icon'] .'</span>' : '';
-        echo '<input type="number" name="'. esc_attr( $this->field_name( '[width]' ) ) .'" value="'. esc_attr( $value['width'] ) .'"'. $placeholder .' class="pbsettings-input-number'. esc_attr( $is_unit ) .'" step="any" />';
-        echo ( ! empty( $unit ) ) ? '<span class="pbsettings--label pbsettings--unit">'. esc_attr( $args['units'][0] ) .'</span>' : '';
+        echo '<div class="wpdk_settings--input">';
+        echo ( ! empty( $args['width_icon'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--icon">'. $args['width_icon'] .'</span>' : '';
+        echo '<input type="number" name="'. esc_attr( $this->field_name( '[width]' ) ) .'" value="'. esc_attr( $value['width'] ) .'"'. $placeholder .' class="wpdk_settings-input-number'. esc_attr( $is_unit ) .'" step="any" />';
+        echo ( ! empty( $unit ) ) ? '<span class="wpdk_settings--label wpdk_settings--unit">'. esc_attr( $args['units'][0] ) .'</span>' : '';
         echo '</div>';
       }
 
       if ( ! empty( $args['height'] ) ) {
         $placeholder = ( ! empty( $args['height_placeholder'] ) ) ? ' placeholder="'. esc_attr( $args['height_placeholder'] ) .'"' : '';
-        echo '<div class="pbsettings--input">';
-        echo ( ! empty( $args['height_icon'] ) ) ? '<span class="pbsettings--label pbsettings--icon">'. $args['height_icon'] .'</span>' : '';
-        echo '<input type="number" name="'. esc_attr( $this->field_name( '[height]' ) ) .'" value="'. esc_attr( $value['height'] ) .'"'. $placeholder .' class="pbsettings-input-number'. esc_attr( $is_unit ) .'" step="any" />';
-        echo ( ! empty( $unit ) ) ? '<span class="pbsettings--label pbsettings--unit">'. esc_attr( $args['units'][0] ) .'</span>' : '';
+        echo '<div class="wpdk_settings--input">';
+        echo ( ! empty( $args['height_icon'] ) ) ? '<span class="wpdk_settings--label wpdk_settings--icon">'. $args['height_icon'] .'</span>' : '';
+        echo '<input type="number" name="'. esc_attr( $this->field_name( '[height]' ) ) .'" value="'. esc_attr( $value['height'] ) .'"'. $placeholder .' class="wpdk_settings-input-number'. esc_attr( $is_unit ) .'" step="any" />';
+        echo ( ! empty( $unit ) ) ? '<span class="wpdk_settings--label wpdk_settings--unit">'. esc_attr( $args['units'][0] ) .'</span>' : '';
         echo '</div>';
       }
 
       if ( ! empty( $args['unit'] ) && ! empty( $args['show_units'] ) && count( $args['units'] ) > 1 ) {
-        echo '<div class="pbsettings--input">';
+        echo '<div class="wpdk_settings--input">';
         echo '<select name="'. esc_attr( $this->field_name( '[unit]' ) ) .'">';
         foreach ( $args['units'] as $unit ) {
           $selected = ( $value['unit'] === $unit ) ? ' selected' : '';

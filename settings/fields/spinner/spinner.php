@@ -25,7 +25,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_spinner' ) ) {
 
       echo $this->field_before();
 
-      echo '<div class="pbsettings--spin"><input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes( array( 'class' => 'pbsettings-input-number' ) ) .' data-min="'. esc_attr( $args['min'] ) .'" data-max="'. esc_attr( $args['max'] ) .'" data-step="'. esc_attr( $args['step'] ) .'" data-unit="'. esc_attr( $args['unit'] ) .'" step="any" /></div>';
+      echo '<div class="wpdk_settings--spin"><input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes( array( 'class' => 'wpdk_settings-input-number' ) ) .' data-min="'. esc_attr( $args['min'] ) .'" data-max="'. esc_attr( $args['max'] ) .'" data-step="'. esc_attr( $args['step'] ) .'" data-unit="'. esc_attr( $args['unit'] ) .'" step="any" /></div>';
 
       echo $this->field_after();
 

@@ -94,7 +94,7 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 				$saved_post_format = ( is_object( $post ) ) ? get_post_format( $post ) : false;
 				$saved_post_format = ( ! empty( $saved_post_format ) ) ? $saved_post_format : 'default';
 
-				$classes[] = 'pbsettings-post-formats';
+				$classes[] = 'wpdk_settings-post-formats';
 
 				// Sanitize post format for standard to default
 				if ( ( $key = array_search( 'standard', $this->post_formats ) ) !== false ) {
@@ -102,13 +102,13 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 				}
 
 				foreach ( $this->post_formats as $format ) {
-					$classes[] = 'pbsettings-post-format-' . $format;
+					$classes[] = 'wpdk_settings-post-format-' . $format;
 				}
 
 				if ( ! in_array( $saved_post_format, $this->post_formats ) ) {
-					$classes[] = 'pbsettings-metabox-hide';
+					$classes[] = 'wpdk_settings-metabox-hide';
 				} else {
-					$classes[] = 'pbsettings-metabox-show';
+					$classes[] = 'wpdk_settings-metabox-show';
 				}
 
 			}
@@ -117,16 +117,16 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 				$saved_template = ( is_object( $post ) && ! empty( $post->page_template ) ) ? $post->page_template : 'default';
 
-				$classes[] = 'pbsettings-page-templates';
+				$classes[] = 'wpdk_settings-page-templates';
 
 				foreach ( $this->page_templates as $template ) {
-					$classes[] = 'pbsettings-page-' . preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
+					$classes[] = 'wpdk_settings-page-' . preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
 				}
 
 				if ( ! in_array( $saved_template, $this->page_templates ) ) {
-					$classes[] = 'pbsettings-metabox-hide';
+					$classes[] = 'wpdk_settings-metabox-hide';
 				} else {
-					$classes[] = 'pbsettings-metabox-show';
+					$classes[] = 'wpdk_settings-metabox-show';
 				}
 
 			}
@@ -190,11 +190,11 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 			global $post;
 
 			$has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
-			$show_all  = ( ! $has_nav ) ? ' pbsettings-show-all' : '';
+			$show_all  = ( ! $has_nav ) ? ' wpdk_settings-show-all' : '';
 			$post_type = ( is_object( $post ) ) ? $post->post_type : '';
 			$errors    = ( is_object( $post ) ) ? get_post_meta( $post->ID, '_pb_settings_errors_' . $this->unique, true ) : array();
 			$errors    = ( ! empty( $errors ) ) ? $errors : array();
-			$theme     = ( $this->args['theme'] ) ? ' pbsettings-theme-' . $this->args['theme'] : '';
+			$theme     = ( $this->args['theme'] ) ? ' wpdk_settings-theme-' . $this->args['theme'] : '';
 			$nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
 			if ( is_object( $post ) && ! empty( $errors ) ) {
@@ -203,13 +203,13 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 			wp_nonce_field( 'pb_settings_metabox_nonce', 'pb_settings_metabox_nonce' . $this->unique );
 
-			echo '<div class="pb_settings pbsettings-metabox' . esc_attr( $theme ) . '">';
+			echo '<div class="pb_settings wpdk_settings-metabox' . esc_attr( $theme ) . '">';
 
-			echo '<div class="pbsettings-wrapper' . esc_attr( $show_all ) . '">';
+			echo '<div class="wpdk_settings-wrapper' . esc_attr( $show_all ) . '">';
 
 			if ( $has_nav ) {
 
-				echo '<div class="pbsettings-nav pbsettings-nav-' . esc_attr( $nav_type ) . ' pbsettings-nav-metabox">';
+				echo '<div class="wpdk_settings-nav wpdk_settings-nav-' . esc_attr( $nav_type ) . ' wpdk_settings-nav-metabox">';
 
 				echo '<ul>';
 
@@ -221,15 +221,15 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 						continue;
 					}
 
-					$tab_error = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="pbsettings-label-error pbsettings-error">!</i>' : '';
-					$tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+					$tab_error = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="wpdk_settings-label-error wpdk_settings-error">!</i>' : '';
+					$tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
 					printf( '<li><a href="#" data-section="%s">%s%s%s</a></li>', ( $this->unique . '_' . $tab_key ), $tab_icon, $section['title'], $tab_error );
 
 					$tab_key ++;
 				}
 
-				do_action( 'pbsettings_after_meta_navs' );
+				do_action( 'wpdk_settings_after_meta_navs' );
 
 				echo '</ul>';
 
@@ -237,9 +237,9 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 			}
 
-			echo '<div class="pbsettings-content">';
+			echo '<div class="wpdk_settings-content">';
 
-			echo '<div class="pbsettings-sections">';
+			echo '<div class="wpdk_settings-sections">';
 
 			$section_key = 0;
 
@@ -249,15 +249,15 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 					continue;
 				}
 
-				$section_onload = ( ! $has_nav ) ? ' pbsettings-onload' : '';
+				$section_onload = ( ! $has_nav ) ? ' wpdk_settings-onload' : '';
 				$section_class  = ( ! empty( $section['class'] ) ) ? ' ' . $section['class'] : '';
 				$section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="pbsettings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="wpdk_settings-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
-				echo '<div class="pbsettings-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
+				echo '<div class="wpdk_settings-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
 
-				echo ( $section_title || $section_icon ) ? '<div class="pbsettings-section-title"><h3>' . esc_html( $section_icon . $section_title ) . '</h3></div>' : '';
-				echo ( ! empty( $section['description'] ) ) ? '<div class="pbsettings-field pbsettings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
+				echo ( $section_title || $section_icon ) ? '<div class="wpdk_settings-section-title"><h3>' . esc_html( $section_icon . $section_title ) . '</h3></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="wpdk_settings-field wpdk_settings-section-description">' . esc_html( $section['description'] ) . '</div>' : '';
 
 				if ( ! empty( $section['fields'] ) ) {
 
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 				} else {
 
-					echo '<div class="pbsettings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
+					echo '<div class="wpdk_settings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
 
 				}
 
@@ -291,11 +291,11 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 			if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-				echo '<div class="pbsettings-sections-reset">';
+				echo '<div class="wpdk_settings-sections-reset">';
 				echo '<label>';
 				echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
-				echo '<span class="button pbsettings-button-reset">' . esc_html__( 'Reset' ) . '</span>';
-				echo '<span class="button pbsettings-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post' ), esc_html__( 'Cancel' ) ) . '</span>';
+				echo '<span class="button wpdk_settings-button-reset">' . esc_html__( 'Reset' ) . '</span>';
+				echo '<span class="button wpdk_settings-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post' ), esc_html__( 'Cancel' ) ) . '</span>';
 				echo '</label>';
 				echo '</div>';
 
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 
 			echo '</div>';
 
-			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="pbsettings-nav-background"></div>' : '';
+			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="wpdk_settings-nav-background"></div>' : '';
 
 			echo '<div class="clear"></div>';
 

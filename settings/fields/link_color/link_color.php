@@ -50,9 +50,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_link_color' ) ) {
 
           $default_attr = ( ! empty( $this->field['default'][$color_prop_key] ) ) ? ' data-default-color="'. esc_attr( $this->field['default'][$color_prop_key] ) .'"' : '';
 
-          echo '<div class="pbsettings--left pbsettings-field-color">';
-          echo '<div class="pbsettings--title">'. esc_attr( $color_prop_value ) .'</div>';
-          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $color_prop_key .']' ) ) .'" value="'. esc_attr( $value[$color_prop_key] ) .'" class="pbsettings-color"'. $default_attr . $this->field_attributes() .'/>';
+          echo '<div class="wpdk_settings--left wpdk_settings-field-color">';
+          echo '<div class="wpdk_settings--title">'. esc_attr( $color_prop_value ) .'</div>';
+          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $color_prop_key .']' ) ) .'" value="'. esc_attr( $value[$color_prop_key] ) .'" class="wpdk_settings-color"'. $default_attr . $this->field_attributes() .'/>';
           echo '</div>';
 
         }

@@ -36,7 +36,7 @@ class Utils {
 	 * @param string $shortcode
 	 * @param string $callable_func
 	 */
-	function register_shortcode( $shortcode = '', $callable_func = '' ) {
+	public static function register_shortcode( $shortcode = '', $callable_func = '' ) {
 
 		if ( empty( $shortcode ) || empty( $callable_func ) ) {
 			return;

@@ -40,29 +40,29 @@ if ( ! class_exists( 'WPDK_Settings_Field_group' ) ) {
 
 			if ( preg_match( '/' . preg_quote( '[' . $this->field['id'] . ']' ) . '/', $this->unique ) ) {
 
-				echo '<div class="pbsettings-notice pbsettings-notice-danger">' . esc_html__( 'Error: Field ID conflict.' ) . '</div>';
+				echo '<div class="wpdk_settings-notice wpdk_settings-notice-danger">' . esc_html__( 'Error: Field ID conflict.' ) . '</div>';
 
 			} else {
 
 				echo $this->field_before();
 
-				echo '<div class="pbsettings-cloneable-item pbsettings-cloneable-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+				echo '<div class="wpdk_settings-cloneable-item wpdk_settings-cloneable-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
-				echo '<div class="pbsettings-cloneable-helper">';
-				echo '<i class="pbsettings-cloneable-sort fas fa-arrows-alt"></i>';
-				echo '<i class="pbsettings-cloneable-clone far fa-clone"></i>';
-				echo '<i class="pbsettings-cloneable-remove pbsettings-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?' ) . '"></i>';
+				echo '<div class="wpdk_settings-cloneable-helper">';
+				echo '<i class="wpdk_settings-cloneable-sort fas fa-arrows-alt"></i>';
+				echo '<i class="wpdk_settings-cloneable-clone far fa-clone"></i>';
+				echo '<i class="wpdk_settings-cloneable-remove wpdk_settings-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?' ) . '"></i>';
 				echo '</div>';
 
-				echo '<h4 class="pbsettings-cloneable-title">';
-				echo '<span class="pbsettings-cloneable-text">';
-				echo ( $title_number ) ? '<span class="pbsettings-cloneable-title-number"></span>' : '';
-				echo ( $title_prefix ) ? '<span class="pbsettings-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
-				echo ( $title_auto ) ? '<span class="pbsettings-cloneable-value"><span class="pbsettings-cloneable-placeholder"></span></span>' : '';
+				echo '<h4 class="wpdk_settings-cloneable-title">';
+				echo '<span class="wpdk_settings-cloneable-text">';
+				echo ( $title_number ) ? '<span class="wpdk_settings-cloneable-title-number"></span>' : '';
+				echo ( $title_prefix ) ? '<span class="wpdk_settings-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+				echo ( $title_auto ) ? '<span class="wpdk_settings-cloneable-value"><span class="wpdk_settings-cloneable-placeholder"></span></span>' : '';
 				echo '</span>';
 				echo '</h4>';
 
-				echo '<div class="pbsettings-cloneable-content">';
+				echo '<div class="wpdk_settings-cloneable-content">';
 				foreach ( $this->field['fields'] as $field ) {
 
 					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
@@ -75,7 +75,7 @@ if ( ! class_exists( 'WPDK_Settings_Field_group' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="pbsettings-cloneable-wrapper pbsettings-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
+				echo '<div class="wpdk_settings-cloneable-wrapper wpdk_settings-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
 
 				if ( ! empty( $this->value ) ) {
 
@@ -101,23 +101,23 @@ if ( ! class_exists( 'WPDK_Settings_Field_group' ) ) {
 
 						$title = ( is_array( $title ) ) ? reset( $title ) : $title;
 
-						echo '<div class="pbsettings-cloneable-item">';
+						echo '<div class="wpdk_settings-cloneable-item">';
 
-						echo '<div class="pbsettings-cloneable-helper">';
-						echo '<i class="pbsettings-cloneable-sort fas fa-arrows-alt"></i>';
-						echo '<i class="pbsettings-cloneable-clone far fa-clone"></i>';
-						echo '<i class="pbsettings-cloneable-remove pbsettings-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?' ) . '"></i>';
+						echo '<div class="wpdk_settings-cloneable-helper">';
+						echo '<i class="wpdk_settings-cloneable-sort fas fa-arrows-alt"></i>';
+						echo '<i class="wpdk_settings-cloneable-clone far fa-clone"></i>';
+						echo '<i class="wpdk_settings-cloneable-remove wpdk_settings-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?' ) . '"></i>';
 						echo '</div>';
 
-						echo '<h4 class="pbsettings-cloneable-title">';
-						echo '<span class="pbsettings-cloneable-text">';
-						echo ( $title_number ) ? '<span class="pbsettings-cloneable-title-number">' . esc_attr( $num + 1 ) . '.</span>' : '';
-						echo ( $title_prefix ) ? '<span class="pbsettings-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
-						echo ( $title_auto ) ? '<span class="pbsettings-cloneable-value">' . esc_attr( $title ) . '</span>' : '';
+						echo '<h4 class="wpdk_settings-cloneable-title">';
+						echo '<span class="wpdk_settings-cloneable-text">';
+						echo ( $title_number ) ? '<span class="wpdk_settings-cloneable-title-number">' . esc_attr( $num + 1 ) . '.</span>' : '';
+						echo ( $title_prefix ) ? '<span class="wpdk_settings-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+						echo ( $title_auto ) ? '<span class="wpdk_settings-cloneable-value">' . esc_attr( $title ) . '</span>' : '';
 						echo '</span>';
 						echo '</h4>';
 
-						echo '<div class="pbsettings-cloneable-content">';
+						echo '<div class="wpdk_settings-cloneable-content">';
 
 						foreach ( $this->field['fields'] as $field ) {
 
@@ -140,9 +140,9 @@ if ( ! class_exists( 'WPDK_Settings_Field_group' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="pbsettings-cloneable-alert pbsettings-cloneable-max">' . esc_html__( 'You cannot add more.' ) . '</div>';
-				echo '<div class="pbsettings-cloneable-alert pbsettings-cloneable-min">' . esc_html__( 'You cannot remove more.' ) . '</div>';
-				echo '<a href="#" class="button button-primary pbsettings-cloneable-add">' . $args['button_title'] . '</a>';
+				echo '<div class="wpdk_settings-cloneable-alert wpdk_settings-cloneable-max">' . esc_html__( 'You cannot add more.' ) . '</div>';
+				echo '<div class="wpdk_settings-cloneable-alert wpdk_settings-cloneable-min">' . esc_html__( 'You cannot remove more.' ) . '</div>';
+				echo '<a href="#" class="button button-primary wpdk_settings-cloneable-add">' . $args['button_title'] . '</a>';
 
 				echo $this->field_after();
 
