@@ -1,2 +1,2 @@
-# wpdk
-WordPress Plugin Development Kit
+# WordPress Plugin Development Kit
+
