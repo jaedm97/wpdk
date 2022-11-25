@@ -16,4 +16,6 @@ WP Plugin Development Kit (WPDK) is a small but powerful tool that helps develop
 
 ### CREDIT
 
+Thank you for the following services. 
+
 * [Code Star Framework](https://codestarframework.com/)
