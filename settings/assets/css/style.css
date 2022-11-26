@@ -342,9 +342,9 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
 .wpdk_settings-section-title {
     display: none;
     padding: 20px 30px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    background-color: var(--wpdk_settings-primary-color);
+    /*border-top: 1px solid #eee;*/
+    /*border-bottom: 1px solid #eee;*/
 }
 
 .wpdk_settings-section-title h3 {
@@ -353,6 +353,7 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
+    color: #fff;
 }
 
 .wpdk_settings-section-title .wpdk_settings-section-icon {
@@ -631,6 +632,16 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
     background-color: #fff;
 }
 
+/*.wpdk_settings-theme-dark .wpdk_settings-nav ul li .wpdk_settings-active:before {*/
+/*    position: absolute;*/
+/*    content: ' ';*/
+/*    left: 0;*/
+/*    bottom: -1px;*/
+/*    width: calc(100% - -1px);*/
+/*    height: 1px;*/
+/*    background: #fff;*/
+/*}*/
+
 .wpdk_settings-theme-dark .wpdk_settings-nav ul li .wpdk_settings-active > i {
     color: var(--wpdk_settings-primary-color);
 }
@@ -668,7 +679,8 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
 }
 
 .wpdk_settings-theme-dark .wpdk_settings-nav-inline {
-    background-color: #f0f0f1;
+    background: #f0f0f1;
+    /*border-bottom: 1px solid var(--wpdk_settings-primary-color);*/
 }
 
 .wpdk_settings-theme-dark .wpdk_settings-nav-inline ul li a {

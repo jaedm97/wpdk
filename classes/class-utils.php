@@ -144,7 +144,7 @@ class Utils {
 				'name'               => sprintf( $this->client->__trans( '%s' ), $plural ),
 				'singular_name'      => $singular,
 				'menu_name'          => $this->client->__trans( $singular ),
-				'all_items'          => sprintf( $this->client->__trans( '%s' ), $plural ),
+				'all_items'          => sprintf( $this->client->__trans( 'All %s' ), $plural ),
 				'add_new'            => sprintf( $this->client->__trans( 'Add %s' ), $singular ),
 				'add_new_item'       => sprintf( $this->client->__trans( 'Add %s' ), $singular ),
 				'edit'               => $this->client->__trans( 'Edit' ),
