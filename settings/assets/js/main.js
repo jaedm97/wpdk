@@ -64,11 +64,11 @@
             });
 
             $selector.each(function (index) {
-                let ID = parseInt($(this).children('div.wpdk_settings-repeater-content').find(':input').attr('name').split(']')[1].replace('[', ''))
+                let ID = parseInt($(this).find('div.wpdk_settings-field').find(':input').attr('name').split(']')[1].replace('[', ''));
                 unique.push(ID);
                 let uniqueID = unique.filter((item, index) => unique.indexOf(item) !== index).includes(ID) ? $.now() : ID;
                 $(this).find(':input').each(function () {
-                    this.name = this.name.replace(regex, field_id + '[' + index + ']');
+                    this.name = this.name.replace(regex, field_id + '[' + uniqueID + ']');
                     if (this.orginal_checked) {
                         this.checked = true;
                     }
