@@ -143,7 +143,7 @@ class Utils {
 			array(
 				'name'               => sprintf( $this->client->__trans( '%s' ), $plural ),
 				'singular_name'      => $singular,
-				'menu_name'          => $this->client->__trans( $singular ),
+				'menu_name'          => $this->client->__trans( $plural ),
 				'all_items'          => sprintf( $this->client->__trans( 'All %s' ), $plural ),
 				'add_new'            => sprintf( $this->client->__trans( 'Add %s' ), $singular ),
 				'add_new_item'       => sprintf( $this->client->__trans( 'Add %s' ), $singular ),
