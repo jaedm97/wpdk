@@ -817,7 +817,7 @@ if ( ! class_exists( 'WPDK_Settings' ) ) {
 				$notice_url = '';
 
 				if ( 'pro' == $availability ) {
-					$notice_url = isset( self::$args['pro_url'] ) ? self::$args['pro_url'] : '';
+					$notice_url = self::$args['pro_url'] ?? '';
 				}
 
 				echo '<a class="wpdk_settings-availability-notice" href="' . esc_url( $notice_url ) . '" target="_blank">' . esc_html( $availability ) . '</a>';
