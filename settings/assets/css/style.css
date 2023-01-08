@@ -224,7 +224,7 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
     font-weight: 500;
     position: relative;
     display: block;
-    padding: 10px;
+    padding: 20px;
     text-decoration: none;
     transition: 0.3s;
 }
