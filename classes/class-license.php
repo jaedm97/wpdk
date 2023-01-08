@@ -28,21 +28,22 @@ class License {
 			include_once ABSPATH . '/wp-admin/includes/plugin.php';
 		}
 
-		$plugin_data = get_plugin_data( $plugin_file );
+		if ( ! empty( $plugin_file ) ) {
 
-		$this->client          = $client;
-		$this->plugin_file     = $plugin_file;
-		$this->plugin_basename = plugin_basename( $plugin_file );
-		$this->plugin_version  = Utils::get_args_option( 'Version', $plugin_data );
-		$this->option_key      = sprintf( 'pb_%s_license_data', md5( $this->client->text_domain . esc_attr( '-pro' ) ) );
-		$this->cache_key       = sprintf( 'pb_%s_version_info', md5( $this->client->text_domain . esc_attr( '-pro' ) ) );
-		$this->data            = get_option( $this->option_key, array() );
+			$plugin_data           = get_plugin_data( $plugin_file );
+			$this->client          = $client;
+			$this->plugin_file     = $plugin_file;
+			$this->plugin_basename = plugin_basename( $plugin_file );
+			$this->plugin_version  = Utils::get_args_option( 'Version', $plugin_data );
+			$this->option_key      = sprintf( 'pb_%s_license_data', md5( $this->client->text_domain . esc_attr( '-pro' ) ) );
+			$this->cache_key       = sprintf( 'pb_%s_version_info', md5( $this->client->text_domain . esc_attr( '-pro' ) ) );
+			$this->data            = get_option( $this->option_key, array() );
 
-		add_action( 'init', array( $this, 'schedule_event' ) );
-		add_action( 'rest_api_init', array( $this, 'add_license_activation_endpoint' ) );
-		add_filter( 'cron_schedules', array( $this, 'add_cron_interval' ) );
-		add_action( 'pb_license_check', array( $this, 'check_license_validity' ) );
-
+			add_action( 'init', array( $this, 'schedule_event' ) );
+			add_action( 'rest_api_init', array( $this, 'add_license_activation_endpoint' ) );
+			add_filter( 'cron_schedules', array( $this, 'add_cron_interval' ) );
+			add_action( 'pb_license_check', array( $this, 'check_license_validity' ) );
+		}
 	}
 
 	/**
