@@ -682,8 +682,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 
 					}
 				} elseif ( $section['external'] && isset( $section['id'] ) ) {
-					do_action( 'WPDK_Settings/section/' . $section['id'] );
-
+					do_action( 'WPDK_Settings/section/' . $section['id'], $section );
 				} else {
 					echo '<div class="wpdk_settings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
 				}

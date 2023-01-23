@@ -272,13 +272,12 @@ if ( ! class_exists( 'WPDK_Settings_Metabox' ) ) {
 						}
 
 						WPDK_Settings::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
-
 					}
+				} elseif ( $section['external'] && isset( $section['id'] ) ) {
+					do_action( 'WPDK_Settings/meta_section/' . $section['id'], $section );
 
 				} else {
-
 					echo '<div class="wpdk_settings-no-option">' . esc_html__( 'No data available.' ) . '</div>';
-
 				}
 
 				echo '</div>';
