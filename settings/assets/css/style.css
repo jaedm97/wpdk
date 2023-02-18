@@ -788,6 +788,10 @@ li.wpdk_settings-tab-item.wpdk_settings-tab-expanded {
     color: var(--wpdk_settings-text-color);
 }
 
+.wpdk_settings-theme-light .wpdk_settings-nav ul ul li a:not(.wpdk_settings-active) {
+    background-color: var(--wpdk_settings-primary-color-dim);
+}
+
 .wpdk_settings-theme-light .wpdk_settings-nav-normal > ul {
     margin-right: -1px;
     margin-bottom: -1px;
