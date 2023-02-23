@@ -143,14 +143,8 @@ class Client {
 			// update value
 			update_option( $this->get_notices_id( $id ), time() );
 
-			// Removing query args
-			unset( $query_args['pb_action'] );
-			unset( $query_args['id'] );
-
-			$redirect = parse_url( esc_url_raw( add_query_arg( $query_args, $this->get_website_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) ) ) );
-
 			// Redirect
-			wp_safe_redirect( esc_url_raw( add_query_arg( $query_args, $this->get_website_url( $redirect['path'] ) ) ) );
+			wp_safe_redirect( site_url( 'wp-admin' ) );
 			exit;
 		}
 	}
@@ -222,7 +216,7 @@ class Client {
 					array(
 						'pb_action' => 'permanent_dismissible',
 						'id'        => $permanent_dismiss
-					), $this->get_website_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) )
+					), site_url( 'wp-admin' )
 				) ),
 				esc_html__( 'Dismiss', $this->text_domain )
 			);
